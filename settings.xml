@@ -1,0 +1,9 @@
+<settings>
+  <servers> 
+    <server> 
+      <id>ossrh</id> 
+      <username>ravikalla</username> 
+      <password>#Infy123</password> 
+    </server> 
+  </servers> 
+</settings> 
