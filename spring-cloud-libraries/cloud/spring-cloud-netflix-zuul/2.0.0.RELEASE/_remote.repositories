@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jul 31 13:56:47 EDT 2018
+spring-cloud-netflix-zuul-2.0.0.RELEASE.jar>central=
+spring-cloud-netflix-zuul-2.0.0.RELEASE-sources.jar>central=
+spring-cloud-netflix-zuul-2.0.0.RELEASE.pom>central=

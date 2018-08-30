@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-function-web</artifactId>
+  <version>1.0.0.BUILD-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20171211.154310</timestamp>
+      <buildNumber>105</buildNumber>
+    </snapshot>
+    <lastUpdated>20171211154320</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <classifier>javadoc</classifier>
+        <extension>jar</extension>
+        <value>1.0.0.BUILD-20171211.154310-105</value>
+        <updated>20171211154310</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>sources</classifier>
+        <extension>jar</extension>
+        <value>1.0.0.BUILD-20171211.154310-105</value>
+        <updated>20171211154310</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0.0.BUILD-20171211.154310-105</value>
+        <updated>20171211154310</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0.0.BUILD-20171211.154310-105</value>
+        <updated>20171211154310</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

@@ -1,0 +1,8 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Thu Dec 14 01:22:47 EST 2017
+spring-cloud-function-core-1.0.0.BUILD-SNAPSHOT-sources.jar>=
+spring-cloud-function-core-1.0.0.BUILD-SNAPSHOT.jar>=
+spring-cloud-function-core-1.0.0.BUILD-20171211.154031-111.jar>spring-snapshots=
+spring-cloud-function-core-1.0.0.BUILD-SNAPSHOT.pom>=
+spring-cloud-function-core-1.0.0.BUILD-20171211.154031-111.pom>spring-snapshots=
+spring-cloud-function-core-1.0.0.BUILD-SNAPSHOT-javadoc.jar>=

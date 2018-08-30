@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-function-parent</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0.0.BUILD-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20171214062244</lastUpdated>
+  </versioning>
+</metadata>

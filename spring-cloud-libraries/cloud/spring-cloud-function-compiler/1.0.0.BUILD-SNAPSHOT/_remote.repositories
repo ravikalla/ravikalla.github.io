@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Dec 15 20:35:39 EST 2017
+spring-cloud-function-compiler-1.0.0.BUILD-SNAPSHOT.jar>=
+spring-cloud-function-compiler-1.0.0.BUILD-SNAPSHOT-javadoc.jar>=
+spring-cloud-function-compiler-1.0.0.BUILD-SNAPSHOT.pom>=
+spring-cloud-function-compiler-1.0.0.BUILD-SNAPSHOT-sources.jar>=

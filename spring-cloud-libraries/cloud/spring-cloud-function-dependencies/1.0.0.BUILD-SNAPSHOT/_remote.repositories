@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Thu Dec 14 01:21:16 EST 2017
+spring-cloud-function-dependencies-1.0.0.BUILD-SNAPSHOT.pom>=
+spring-cloud-function-dependencies-1.0.0.BUILD-20171211.153941-45.pom>spring-snapshots=
