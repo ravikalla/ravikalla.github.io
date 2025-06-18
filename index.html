@@ -154,21 +154,6 @@
             min-height: 600px;
         }
 
-        .chatbot-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .chatbot-header h2 {
-            margin-bottom: 0.5rem;
-        }
-
-        .chatbot-header p {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
 
         .loading-spinner {
             display: flex;
@@ -296,7 +281,7 @@
                         <li><a href="#chat">Chat</a></li>
                         <li><a href="https://github.com/ravikalla/ai-resume-chat" target="_blank">GitHub</a></li>
                         <li><a href="https://linkedin.com/in/ravikalla" target="_blank">LinkedIn</a></li>
-                        <li><a href="mailto:contact@ravikalla.com">Contact</a></li>
+                        <li><a href="mailto:ravi2523096@gmail.com">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -358,7 +343,7 @@
                 <div class="social-links">
                     <a href="https://github.com/ravikalla" target="_blank" title="GitHub">🔗</a>
                     <a href="https://linkedin.com/in/ravikalla" target="_blank" title="LinkedIn">💼</a>
-                    <a href="mailto:contact@ravikalla.com" title="Email">📧</a>
+                    <a href="mailto:ravi2523096@gmail.com" title="Email">📧</a>
                 </div>
             </div>
         </div>
@@ -379,14 +364,13 @@
         // Show error message if Gradio app fails to load
         function showError() {
             const loading = document.getElementById('loading');
-            const container = document.querySelector('.chatbot-container');
             
             if (loading) {
                 loading.innerHTML = `
                     <div class="error-message">
                         <h3>⚠️ Unable to load chat interface</h3>
                         <p>Please try refreshing the page or contact me directly via email.</p>
-                        <a href="mailto:contact@ravikalla.com" style="color: #667eea;">📧 Send Email</a>
+                        <a href="mailto:ravi2523096@gmail.com" style="color: #667eea;">📧 Send Email</a>
                     </div>
                 `;
             }
