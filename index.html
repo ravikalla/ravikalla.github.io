@@ -1,10 +1,423 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chat with Ravi Kalla - AI-powered professional assistant. Ask about software engineering experience, data science expertise, and career background.">
+    <meta name="keywords" content="Ravi Kalla, software engineer, data science, AI chatbot, professional portfolio">
+    <meta name="author" content="Ravi Kalla">
+    
+    <title>Chat with Ravi Kalla | AI Professional Assistant</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Chat with Ravi Kalla | AI Professional Assistant">
+    <meta property="og:description" content="Interactive AI assistant representing Ravi Kalla's professional profile. Ask about software engineering, data science, and career experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ravikalla.com">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .chatbot-header h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .chatbot-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Gradio App Styling */
+        gradio-app {
+            display: block;
+            width: 100%;
+            min-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin-top: 3rem;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #667eea;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .spinner {
+                animation: none;
+            }
+            
+            .feature-card {
+                transition: none;
+            }
+        }
+
+        /* Error State */
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c00;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
 <body>
-	<script
-		type="module"
-		src="https://gradio.s3-us-west-2.amazonaws.com/5.31.0/gradio.js"
-	></script>
-	
-	<gradio-app src="https://ravikalla-chat-with-ravi-kalla.hf.space/"></gradio-app>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    💬 Ravi Kalla
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#chat">Chat</a></li>
+                        <li><a href="https://github.com/ravikalla/ai-resume-chat" target="_blank">GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/ravikalla" target="_blank">LinkedIn</a></li>
+                        <li><a href="mailto:contact@ravikalla.com">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Chat with Ravi Kalla</h1>
+                <p>
+                    AI-powered professional assistant representing my career experience, 
+                    skills, and background in software engineering and data science.
+                </p>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Software Engineering</h3>
+                    <p>Ask about my experience with various programming languages, frameworks, and development practices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Data Science</h3>
+                    <p>Discuss my data science projects, machine learning experience, and analytical skills.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Leadership</h3>
+                    <p>Learn about my team management experience and leadership approaches in technical environments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Career Journey</h3>
+                    <p>Explore my professional background, career progression, and key achievements.</p>
+                </div>
+            </section>
+
+            <section id="chat" class="chatbot-container">
+                <div class="chatbot-header">
+                    <h2>Start a Conversation</h2>
+                    <p>Ask me anything about my professional background and experience • Version 1.0</p>
+                </div>
+                
+                <div id="loading" class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading AI Assistant...</p>
+                </div>
+                
+                <gradio-app 
+                    src="https://ravikalla-chat-with-ravi-kalla.hf.space/"
+                    onload="hideLoading()"
+                    onerror="showError()">
+                </gradio-app>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Ravi Kalla. Powered by AI technology.</p>
+                <div class="social-links">
+                    <a href="https://github.com/ravikalla" target="_blank" title="GitHub">🔗</a>
+                    <a href="https://linkedin.com/in/ravikalla" target="_blank" title="LinkedIn">💼</a>
+                    <a href="mailto:contact@ravikalla.com" title="Email">📧</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gradio JavaScript -->
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.0/gradio.js"></script>
+    
+    <script>
+        // Hide loading spinner when Gradio app loads
+        function hideLoading() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }
+
+        // Show error message if Gradio app fails to load
+        function showError() {
+            const loading = document.getElementById('loading');
+            const container = document.querySelector('.chatbot-container');
+            
+            if (loading) {
+                loading.innerHTML = `
+                    <div class="error-message">
+                        <h3>⚠️ Unable to load chat interface</h3>
+                        <p>Please try refreshing the page or contact me directly via email.</p>
+                        <a href="mailto:contact@ravikalla.com" style="color: #667eea;">📧 Send Email</a>
+                    </div>
+                `;
+            }
+        }
+
+        // Auto-hide loading after 10 seconds as fallback
+        setTimeout(() => {
+            const loading = document.getElementById('loading');
+            if (loading && loading.style.display !== 'none') {
+                hideLoading();
+            }
+        }, 10000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
