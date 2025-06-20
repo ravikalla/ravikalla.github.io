@@ -12,6 +12,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
     
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Chat with Ravi Kalla | AI Professional Assistant">
     <meta property="og:description" content="Interactive AI assistant representing Ravi Kalla's professional profile. Ask about software engineering, data science, and career experience.">
@@ -19,158 +23,301 @@
     <meta property="og:url" content="https://ravikalla.com">
     
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%);
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-light: rgba(255, 255, 255, 0.95);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--primary-gradient);
+            background-attachment: fixed;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(20px) rotate(-2deg); }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
+            gap: 12px;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: white;
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo i {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: #333;
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         /* Main Content */
         main {
-            padding: 2rem 0;
+            padding: 4rem 0;
         }
 
         .hero {
             text-align: center;
             color: white;
-            margin-bottom: 3rem;
+            margin-bottom: 5rem;
+            position: relative;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            opacity: 0.85;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 400;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 5rem;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1.5rem;
-            border-radius: 12px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
             transition: transform 0.3s ease;
         }
 
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.35);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(180deg) scale(1.1);
         }
 
         .feature-card h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
 
         .feature-card p {
-            color: #666;
-            font-size: 0.9rem;
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
         }
 
         /* Chatbot Container */
         .chatbot-container {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
             overflow: hidden;
             position: relative;
-            min-height: 600px;
+            min-height: 700px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
+        .chatbot-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+        }
 
         .loading-spinner {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 400px;
+            height: 500px;
             flex-direction: column;
-            gap: 1rem;
+            gap: 2rem;
+            color: white;
         }
 
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+        }
+
+        .loading-spinner p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            opacity: 0.9;
         }
 
         @keyframes spin {
@@ -182,15 +329,18 @@
         gradio-app {
             display: block;
             width: 100%;
-            min-height: 500px;
+            min-height: 600px;
+            border-radius: 32px;
+            overflow: hidden;
         }
 
         /* Footer */
         footer {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            margin-top: 3rem;
-            padding: 2rem 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            margin-top: 5rem;
+            padding: 3rem 0;
             text-align: center;
         }
 
@@ -199,73 +349,169 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
+            color: white;
+        }
+
+        .footer-content p {
+            font-weight: 500;
+            opacity: 0.9;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .social-links a {
-            color: #667eea;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
+            width: 50px;
+            height: 50px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .social-links a:hover {
-            transform: scale(1.2);
+            transform: translateY(-4px) scale(1.1);
+            background: var(--accent-gradient);
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
+                padding: 1rem 0;
             }
 
             .nav-links {
                 gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .hero {
+                margin-bottom: 3rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
             }
 
             .features {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-bottom: 3rem;
+            }
+
+            .feature-card {
+                padding: 2rem;
             }
 
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 1.5rem;
+            }
+
+            .chatbot-container {
+                border-radius: 24px;
+                min-height: 600px;
             }
         }
 
         /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
             .spinner {
                 animation: none;
-            }
-            
-            .feature-card {
-                transition: none;
             }
         }
 
         /* Error State */
         .error-message {
-            background: #fee;
-            border: 1px solid #fcc;
-            color: #c00;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem;
+            background: rgba(254, 226, 226, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(252, 165, 165, 0.5);
+            color: #991b1b;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem;
             text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-message h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .error-message a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .error-message a:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -274,14 +520,15 @@
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo">
-                    💬 Ravi Kalla
+                    <i class="fas fa-robot"></i>
+                    Ravi Kalla
                 </a>
                 <nav>
                     <ul class="nav-links">
-                        <li><a href="#chat">Chat</a></li>
-                        <li><a href="https://github.com/ravikalla/ai-resume-chat" target="_blank">GitHub</a></li>
-                        <li><a href="https://linkedin.com/in/ravikalla" target="_blank">LinkedIn</a></li>
-                        <li><a href="mailto:ravi2523096@gmail.com">Contact</a></li>
+                        <li><a href="#chat"><i class="fas fa-comments"></i> Chat</a></li>
+                        <li><a href="https://github.com/ravikalla/ai-resume-chat" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/ravikalla" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="mailto:ravi2523096@gmail.com"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -292,39 +539,48 @@
         <div class="container">
             <section class="hero">
                 <h1>AI Professional Assistant</h1>
+                <div class="subtitle">Powered by Advanced AI Technology</div>
                 <p>
                     Representing my career experience, skills, and background in 
-                    software engineering and data science.
+                    software engineering and data science through intelligent conversation.
                 </p>
             </section>
 
             <section class="features">
                 <div class="feature-card">
-                    <div class="feature-icon">💻</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
                     <h3>Software Engineering</h3>
-                    <p>Ask about my experience with various programming languages, frameworks, and development practices.</p>
+                    <p>Explore my experience with modern programming languages, frameworks, and development methodologies across full-stack applications.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
                     <h3>Data Science</h3>
-                    <p>Discuss my data science projects, machine learning experience, and analytical skills.</p>
+                    <p>Discover my data science projects, machine learning implementations, and analytical problem-solving approaches.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">👥</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <h3>Leadership</h3>
-                    <p>Learn about my team management experience and leadership approaches in technical environments.</p>
+                    <p>Learn about my team management philosophy, leadership strategies, and experience guiding technical teams.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
                     <h3>Career Journey</h3>
-                    <p>Explore my professional background, career progression, and key achievements.</p>
+                    <p>Navigate through my professional evolution, key milestones, and significant achievements in technology.</p>
                 </div>
             </section>
 
             <section id="chat" class="chatbot-container">
                 <div id="loading" class="loading-spinner">
                     <div class="spinner"></div>
-                    <p>Loading AI Assistant...</p>
+                    <p>Initializing AI Assistant...</p>
                 </div>
                 
                 <gradio-app 
@@ -339,15 +595,26 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 Ravi Kalla. Powered by AI technology.</p>
+                <p>&copy; 2024 Ravi Kalla. Powered by AI Technology • Built with passion for innovation</p>
                 <div class="social-links">
-                    <a href="https://github.com/ravikalla" target="_blank" title="GitHub">🔗</a>
-                    <a href="https://linkedin.com/in/ravikalla" target="_blank" title="LinkedIn">💼</a>
-                    <a href="mailto:ravi2523096@gmail.com" title="Email">📧</a>
+                    <a href="https://github.com/ravikalla" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/ravikalla" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:ravi2523096@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" onclick="scrollToTop()" title="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <!-- Gradio JavaScript -->
     <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.0/gradio.js"></script>
@@ -376,13 +643,31 @@
             }
         }
 
-        // Auto-hide loading after 10 seconds as fallback
+        // Auto-hide loading after 15 seconds as fallback
         setTimeout(() => {
             const loading = document.getElementById('loading');
             if (loading && loading.style.display !== 'none') {
                 hideLoading();
             }
-        }, 10000);
+        }, 15000);
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -395,6 +680,16 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+
+        // Enhanced loading animation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add stagger animation to feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.8 + index * 0.1}s`;
+                card.style.animation = 'fadeInUp 1s ease-out both';
             });
         });
     </script>
