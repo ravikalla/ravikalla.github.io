@@ -565,6 +565,251 @@
             background: rgba(59, 130, 246, 0.2);
             transform: translateY(-2px);
         }
+
+        /* Card Flip Functionality */
+        .feature-card-container {
+            perspective: 1000px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .feature-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .feature-card-container.flipped .feature-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .feature-card, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-back {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            transform: rotateY(180deg);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .card-back h3 {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .tech-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+        }
+
+        .tech-category {
+            margin-bottom: 15px;
+        }
+
+        .tech-category h4 {
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .tech-category a, .cta-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tech-category a:hover, .cta-link:hover {
+            background: var(--accent-gradient);
+            color: white;
+            transform: translateX(5px);
+            border-color: transparent;
+        }
+
+        .achievement {
+            margin-left: auto;
+            background: rgba(34, 197, 94, 0.2);
+            color: #059669;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .tech-stats, .achievement-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .tech-tag, .achievement-badge {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .achievement-badge {
+            background: var(--secondary-gradient);
+        }
+
+        .impact-stat, .leadership-stat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .impact-stat i, .leadership-stat i {
+            color: var(--accent-gradient);
+            font-size: 1.2rem;
+        }
+
+        .impact-stat div, .leadership-stat div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .impact-stat strong, .leadership-stat h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .impact-stat span, .leadership-stat p {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .leadership-stats {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .career-timeline {
+            margin-top: 10px;
+        }
+
+        .timeline-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .year {
+            float: right;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .timeline-item p {
+            margin: 2px 0;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .close-modal:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive adjustments for cards */
+        @media (max-width: 768px) {
+            .feature-card-container {
+                height: 280px;
+            }
+            
+            .card-back {
+                padding: 15px;
+            }
+            
+            .tech-category a, .cta-link {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+            
+            .leadership-stats {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -617,33 +862,192 @@
 
                     <div class="features-column">
                         <section class="features">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-code"></i>
+                            <!-- Tech Architecture Card -->
+                            <div class="feature-card-container">
+                                <div class="feature-card-inner">
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                        <h3>Tech Architecture</h3>
+                                        <p>17+ years building high-scale distributed systems, microservices, and enterprise platforms serving millions of users.</p>
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>Technical Expertise</h3>
+                                        <div class="tech-links">
+                                            <div class="tech-category">
+                                                <h4>🚀 Major Systems Built</h4>
+                                                <a href="#" onclick="openModal('streaming-platform')">
+                                                    <i class="fas fa-stream"></i> Credit Card Streaming Platform
+                                                    <span class="achievement">$240M saved</span>
+                                                </a>
+                                                <a href="#" onclick="openModal('data-detection')">
+                                                    <i class="fas fa-shield-alt"></i> Data Detection Platform
+                                                    <span class="achievement">400PB scanned</span>
+                                                </a>
+                                            </div>
+                                            <div class="tech-category">
+                                                <h4>💻 Code & Projects</h4>
+                                                <a href="https://github.com/ravikalla" target="_blank">
+                                                    <i class="fab fa-github"></i> GitHub Portfolio
+                                                </a>
+                                                <a href="http://paper.ijcsns.org/07_book/200709/20070934.pdf" target="_blank">
+                                                    <i class="fas fa-file-pdf"></i> Research Publication
+                                                </a>
+                                            </div>
+                                            <div class="tech-stats">
+                                                <span class="tech-tag">Java 17+yrs</span>
+                                                <span class="tech-tag">AWS</span>
+                                                <span class="tech-tag">Kafka</span>
+                                                <span class="tech-tag">Spring</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3>Software Engineering</h3>
-                                <p>Explore my experience with modern programming languages, frameworks, and development methodologies across full-stack applications.</p>
                             </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-chart-line"></i>
+
+                            <!-- Gen AI Innovation Card -->
+                            <div class="feature-card-container">
+                                <div class="feature-card-inner">
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <h3>Gen AI Innovation</h3>
+                                        <p>Leading Gen AI initiatives at Amazon Alexa, building agentic AI systems serving 10M+ customers with multi-LLM orchestration.</p>
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>AI & ML Experience</h3>
+                                        <div class="tech-links">
+                                            <div class="tech-category">
+                                                <h4>🤖 Live AI Projects</h4>
+                                                <a href="https://huggingface.co/spaces/ravikalla/chat-with-ravi-kalla" target="_blank">
+                                                    <i class="fas fa-comments"></i> AI Resume Chatbot
+                                                    <span class="achievement">This site!</span>
+                                                </a>
+                                                <a href="https://github.com/ravikalla/ai-small-business-customercare" target="_blank">
+                                                    <i class="fas fa-headset"></i> Customer Care AI
+                                                    <span class="achievement">90% resolution</span>
+                                                </a>
+                                            </div>
+                                            <div class="tech-category">
+                                                <h4>🎯 Current Impact</h4>
+                                                <div class="impact-stat">
+                                                    <i class="fas fa-users"></i>
+                                                    <div>
+                                                        <strong>10M+</strong>
+                                                        <span>Users Served</span>
+                                                    </div>
+                                                </div>
+                                                <div class="impact-stat">
+                                                    <i class="fas fa-tachometer-alt"></i>
+                                                    <div>
+                                                        <strong>33%</strong>
+                                                        <span>Latency Reduction</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-stats">
+                                                <span class="tech-tag">OpenAI</span>
+                                                <span class="tech-tag">LangChain</span>
+                                                <span class="tech-tag">RAG</span>
+                                                <span class="tech-tag">Vector DBs</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3>Data Science</h3>
-                                <p>Discover my data science projects, machine learning implementations, and analytical problem-solving approaches.</p>
                             </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-users"></i>
+
+                            <!-- Engineering Leadership Card -->
+                            <div class="feature-card-container">
+                                <div class="feature-card-inner">
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-crown"></i>
+                                        </div>
+                                        <h3>Engineering Leadership</h3>
+                                        <p>Senior Engineering Leader managing 12 engineers across 2 teams, with proven track record of mentoring 40+ engineers.</p>
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>Leadership Impact</h3>
+                                        <div class="tech-links">
+                                            <div class="leadership-stats">
+                                                <div class="leadership-stat">
+                                                    <i class="fas fa-users"></i>
+                                                    <div>
+                                                        <h4>40+</h4>
+                                                        <p>Engineers Mentored</p>
+                                                    </div>
+                                                </div>
+                                                <div class="leadership-stat">
+                                                    <i class="fas fa-dollar-sign"></i>
+                                                    <div>
+                                                        <h4>$30M+</h4>
+                                                        <p>Annual Savings</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-category">
+                                                <h4>🏆 Recognition</h4>
+                                                <div class="achievement-list">
+                                                    <span class="achievement-badge">Best Project Manager Q2 2024</span>
+                                                    <span class="achievement-badge">Most Efficient Project 2023</span>
+                                                    <span class="achievement-badge">4x MVP Awards</span>
+                                                </div>
+                                            </div>
+                                            <div class="tech-category">
+                                                <h4>💼 Let's Connect</h4>
+                                                <a href="mailto:ravi2523096@gmail.com" class="cta-link">
+                                                    <i class="fas fa-envelope"></i> Discuss Leadership Opportunities
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3>Leadership</h3>
-                                <p>Learn about my team management philosophy, leadership strategies, and experience guiding technical teams.</p>
                             </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-rocket"></i>
+
+                            <!-- Career Highlights Card -->
+                            <div class="feature-card-container">
+                                <div class="feature-card-inner">
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <h3>Career Highlights</h3>
+                                        <p>From Infosys to Amazon Alexa - a journey of building enterprise systems, founding companies, and driving innovation.</p>
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>Professional Journey</h3>
+                                        <div class="tech-links">
+                                            <div class="tech-category">
+                                                <h4>🏢 Experience Timeline</h4>
+                                                <div class="career-timeline">
+                                                    <div class="timeline-item">
+                                                        <strong>Amazon Alexa</strong> <span class="year">2024-Present</span>
+                                                        <p>Senior Engineering Leader - Gen AI</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <strong>Capital One</strong> <span class="year">2021-2024</span>
+                                                        <p>Senior Manager - Streaming Platforms</p>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <strong>Entrepreneur</strong> <span class="year">2018-2021</span>
+                                                        <p>Founded & Sold Rules Engine Company</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tech-category">
+                                                <h4>📍 Connect</h4>
+                                                <a href="https://linkedin.com/in/ravikalla" target="_blank">
+                                                    <i class="fab fa-linkedin"></i> Full Career Details
+                                                </a>
+                                                <a href="mailto:ravi2523096@gmail.com" class="cta-link">
+                                                    <i class="fas fa-handshake"></i> Let's Collaborate
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3>Career Journey</h3>
-                                <p>Navigate through my professional evolution, key milestones, and significant achievements in technology.</p>
                             </div>
                         </section>
                     </div>
@@ -746,12 +1150,199 @@
         // Enhanced loading animation
         document.addEventListener('DOMContentLoaded', () => {
             // Add stagger animation to feature cards
-            const featureCards = document.querySelectorAll('.feature-card');
+            const featureCards = document.querySelectorAll('.feature-card-container');
             featureCards.forEach((card, index) => {
                 card.style.animationDelay = `${0.8 + index * 0.1}s`;
                 card.style.animation = 'fadeInUp 1s ease-out both';
             });
+
+            // Initialize card flip functionality
+            initializeCardFlip();
+            initializeModals();
         });
+
+        // Card flip functionality
+        function initializeCardFlip() {
+            const cardContainers = document.querySelectorAll('.feature-card-container');
+            
+            cardContainers.forEach(container => {
+                container.addEventListener('click', function(e) {
+                    // Don't flip if clicking on a link
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        return;
+                    }
+                    
+                    this.classList.toggle('flipped');
+                });
+            });
+        }
+
+        // Modal functionality
+        function initializeModals() {
+            // Create modal HTML if it doesn't exist
+            if (!document.getElementById('project-modal')) {
+                const modalHTML = `
+                    <div id="project-modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <div id="modal-body">
+                                <!-- Content will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+            }
+
+            // Close modal functionality
+            const modal = document.getElementById('project-modal');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+
+        // Modal content for different projects
+        function openModal(projectType) {
+            const modal = document.getElementById('project-modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            let content = '';
+            
+            switch(projectType) {
+                case 'streaming-platform':
+                    content = `
+                        <h2>Credit Card Core Streaming Platform</h2>
+                        <div style="display: flex; align-items: center; gap: 10px; margin: 20px 0;">
+                            <i class="fas fa-stream" style="color: #4facfe; font-size: 2rem;"></i>
+                            <div>
+                                <h3 style="margin: 0; color: #2d3748;">First-in-Industry Platform</h3>
+                                <p style="margin: 5px 0; color: #4a5568;">Capital One's Internal Streaming Solution</p>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                            <div style="background: rgba(34, 197, 94, 0.1); padding: 15px; border-radius: 10px;">
+                                <h4 style="color: #059669; margin: 0 0 5px 0;">Cost Impact</h4>
+                                <p style="margin: 0; font-size: 1.5rem; font-weight: bold; color: #2d3748;">$240M/year</p>
+                                <p style="margin: 5px 0 0 0; color: #4a5568; font-size: 0.9rem;">Vendor dependency eliminated</p>
+                            </div>
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 15px; border-radius: 10px;">
+                                <h4 style="color: #2563eb; margin: 0 0 5px 0;">Performance</h4>
+                                <p style="margin: 0; font-size: 1.5rem; font-weight: bold; color: #2d3748;">100X faster</p>
+                                <p style="margin: 5px 0 0 0; color: #4a5568; font-size: 0.9rem;">3 hours → 3ms latency</p>
+                            </div>
+                        </div>
+                        <h4 style="color: #2d3748; margin: 20px 0 10px 0;">Key Achievements:</h4>
+                        <ul style="color: #4a5568; line-height: 1.6;">
+                            <li>Processing 70M daily transactions at 99.99% uptime</li>
+                            <li>Saved $30M in the first year alone</li>
+                            <li>Built reactive programming architecture using Spring WebFlux</li>
+                            <li>Implemented real-time fraud detection and prevention</li>
+                            <li>Led team of 15 engineers across multiple time zones</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <a href="https://linkedin.com/in/ravikalla" target="_blank" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">
+                                <i class="fab fa-linkedin"></i> Learn More on LinkedIn
+                            </a>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'data-detection':
+                    content = `
+                        <h2>Sensitive Data Detection Platform</h2>
+                        <div style="display: flex; align-items: center; gap: 10px; margin: 20px 0;">
+                            <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 2rem;"></i>
+                            <div>
+                                <h3 style="margin: 0; color: #2d3748;">Enterprise-Scale Data Security</h3>
+                                <p style="margin: 5px 0; color: #4a5568;">Alternative to AWS Macie at 66% lower cost</p>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                            <div style="background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 10px;">
+                                <h4 style="color: #d97706; margin: 0 0 5px 0;">Data Processed</h4>
+                                <p style="margin: 0; font-size: 1.5rem; font-weight: bold; color: #2d3748;">400PB</p>
+                                <p style="margin: 5px 0 0 0; color: #4a5568; font-size: 0.9rem;">Enterprise data scanned</p>
+                            </div>
+                            <div style="background: rgba(34, 197, 94, 0.1); padding: 15px; border-radius: 10px;">
+                                <h4 style="color: #059669; margin: 0 0 5px 0;">Cost Savings</h4>
+                                <p style="margin: 0; font-size: 1.5rem; font-weight: bold; color: #2d3748;">$1.5M/month</p>
+                                <p style="margin: 5px 0 0 0; color: #4a5568; font-size: 0.9rem;">Infrastructure optimization</p>
+                            </div>
+                        </div>
+                        <h4 style="color: #2d3748; margin: 20px 0 10px 0;">Technical Innovation:</h4>
+                        <ul style="color: #4a5568; line-height: 1.6;">
+                            <li>Built using reactive programming patterns (Spring WebFlux)</li>
+                            <li>Reduced costs by 75% compared to traditional architecture</li>
+                            <li>Helped lift regulatory Consent Order</li>
+                            <li>Processing cost: $0.05/GB vs AWS Macie's $0.15/GB</li>
+                            <li>Real-time pattern matching and ML-based classification</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <a href="mailto:ravi2523096@gmail.com" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">
+                                <i class="fas fa-envelope"></i> Discuss Similar Projects
+                            </a>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'cost-optimization':
+                    content = `
+                        <h2>Cost Optimization Achievements</h2>
+                        <div style="display: flex; align-items: center; gap: 10px; margin: 20px 0;">
+                            <i class="fas fa-chart-line" style="color: #059669; font-size: 2rem;"></i>
+                            <div>
+                                <h3 style="margin: 0; color: #2d3748;">$30M+ Annual Savings</h3>
+                                <p style="margin: 5px 0; color: #4a5568;">Across multiple organizations and projects</p>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin: 20px 0;">
+                            <div style="background: rgba(34, 197, 94, 0.1); padding: 15px; border-radius: 10px;">
+                                <h4 style="color: #059669; margin: 0 0 10px 0;">Credit Card Platform</h4>
+                                <p style="margin: 0; font-size: 1.2rem; font-weight: bold; color: #2d3748;">$30M first year savings</p>
+                                <p style="margin: 5px 0 0 0; color: #4a5568; font-size: 0.9rem;">Eliminated $240M/year vendor dependency</p>
+                            </div>
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 15px; border-radius: 10px;">
+                                <h4 style="color: #2563eb; margin: 0 0 10px 0;">Data Detection Platform</h4>
+                                <p style="margin: 0; font-size: 1.2rem; font-weight: bold; color: #2d3748;">$1.5M monthly savings</p>
+                                <p style="margin: 5px 0 0 0; color: #4a5568; font-size: 0.9rem;">75% infrastructure cost reduction via reactive programming</p>
+                            </div>
+                            <div style="background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 10px;">
+                                <h4 style="color: #d97706; margin: 0 0 10px 0;">Rules Engine Product</h4>
+                                <p style="margin: 0; font-size: 1.2rem; font-weight: bold; color: #2d3748;">$1.6M annual savings</p>
+                                <p style="margin: 5px 0 0 0; color: #4a5568; font-size: 0.9rem;">For Fortune 500 customer operational costs</p>
+                            </div>
+                        </div>
+                        <h4 style="color: #2d3748; margin: 20px 0 10px 0;">Key Strategies:</h4>
+                        <ul style="color: #4a5568; line-height: 1.6;">
+                            <li><strong>Reactive Programming:</strong> 75% infrastructure cost reduction</li>
+                            <li><strong>Vendor Elimination:</strong> Build vs buy analysis and execution</li>
+                            <li><strong>Performance Optimization:</strong> 100X improvements in processing speed</li>
+                            <li><strong>Cloud Architecture:</strong> AWS cost optimization and right-sizing</li>
+                            <li><strong>Operational Efficiency:</strong> Automation and process improvement</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <a href="mailto:ravi2523096@gmail.com" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">
+                                <i class="fas fa-handshake"></i> Let's Optimize Your Costs
+                            </a>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    content = '<h2>Project Details</h2><p>More information coming soon...</p>';
+            }
+            
+            modalBody.innerHTML = content;
+            modal.style.display = 'block';
+        }
     </script>
 </body>
 </html>
