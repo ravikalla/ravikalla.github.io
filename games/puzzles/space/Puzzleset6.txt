@@ -1,0 +1,69 @@
+Q: What is the Milky Way?
+A: A candy bar
+B: Our galaxy
+C: A planet
+D: A constellation
+CORRECT: 1
+
+Q: How many planets orbit our Sun?
+A: 7
+B: 8
+C: 9
+D: 10
+CORRECT: 1
+
+Q: What is Saturn famous for?
+A: Being hot
+B: Having rings
+C: Being small
+D: Being close to Earth
+CORRECT: 1
+
+Q: Which planet is closest to Earth?
+A: Mars
+B: Venus
+C: Mercury
+D: Jupiter
+CORRECT: 1
+
+Q: What is the Great Red Spot?
+A: A storm on Jupiter
+B: A crater on Mars
+C: A mountain on Earth
+D: A lake on Venus
+CORRECT: 0
+
+Q: How long is a day on Venus?
+A: 24 hours
+B: 12 hours
+C: 243 Earth days
+D: 1 hour
+CORRECT: 2
+
+Q: What is the coldest planet?
+A: Pluto
+B: Neptune
+C: Uranus
+D: Mars
+CORRECT: 1
+
+Q: Which planet spins on its side?
+A: Venus
+B: Mars
+C: Uranus
+D: Jupiter
+CORRECT: 2
+
+Q: What is the hottest planet?
+A: Mercury
+B: Venus
+C: Mars
+D: Jupiter
+CORRECT: 1
+
+Q: How many Earth years does it take Neptune to orbit the Sun?
+A: 84 years
+B: 165 years
+C: 30 years
+D: 12 years
+CORRECT: 1

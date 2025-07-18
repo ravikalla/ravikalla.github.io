@@ -10,6 +10,8 @@ class PuzzleLoader {
         this.totalSets = 50; // 50 sets * 10 questions = 500 questions
         this.loadedQuestions = [];
         this.currentQuestionIndex = 0;
+        this.answeredQuestions = new Set(); // Track questions that have been answered correctly
+        this.availableQuestions = []; // Pool of unanswered questions
     }
 
     // Load a specific puzzle set from text file
@@ -110,33 +112,96 @@ class PuzzleLoader {
         return this.shuffleArray([...questions]);
     }
 
-    // Get next question
+    // Get next question (ensuring no repeats of answered questions)
     async getNextQuestion(level) {
-        // Determine which set we should be using for this level
-        let expectedSet;
+        // Load all available questions if we haven't already
+        if (this.availableQuestions.length === 0) {
+            await this.loadAllAvailableQuestions();
+        }
+        
+        // Filter out already answered questions
+        const unansweredQuestions = this.availableQuestions.filter(q => 
+            !this.answeredQuestions.has(this.getQuestionId(q))
+        );
+        
+        if (unansweredQuestions.length === 0) {
+            console.log('All questions have been answered! Congratulations!');
+            return null; // No more questions available
+        }
+        
+        // Select appropriate difficulty based on level
+        const levelQuestions = this.filterQuestionsByLevel(unansweredQuestions, level);
+        
+        if (levelQuestions.length === 0) {
+            // If no questions for this level, use any unanswered question
+            const randomIndex = Math.floor(Math.random() * unansweredQuestions.length);
+            return unansweredQuestions[randomIndex];
+        }
+        
+        // Return a random question from appropriate level
+        const randomIndex = Math.floor(Math.random() * levelQuestions.length);
+        return levelQuestions[randomIndex];
+    }
+    
+    // Load all available questions from all puzzle sets
+    async loadAllAvailableQuestions() {
+        this.availableQuestions = [];
+        
+        for (let setNumber = 1; setNumber <= this.totalSets; setNumber++) {
+            try {
+                const questions = await this.loadPuzzleSet(setNumber);
+                if (questions && questions.length > 0) {
+                    // Add set number and question index for tracking
+                    questions.forEach((q, index) => {
+                        q._setNumber = setNumber;
+                        q._questionIndex = index;
+                    });
+                    this.availableQuestions.push(...questions);
+                }
+            } catch (error) {
+                // Stop loading when we can't find more sets
+                console.log(`Loaded ${setNumber - 1} puzzle sets with ${this.availableQuestions.length} total questions`);
+                break;
+            }
+        }
+        
+        console.log(`Total questions loaded: ${this.availableQuestions.length}`);
+    }
+    
+    // Generate unique ID for a question
+    getQuestionId(question) {
+        return `${question._setNumber}-${question._questionIndex}-${question.q.substring(0, 20)}`;
+    }
+    
+    // Filter questions by difficulty level
+    filterQuestionsByLevel(questions, level) {
+        // Determine which sets are appropriate for this level
+        let appropriateSets = [];
         if (level <= 3) {
-            expectedSet = 1;
+            appropriateSets = [1, 2, 3, 4, 5]; // Easier questions
         } else if (level <= 6) {
-            expectedSet = 2;
+            appropriateSets = [6, 7, 8, 9, 10, 11, 12]; // Medium questions
         } else {
-            expectedSet = 3;
+            appropriateSets = [13, 14, 15, 16, 17, 18, 19, 20]; // Harder questions
         }
         
-        // If we don't have questions loaded or we need a different set, load new questions
-        if (this.loadedQuestions.length === 0 || 
-            this.currentQuestionIndex >= this.loadedQuestions.length ||
-            this.currentPuzzleSet !== expectedSet) {
-            
-            this.currentPuzzleSet = expectedSet;
-            this.loadedQuestions = await this.loadQuestionsForLevel(level);
-            this.currentQuestionIndex = 0;
-            console.log(`Switched to puzzle set ${expectedSet}, loaded ${this.loadedQuestions.length} questions`);
-        }
-        
-        const question = this.loadedQuestions[this.currentQuestionIndex];
-        this.currentQuestionIndex++;
-        
-        return question;
+        return questions.filter(q => appropriateSets.includes(q._setNumber));
+    }
+    
+    // Mark a question as answered correctly
+    markQuestionAsAnswered(question) {
+        const questionId = this.getQuestionId(question);
+        this.answeredQuestions.add(questionId);
+        console.log(`Question marked as answered: ${questionId}. Total answered: ${this.answeredQuestions.size}`);
+    }
+    
+    // Get statistics
+    getProgress() {
+        return {
+            totalQuestions: this.availableQuestions.length,
+            answeredQuestions: this.answeredQuestions.size,
+            remainingQuestions: this.availableQuestions.length - this.answeredQuestions.size
+        };
     }
 
     // Preload next puzzle set for smooth gameplay

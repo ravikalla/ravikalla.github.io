@@ -1,0 +1,69 @@
+Q: What is a nebula?
+A: A planet
+B: A cloud of gas and dust
+C: A type of star
+D: A galaxy
+CORRECT: 1
+
+Q: What causes seasons on Earth?
+A: Distance from Sun
+B: Earth's tilt
+C: Moon phases
+D: Solar flares
+CORRECT: 1
+
+Q: What is a solar eclipse?
+A: Moon blocks the Sun
+B: Earth blocks the Sun
+C: Sun disappears
+D: Clouds cover Sun
+CORRECT: 0
+
+Q: What is a lunar eclipse?
+A: Moon disappears
+B: Earth's shadow on Moon
+C: Sun blocks Moon
+D: Moon turns red
+CORRECT: 1
+
+Q: What telescope helped us see deep space?
+A: Hubble
+B: Galileo
+C: Newton
+D: Kepler
+CORRECT: 0
+
+Q: What is zero gravity?
+A: No weight feeling
+B: Very heavy
+C: Normal weight
+D: Super strength
+CORRECT: 0
+
+Q: How do rockets work in space?
+A: By pushing against air
+B: By action and reaction
+C: By magnetism
+D: By gravity
+CORRECT: 1
+
+Q: What are Mars' moons called?
+A: Phobos & Deimos
+B: Titan & Europa
+C: Luna & Sol
+D: Alpha & Beta
+CORRECT: 0
+
+Q: How many moons does Mars have?
+A: 0
+B: 1
+C: 2
+D: 3
+CORRECT: 2
+
+Q: Which moon might have an ocean?
+A: Our Moon
+B: Europa
+C: Phobos
+D: Deimos
+CORRECT: 1

@@ -1,0 +1,69 @@
+Q: Which country has this flag? 🇦🇺
+A: New Zealand
+B: Australia
+C: South Africa
+D: United Kingdom
+CORRECT: 1
+
+Q: What is the capital of Turkey?
+A: Istanbul
+B: Ankara
+C: Izmir
+D: Bursa
+CORRECT: 1
+
+Q: Which country has this flag? 🇳🇱
+A: Belgium
+B: Netherlands
+C: Luxembourg
+D: Denmark
+CORRECT: 1
+
+Q: What is the capital of Thailand?
+A: Bangkok
+B: Phuket
+C: Chiang Mai
+D: Pattaya
+CORRECT: 0
+
+Q: Which country has this flag? 🇸🇪
+A: Norway
+B: Sweden
+C: Denmark
+D: Finland
+CORRECT: 1
+
+Q: What is the capital of Poland?
+A: Krakow
+B: Warsaw
+C: Gdansk
+D: Wroclaw
+CORRECT: 1
+
+Q: Which country has this flag? 🇳🇴
+A: Sweden
+B: Norway
+C: Iceland
+D: Denmark
+CORRECT: 1
+
+Q: What is the capital of Greece?
+A: Thessaloniki
+B: Athens
+C: Patras
+D: Heraklion
+CORRECT: 1
+
+Q: Which ocean surrounds Antarctica?
+A: Atlantic Ocean
+B: Pacific Ocean
+C: Southern Ocean
+D: Indian Ocean
+CORRECT: 2
+
+Q: What is the largest desert in the world?
+A: Sahara Desert
+B: Gobi Desert
+C: Arabian Desert
+D: Antarctica
+CORRECT: 3

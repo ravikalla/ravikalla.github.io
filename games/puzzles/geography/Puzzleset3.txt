@@ -1,0 +1,69 @@
+Q: Which country has this flag? 🇫🇷
+A: Spain
+B: France
+C: Italy
+D: Germany
+CORRECT: 1
+
+Q: What is the capital of Japan?
+A: Osaka
+B: Kyoto
+C: Tokyo
+D: Hiroshima
+CORRECT: 2
+
+Q: Which country has this flag? 🇩🇪
+A: Austria
+B: Germany
+C: Belgium
+D: Netherlands
+CORRECT: 1
+
+Q: What is the capital of Canada?
+A: Toronto
+B: Vancouver
+C: Ottawa
+D: Montreal
+CORRECT: 2
+
+Q: Which country has this flag? 🇮🇹
+A: Greece
+B: Italy
+C: France
+D: Spain
+CORRECT: 1
+
+Q: What is the capital of Brazil?
+A: Rio de Janeiro
+B: Brasília
+C: São Paulo
+D: Salvador
+CORRECT: 1
+
+Q: Which country has this flag? 🇰🇷
+A: Japan
+B: South Korea
+C: North Korea
+D: China
+CORRECT: 1
+
+Q: What is the capital of South Africa?
+A: Johannesburg
+B: Cape Town
+C: Pretoria
+D: Durban
+CORRECT: 2
+
+Q: Which continent is Brazil in?
+A: North America
+B: South America
+C: Africa
+D: Asia
+CORRECT: 1
+
+Q: What is the smallest country in the world?
+A: Monaco
+B: Vatican City
+C: San Marino
+D: Liechtenstein
+CORRECT: 1

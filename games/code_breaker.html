@@ -339,9 +339,17 @@
         </div>
     </div>
     <script src="game-menu.js"></script>
+    <script src="puzzle-loader.js"></script>
     <script>
         const game = { score: 0, level: 1, hacks: 0, currentChallenge: 0 };
+        let puzzleLoader;
         
+        // Initialize puzzle loader
+        document.addEventListener('DOMContentLoaded', () => {
+            puzzleLoader = new PuzzleLoader('code');
+        });
+        
+        // Fallback challenges when puzzle files aren't available
         const challenges = [
             {
                 title: "Fix the missing semicolon",
@@ -391,7 +399,30 @@
             loadChallenge();
         }
         
-        function loadChallenge() {
+        async function loadChallenge() {
+            // Try to get question from puzzle loader first
+            if (puzzleLoader) {
+                try {
+                    const question = await puzzleLoader.getNextQuestion(game.level);
+                    if (question) {
+                        // Convert puzzle loader format to code breaker format
+                        const codeChallenge = {
+                            title: question.q,
+                            code: [question.q],
+                            choices: question.a,
+                            correct: question.correct
+                        };
+                        
+                        game.currentPuzzleQuestion = question;
+                        displayCodeChallenge(codeChallenge);
+                        return;
+                    }
+                } catch (error) {
+                    console.log('Using fallback questions:', error);
+                }
+            }
+            
+            // Fallback to local challenges
             if (game.currentChallenge >= challenges.length) {
                 showPopup(
                     '🎉 SYSTEM HACKED!',
@@ -455,13 +486,49 @@
             document.getElementById('output').innerHTML = '<div style="color: #888;">Select the correct code to fix the bug...</div>';
         }
         
+        function displayCodeChallenge(challenge) {
+            document.getElementById('challengeTitle').textContent = challenge.title;
+            
+            // Display code
+            const codeBlock = document.getElementById('codeBlock');
+            codeBlock.innerHTML = '';
+            
+            const div = document.createElement('div');
+            div.className = 'code-line';
+            div.textContent = challenge.code[0];
+            codeBlock.appendChild(div);
+            
+            // Display choices
+            const choicesDiv = document.getElementById('choices');
+            choicesDiv.innerHTML = '';
+            
+            challenge.choices.forEach((choice, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = choice;
+                btn.onclick = () => checkAnswer(index, challenge);
+                choicesDiv.appendChild(btn);
+            });
+            
+            document.getElementById('output').innerHTML = '<div style="color: #888;">Select the correct code to fix the bug...</div>';
+        }
+        
         function checkAnswer(selected, challenge) {
             const outputDiv = document.getElementById('output');
             
             if (selected === challenge.correct) {
                 game.score += 200;
                 game.hacks++;
-                outputDiv.innerHTML = `<div style="color: #00ff00;">✓ FIXED! Output: ${challenge.output}</div>`;
+                outputDiv.innerHTML = `<div style="color: #00ff00;">✓ FIXED! Code works perfectly!</div>`;
+                
+                // Mark question as answered if using puzzle loader
+                if (puzzleLoader && game.currentPuzzleQuestion) {
+                    puzzleLoader.markQuestionAsAnswered(game.currentPuzzleQuestion);
+                    
+                    // Show progress
+                    const progress = puzzleLoader.getProgress();
+                    console.log(`Progress: ${progress.answeredQuestions}/${progress.totalQuestions} questions answered`);
+                }
                 
                 setTimeout(() => {
                     showPopup('✓ CODE FIXED!', 'Great debugging skills!', [], 2000);
@@ -473,6 +540,7 @@
             } else {
                 outputDiv.innerHTML = '<div style="color: #ff0000;">✗ SYNTAX ERROR! Try again.</div>';
                 showPopup('✗ SYNTAX ERROR!', 'Try again and check the code carefully.', [], 2000);
+                // Don't mark as answered - can be shown again
             }
             
             updateDisplay();

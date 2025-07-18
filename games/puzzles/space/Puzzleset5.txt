@@ -1,0 +1,69 @@
+Q: What color does our Moon appear?
+A: White
+B: Yellow
+C: Gray
+D: All of these
+CORRECT: 3
+
+Q: What is the name of NASA's moon program?
+A: Apollo
+B: Mercury
+C: Gemini
+D: Shuttle
+CORRECT: 0
+
+Q: What happens when a massive star dies?
+A: It disappears
+B: It becomes a black hole
+C: It gets bigger
+D: It turns cold
+CORRECT: 1
+
+Q: How many stars are in our galaxy?
+A: Millions
+B: Billions
+C: Thousands
+D: Hundreds
+CORRECT: 1
+
+Q: What is a galaxy?
+A: A planet
+B: A star
+C: A group of stars
+D: A moon
+CORRECT: 2
+
+Q: What is Earth's moon called?
+A: Luna
+B: The Moon
+C: Both answers
+D: Satellite
+CORRECT: 2
+
+Q: How long does it take the Moon to orbit Earth?
+A: 28 days
+B: 30 days
+C: 365 days
+D: 7 days
+CORRECT: 0
+
+Q: What causes moon phases?
+A: Earth's shadow
+B: Moon's rotation
+C: Sun's position
+D: Cloud cover
+CORRECT: 2
+
+Q: Which planet has the largest moon?
+A: Earth
+B: Jupiter
+C: Saturn
+D: Mars
+CORRECT: 1
+
+Q: What is Jupiter's largest moon called?
+A: Europa
+B: Ganymede
+C: Io
+D: Callisto
+CORRECT: 1

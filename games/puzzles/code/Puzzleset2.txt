@@ -1,0 +1,69 @@
+Q: Fix the method call: myArray.___('item');
+A: push
+B: add
+C: insert
+D: append
+CORRECT: 0
+
+Q: Complete the while loop: ___ (count < 10) { count++; }
+A: while
+B: for
+C: if
+D: until
+CORRECT: 0
+
+Q: Fix the JSON syntax: { "name": "John"___ "age": 25 }
+A: ,
+B: ;
+C: :
+D: .
+CORRECT: 0
+
+Q: Complete the arrow function: const add = (a, b) ___ a + b;
+A: =>
+B: ->
+C: =
+D: ::
+CORRECT: 0
+
+Q: Fix the class declaration: ___ Person { constructor(name) { this.name = name; } }
+A: class
+B: function
+C: var
+D: const
+CORRECT: 0
+
+Q: Complete the try-catch: try { riskyCode(); } ___ (error) { console.log(error); }
+A: catch
+B: except
+C: error
+D: handle
+CORRECT: 0
+
+Q: Fix the template literal: console.log(___Hello ${name}___);
+A: `
+B: '
+C: "
+D: |
+CORRECT: 0
+
+Q: Complete the destructuring: const {name, age} = ___;
+A: person
+B: {person}
+C: [person]
+D: person{}
+CORRECT: 0
+
+Q: Fix the async function: ___ function getData() { return await fetch('/api'); }
+A: async
+B: await
+C: promise
+D: sync
+CORRECT: 0
+
+Q: Complete the spread operator: const newArray = [1, 2, ___oldArray];
+A: ...
+B: ..
+C: *
+D: &
+CORRECT: 0

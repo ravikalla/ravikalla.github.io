@@ -404,6 +404,8 @@
                 try {
                     const question = await puzzleLoader.getNextQuestion(game.level);
                     if (question) {
+                        // Store current question for tracking
+                        game.currentPuzzleQuestion = question;
                         return question;
                     }
                 } catch (error) {
@@ -511,6 +513,15 @@
                 game.facts++;
                 showPopup('🌟 Correct!', 'Great job, space explorer!', [], 2000);
                 
+                // Mark question as answered if using puzzle loader
+                if (puzzleLoader && game.currentPuzzleQuestion) {
+                    puzzleLoader.markQuestionAsAnswered(game.currentPuzzleQuestion);
+                    
+                    // Show progress
+                    const progress = puzzleLoader.getProgress();
+                    console.log(`Progress: ${progress.answeredQuestions}/${progress.totalQuestions} questions answered`);
+                }
+                
                 // Only advance to next question on correct answer
                 game.currentQuestion++;
                 game.level = Math.floor(game.currentQuestion / game.questionsPerLevel) + 1;
@@ -519,6 +530,7 @@
             } else {
                 showPopup('🚀 Try Again!', 'Not quite right, but keep exploring!', [], 2000);
                 // Don't advance question - stay on same question for retry
+                // Don't mark as answered - can be shown again
             }
         }
         

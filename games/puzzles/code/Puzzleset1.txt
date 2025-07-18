@@ -1,0 +1,69 @@
+Q: Fix the missing semicolon: console.log('Hello World')___
+A: ;
+B: :
+C: ,
+D: .
+CORRECT: 0
+
+Q: Complete the if statement: ___ (x > 5) { console.log('Big'); }
+A: if
+B: while
+C: for
+D: when
+CORRECT: 0
+
+Q: Fix the loop: for (let i = 0; i < 10; i___) { console.log(i); }
+A: ++
+B: --
+C: +=
+D: =+
+CORRECT: 0
+
+Q: Complete the function: ___ addNumbers(a, b) { return a + b; }
+A: function
+B: var
+C: let
+D: const
+CORRECT: 0
+
+Q: Fix the array access: let arr = [1,2,3]; console.log(arr___0___);
+A: [
+B: (
+C: {
+D: <
+CORRECT: 0
+
+Q: Complete the variable declaration: ___ name = 'John';
+A: var
+B: function
+C: return
+D: class
+CORRECT: 0
+
+Q: Fix the string concatenation: let msg = 'Hello' ___ 'World';
+A: +
+B: -
+C: *
+D: /
+CORRECT: 0
+
+Q: Complete the comparison: if (age ___ 18) { console.log('Adult'); }
+A: >=
+B: =>
+C: =<
+D: <<
+CORRECT: 0
+
+Q: Fix the object property: let person = { name___ 'John' };
+A: :
+B: =
+C: =>
+D: ::
+CORRECT: 0
+
+Q: Complete the boolean: let isTrue = ___;
+A: true
+B: True
+C: TRUE
+D: 1
+CORRECT: 0
