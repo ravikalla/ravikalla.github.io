@@ -15,12 +15,143 @@
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Side Menu Styles */
+        .side-menu {
+            position: fixed;
+            left: -320px;
+            top: 0;
+            width: 320px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        .menu-header {
             padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .menu-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .menu-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .menu-games {
+            padding: 20px 0;
+        }
+
+        .menu-category {
+            margin-bottom: 25px;
+        }
+
+        .menu-category-title {
+            color: #ffdd59;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(255, 221, 89, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .menu-game-item {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .menu-game-item:hover,
+        .menu-game-item:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: #4ecdc4;
+            outline: none;
+        }
+
+        .menu-game-icon {
+            display: inline-block;
+            width: 30px;
+            font-size: 1.2rem;
+        }
+
+        .menu-game-name {
+            font-weight: 500;
+        }
+
+        .menu-game-grade {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            display: block;
+            margin-top: 2px;
+            margin-left: 30px;
+        }
+
+        /* Menu Toggle Button */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle:hover,
+        .menu-toggle:focus {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 0;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .main-content.menu-open {
+            margin-left: 320px;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
+            padding-top: 80px;
         }
 
         h1 {
@@ -44,6 +175,19 @@
             margin-bottom: 3rem;
         }
 
+        .keyboard-hint {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -58,14 +202,41 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+            tabindex: 0;
         }
 
-        .game-card:hover {
+        .game-card:hover,
+        .game-card:focus,
+        .game-card.focused {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             background: rgba(255, 255, 255, 0.15);
+            border-color: #4ecdc4;
+            outline: none;
+        }
+
+        .game-card::before {
+            content: 'Press SPACE or ENTER to play';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-card:focus::before,
+        .game-card.focused::before {
+            opacity: 1;
         }
 
         .game-icon {
@@ -117,9 +288,11 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .play-button:hover {
+        .play-button:hover,
+        .play-button:focus {
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid rgba(255, 255, 255, 0.5);
         }
 
         .features {
@@ -149,11 +322,15 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
-        .back-link:hover {
+        .back-link:hover,
+        .back-link:focus {
             background: rgba(255, 255, 255, 0.2);
             transform: translateX(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+            outline: none;
         }
 
         .category-header {
@@ -163,212 +340,500 @@
             margin: 3rem 0 2rem 0;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
+
+        /* Overlay for mobile */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .main-content.menu-open {
+                margin-left: 0;
+            }
+
+            .side-menu {
+                width: 100%;
+                left: -100%;
+            }
+
+            .side-menu.open {
+                left: 0;
+            }
+        }
+
+        /* Focus indicators for better accessibility */
+        .focusable:focus {
+            outline: 2px solid #4ecdc4;
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="./" class="back-link">← Back to Main Site</a>
-        
-        <h1>🎮 Educational Game Collection 🌟</h1>
-        <p class="subtitle">Fun Learning Games for Grades 1-10 • Progressive Difficulty • Kid-Friendly</p>
-        
-        <div class="category-header">🌱 Early Elementary (Grades 1-3)</div>
-        <div class="games-grid">
-            <!-- Math Adventure -->
-            <div class="game-card">
-                <span class="game-icon">🔢🐻</span>
-                <div class="game-title">Math Adventure</div>
-                <div class="grade-level">Grades 1-3</div>
-                <div class="game-description">
-                    Help friendly animals solve math problems! Start with simple addition and progress to multiplication.
-                    Visual counting aids make learning fun and easy.
-                </div>
-                <div class="features">
-                    <span class="feature-tag">🔢 Addition & Subtraction</span>
-                    <span class="feature-tag">🐻 Cute Characters</span>
-                    <span class="feature-tag">👀 Visual Aids</span>
-                    <span class="feature-tag">🌟 Progressive Levels</span>
-                </div>
-                <a href="games/math_adventure.html" class="play-button">🚀 Start Learning!</a>
+    <!-- Side Menu -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <div class="menu-title">🎮 Games Menu</div>
+            <div class="menu-subtitle">Quick Navigation</div>
+        </div>
+        <div class="menu-games">
+            <div class="menu-category">
+                <div class="menu-category-title">🌱 Early Elementary (1-3)</div>
+                <a href="games/math_adventure.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">🔢</span>
+                    <span class="menu-game-name">Math Adventure</span>
+                    <span class="menu-game-grade">Grades 1-3</span>
+                </a>
+                <a href="games/color_memory.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">🌈</span>
+                    <span class="menu-game-name">Color Memory Magic</span>
+                    <span class="menu-game-grade">Grades 1-5</span>
+                </a>
             </div>
 
-            <!-- Color Memory -->
-            <div class="game-card">
-                <span class="game-icon">🌈✨</span>
-                <div class="game-title">Color Memory Magic</div>
-                <div class="grade-level">Grades 1-5</div>
-                <div class="game-description">
-                    Remember and match beautiful color patterns with sounds! Improve memory skills while enjoying 
-                    colorful animations and musical feedback.
-                </div>
-                <div class="features">
-                    <span class="feature-tag">🧠 Memory Training</span>
-                    <span class="feature-tag">🎵 Musical Sounds</span>
-                    <span class="feature-tag">🌈 Beautiful Colors</span>
-                    <span class="feature-tag">⭐ Progressive Difficulty</span>
-                </div>
-                <a href="games/color_memory.html" class="play-button">🌟 Play Now!</a>
+            <div class="menu-category">
+                <div class="menu-category-title">🎓 Elementary (2-5)</div>
+                <a href="games/word_hunter.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">📚</span>
+                    <span class="menu-game-name">Word Hunter Forest</span>
+                    <span class="menu-game-grade">Grades 2-4</span>
+                </a>
+                <a href="games/rainbow_bubble_quest.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">🫧</span>
+                    <span class="menu-game-name">Rainbow Bubble Quest</span>
+                    <span class="menu-game-grade">Grades 1-5</span>
+                </a>
+            </div>
+
+            <div class="menu-category">
+                <div class="menu-category-title">🚀 Middle School (3-8)</div>
+                <a href="games/space_explorer.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">🚀</span>
+                    <span class="menu-game-name">Space Explorer Quiz</span>
+                    <span class="menu-game-grade">Grades 3-6</span>
+                </a>
+                <a href="games/pattern_master.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">🧩</span>
+                    <span class="menu-game-name">Pattern Master</span>
+                    <span class="menu-game-grade">Grades 4-7</span>
+                </a>
+                <a href="games/geography_quest.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">🌍</span>
+                    <span class="menu-game-name">Geography Quest</span>
+                    <span class="menu-game-grade">Grades 5-8</span>
+                </a>
+            </div>
+
+            <div class="menu-category">
+                <div class="menu-category-title">🎯 Advanced (6-10)</div>
+                <a href="games/code_breaker.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">💻</span>
+                    <span class="menu-game-name">Code Breaker Academy</span>
+                    <span class="menu-game-grade">Grades 6-9</span>
+                </a>
+                <a href="games/physics_lab.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">⚗️</span>
+                    <span class="menu-game-name">Physics Lab Simulator</span>
+                    <span class="menu-game-grade">Grades 7-10</span>
+                </a>
+                <a href="games/animal_defense.html" class="menu-game-item focusable" tabindex="0">
+                    <span class="menu-game-icon">🛡️</span>
+                    <span class="menu-game-name">Animal Defense</span>
+                    <span class="menu-game-grade">Grades 6-10</span>
+                </a>
             </div>
         </div>
+    </nav>
 
-        <div class="category-header">🎓 Elementary (Grades 2-5)</div>
-        <div class="games-grid">
-            <!-- Word Hunter -->
-            <div class="game-card">
-                <span class="game-icon">📚🌲</span>
-                <div class="game-title">Word Hunter Forest</div>
-                <div class="grade-level">Grades 2-4</div>
-                <div class="game-description">
-                    Hunt for letters in the magical forest to spell amazing words! Picture hints and spelling 
-                    rewards make vocabulary building exciting.
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle focusable" id="menuToggle" aria-label="Toggle Games Menu" tabindex="0">☰</button>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="container">
+            <a href="./" class="back-link focusable" tabindex="0">← Back to Main Site</a>
+            
+            <h1>🎮 Educational Game Collection 🌟</h1>
+            <p class="subtitle">Fun Learning Games for Grades 1-10 • Progressive Difficulty • Kid-Friendly</p>
+            
+            <div class="keyboard-hint">
+                ⌨️ <strong>Keyboard Navigation:</strong> Use TAB to navigate, SPACE/ENTER to select, ESC to close menu
+            </div>
+            
+            <div class="category-header">🌱 Early Elementary (Grades 1-3)</div>
+            <div class="games-grid">
+                <!-- Math Adventure -->
+                <div class="game-card focusable" tabindex="0" data-url="games/math_adventure.html">
+                    <span class="game-icon">🔢🐻</span>
+                    <div class="game-title">Math Adventure</div>
+                    <div class="grade-level">Grades 1-3</div>
+                    <div class="game-description">
+                        Help friendly animals solve math problems! Start with simple addition and progress to multiplication.
+                        Visual counting aids make learning fun and easy.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">🔢 Addition & Subtraction</span>
+                        <span class="feature-tag">🐻 Cute Characters</span>
+                        <span class="feature-tag">👀 Visual Aids</span>
+                        <span class="feature-tag">🌟 Progressive Levels</span>
+                    </div>
+                    <a href="games/math_adventure.html" class="play-button focusable" tabindex="-1">🚀 Start Learning!</a>
                 </div>
-                <div class="features">
-                    <span class="feature-tag">📖 Vocabulary Building</span>
-                    <span class="feature-tag">🌲 Forest Theme</span>
-                    <span class="feature-tag">💡 Picture Hints</span>
-                    <span class="feature-tag">🏆 Spelling Rewards</span>
+
+                <!-- Color Memory -->
+                <div class="game-card focusable" tabindex="0" data-url="games/color_memory.html">
+                    <span class="game-icon">🌈✨</span>
+                    <div class="game-title">Color Memory Magic</div>
+                    <div class="grade-level">Grades 1-5</div>
+                    <div class="game-description">
+                        Remember and match beautiful color patterns with sounds! Improve memory skills while enjoying 
+                        colorful animations and musical feedback.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">🧠 Memory Training</span>
+                        <span class="feature-tag">🎵 Musical Sounds</span>
+                        <span class="feature-tag">🌈 Beautiful Colors</span>
+                        <span class="feature-tag">⭐ Progressive Difficulty</span>
+                    </div>
+                    <a href="games/color_memory.html" class="play-button focusable" tabindex="-1">🌟 Play Now!</a>
                 </div>
-                <a href="games/word_hunter.html" class="play-button">🌟 Start Hunting!</a>
             </div>
 
-            <!-- Rainbow Bubble Quest -->
-            <div class="game-card">
-                <span class="game-icon">🌈🫧</span>
-                <div class="game-title">Rainbow Bubble Quest</div>
-                <div class="grade-level">Grades 1-5</div>
-                <div class="game-description">
-                    Control a cute fox and collect colorful bubbles while avoiding obstacles. Beautiful animations 
-                    and cheerful gameplay perfect for kids.
+            <div class="category-header">🎓 Elementary (Grades 2-5)</div>
+            <div class="games-grid">
+                <!-- Word Hunter -->
+                <div class="game-card focusable" tabindex="0" data-url="games/word_hunter.html">
+                    <span class="game-icon">📚🌲</span>
+                    <div class="game-title">Word Hunter Forest</div>
+                    <div class="grade-level">Grades 2-4</div>
+                    <div class="game-description">
+                        Hunt for letters in the magical forest to spell amazing words! Picture hints and spelling 
+                        rewards make vocabulary building exciting.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">📖 Vocabulary Building</span>
+                        <span class="feature-tag">🌲 Forest Theme</span>
+                        <span class="feature-tag">💡 Picture Hints</span>
+                        <span class="feature-tag">🏆 Spelling Rewards</span>
+                    </div>
+                    <a href="games/word_hunter.html" class="play-button focusable" tabindex="-1">🌟 Start Hunting!</a>
                 </div>
-                <div class="features">
-                    <span class="feature-tag">🦊 Cute Fox Character</span>
-                    <span class="feature-tag">🫧 Bubble Collection</span>
-                    <span class="feature-tag">✨ Beautiful Effects</span>
-                    <span class="feature-tag">🎨 Colorful Graphics</span>
+
+                <!-- Rainbow Bubble Quest -->
+                <div class="game-card focusable" tabindex="0" data-url="games/rainbow_bubble_quest.html">
+                    <span class="game-icon">🌈🫧</span>
+                    <div class="game-title">Rainbow Bubble Quest</div>
+                    <div class="grade-level">Grades 1-5</div>
+                    <div class="game-description">
+                        Control a cute fox and collect colorful bubbles while avoiding obstacles. Beautiful animations 
+                        and cheerful gameplay perfect for kids.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">🦊 Cute Fox Character</span>
+                        <span class="feature-tag">🫧 Bubble Collection</span>
+                        <span class="feature-tag">✨ Beautiful Effects</span>
+                        <span class="feature-tag">🎨 Colorful Graphics</span>
+                    </div>
+                    <a href="games/rainbow_bubble_quest.html" class="play-button focusable" tabindex="-1">🌟 Play Quest!</a>
                 </div>
-                <a href="games/rainbow_bubble_quest.html" class="play-button">🌟 Play Quest!</a>
+            </div>
+
+            <div class="category-header">🚀 Middle School (Grades 3-8)</div>
+            <div class="games-grid">
+                <!-- Space Explorer -->
+                <div class="game-card focusable" tabindex="0" data-url="games/space_explorer.html">
+                    <span class="game-icon">🚀🌟</span>
+                    <div class="game-title">Space Explorer Quiz</div>
+                    <div class="grade-level">Grades 3-6</div>
+                    <div class="game-description">
+                        Navigate through space while learning amazing facts about planets, stars, and the universe! 
+                        Perfect for young astronomers.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">🌌 Space Facts</span>
+                        <span class="feature-tag">🪐 Planet Learning</span>
+                        <span class="feature-tag">⭐ Constellation Quiz</span>
+                        <span class="feature-tag">🚀 Space Mission</span>
+                    </div>
+                    <a href="games/space_explorer.html" class="play-button focusable" tabindex="-1">🌌 Launch Mission!</a>
+                </div>
+
+                <!-- Pattern Master -->
+                <div class="game-card focusable" tabindex="0" data-url="games/pattern_master.html">
+                    <span class="game-icon">🧩🔍</span>
+                    <div class="game-title">Pattern Master</div>
+                    <div class="grade-level">Grades 4-7</div>
+                    <div class="game-description">
+                        Complete logical pattern sequences and develop critical thinking skills. From simple shapes 
+                        to complex mathematical patterns.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">🧩 Logic Puzzles</span>
+                        <span class="feature-tag">🔍 Pattern Recognition</span>
+                        <span class="feature-tag">🧠 Critical Thinking</span>
+                        <span class="feature-tag">📈 Progressive Complexity</span>
+                    </div>
+                    <a href="games/pattern_master.html" class="play-button focusable" tabindex="-1">🚀 Start Solving!</a>
+                </div>
+
+                <!-- Geography Quest -->
+                <div class="game-card focusable" tabindex="0" data-url="games/geography_quest.html">
+                    <span class="game-icon">🌍🗺️</span>
+                    <div class="game-title">Geography Quest</div>
+                    <div class="grade-level">Grades 5-8</div>
+                    <div class="game-description">
+                        Explore the world map and learn about countries, capitals, and flags! Test your knowledge 
+                        of world geography through interactive quizzes.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">🗺️ World Map</span>
+                        <span class="feature-tag">🏛️ Capital Cities</span>
+                        <span class="feature-tag">🏁 Country Flags</span>
+                        <span class="feature-tag">🌍 Cultural Facts</span>
+                    </div>
+                    <a href="games/geography_quest.html" class="play-button focusable" tabindex="-1">🌟 Start Journey!</a>
+                </div>
+            </div>
+
+            <div class="category-header">🎯 Advanced (Grades 6-10)</div>
+            <div class="games-grid">
+                <!-- Code Breaker -->
+                <div class="game-card focusable" tabindex="0" data-url="games/code_breaker.html">
+                    <span class="game-icon">💻🔓</span>
+                    <div class="game-title">Code Breaker Academy</div>
+                    <div class="grade-level">Grades 6-9</div>
+                    <div class="game-description">
+                        Learn programming logic by fixing broken code! Start with simple syntax and progress to 
+                        complex programming concepts in a fun terminal interface.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">💻 Programming Logic</span>
+                        <span class="feature-tag">🔧 Code Fixing</span>
+                        <span class="feature-tag">⌨️ Terminal Interface</span>
+                        <span class="feature-tag">🎓 Coding Concepts</span>
+                    </div>
+                    <a href="games/code_breaker.html" class="play-button focusable" tabindex="-1">💻 Initialize System!</a>
+                </div>
+
+                <!-- Physics Lab -->
+                <div class="game-card focusable" tabindex="0" data-url="games/physics_lab.html">
+                    <span class="game-icon">⚗️🔬</span>
+                    <div class="game-title">Physics Lab Simulator</div>
+                    <div class="grade-level">Grades 7-10</div>
+                    <div class="game-description">
+                        Conduct interactive physics experiments and learn about gravity, motion, and forces! 
+                        Perfect introduction to physics concepts through hands-on simulation.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">🔬 Physics Experiments</span>
+                        <span class="feature-tag">⚖️ Gravity & Motion</span>
+                        <span class="feature-tag">🧪 Interactive Lab</span>
+                        <span class="feature-tag">📊 Scientific Method</span>
+                    </div>
+                    <a href="games/physics_lab.html" class="play-button focusable" tabindex="-1">🧪 Enter Lab!</a>
+                </div>
+
+                <!-- Animal Defense -->
+                <div class="game-card focusable" tabindex="0" data-url="games/animal_defense.html">
+                    <span class="game-icon">🐺🛡️</span>
+                    <div class="game-title">Animal Defense</div>
+                    <div class="grade-level">Grades 6-10</div>
+                    <div class="game-description">
+                        Strategic survival game with progressive difficulty. Use mouse movement and keyboard shooting 
+                        to defend against waves of animals while collecting power-ups.
+                    </div>
+                    <div class="features">
+                        <span class="feature-tag">🎯 Strategic Gameplay</span>
+                        <span class="feature-tag">🔫 Multiple Weapons</span>
+                        <span class="feature-tag">💊 Power-ups</span>
+                        <span class="feature-tag">🌟 Progressive Difficulty</span>
+                    </div>
+                    <a href="games/animal_defense.html" class="play-button focusable" tabindex="-1">🚀 Start Defense!</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; color: rgba(255,255,255,0.8);">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">🎮 Made with ❤️ for Young Learners</p>
+                <p>All games feature progressive difficulty • Safe for kids • Educational content</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">Games designed for grades 1-10 with age-appropriate content and mechanics</p>
             </div>
         </div>
+    </main>
 
-        <div class="category-header">🚀 Middle School (Grades 3-8)</div>
-        <div class="games-grid">
-            <!-- Space Explorer -->
-            <div class="game-card">
-                <span class="game-icon">🚀🌟</span>
-                <div class="game-title">Space Explorer Quiz</div>
-                <div class="grade-level">Grades 3-6</div>
-                <div class="game-description">
-                    Navigate through space while learning amazing facts about planets, stars, and the universe! 
-                    Perfect for young astronomers.
-                </div>
-                <div class="features">
-                    <span class="feature-tag">🌌 Space Facts</span>
-                    <span class="feature-tag">🪐 Planet Learning</span>
-                    <span class="feature-tag">⭐ Constellation Quiz</span>
-                    <span class="feature-tag">🚀 Space Mission</span>
-                </div>
-                <a href="games/space_explorer.html" class="play-button">🌌 Launch Mission!</a>
-            </div>
+    <script>
+        // Menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+        const mainContent = document.getElementById('mainContent');
+        const overlay = document.getElementById('overlay');
 
-            <!-- Pattern Master -->
-            <div class="game-card">
-                <span class="game-icon">🧩🔍</span>
-                <div class="game-title">Pattern Master</div>
-                <div class="grade-level">Grades 4-7</div>
-                <div class="game-description">
-                    Complete logical pattern sequences and develop critical thinking skills. From simple shapes 
-                    to complex mathematical patterns.
-                </div>
-                <div class="features">
-                    <span class="feature-tag">🧩 Logic Puzzles</span>
-                    <span class="feature-tag">🔍 Pattern Recognition</span>
-                    <span class="feature-tag">🧠 Critical Thinking</span>
-                    <span class="feature-tag">📈 Progressive Complexity</span>
-                </div>
-                <a href="games/pattern_master.html" class="play-button">🚀 Start Solving!</a>
-            </div>
+        function toggleMenu() {
+            const isOpen = sideMenu.classList.contains('open');
+            
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
 
-            <!-- Geography Quest -->
-            <div class="game-card">
-                <span class="game-icon">🌍🗺️</span>
-                <div class="game-title">Geography Quest</div>
-                <div class="grade-level">Grades 5-8</div>
-                <div class="game-description">
-                    Explore the world map and learn about countries, capitals, and flags! Test your knowledge 
-                    of world geography through interactive quizzes.
-                </div>
-                <div class="features">
-                    <span class="feature-tag">🗺️ World Map</span>
-                    <span class="feature-tag">🏛️ Capital Cities</span>
-                    <span class="feature-tag">🏁 Country Flags</span>
-                    <span class="feature-tag">🌍 Cultural Facts</span>
-                </div>
-                <a href="games/geography_quest.html" class="play-button">🌟 Start Journey!</a>
-            </div>
-        </div>
+        function openMenu() {
+            sideMenu.classList.add('open');
+            mainContent.classList.add('menu-open');
+            overlay.classList.add('active');
+            menuToggle.textContent = '✕';
+            
+            // Focus first menu item
+            const firstMenuItem = sideMenu.querySelector('.menu-game-item');
+            if (firstMenuItem) firstMenuItem.focus();
+        }
 
-        <div class="category-header">🎯 Advanced (Grades 6-10)</div>
-        <div class="games-grid">
-            <!-- Code Breaker -->
-            <div class="game-card">
-                <span class="game-icon">💻🔓</span>
-                <div class="game-title">Code Breaker Academy</div>
-                <div class="grade-level">Grades 6-9</div>
-                <div class="game-description">
-                    Learn programming logic by fixing broken code! Start with simple syntax and progress to 
-                    complex programming concepts in a fun terminal interface.
-                </div>
-                <div class="features">
-                    <span class="feature-tag">💻 Programming Logic</span>
-                    <span class="feature-tag">🔧 Code Fixing</span>
-                    <span class="feature-tag">⌨️ Terminal Interface</span>
-                    <span class="feature-tag">🎓 Coding Concepts</span>
-                </div>
-                <a href="games/code_breaker.html" class="play-button">💻 Initialize System!</a>
-            </div>
+        function closeMenu() {
+            sideMenu.classList.remove('open');
+            mainContent.classList.remove('menu-open');
+            overlay.classList.remove('active');
+            menuToggle.textContent = '☰';
+            menuToggle.focus();
+        }
 
-            <!-- Physics Lab -->
-            <div class="game-card">
-                <span class="game-icon">⚗️🔬</span>
-                <div class="game-title">Physics Lab Simulator</div>
-                <div class="grade-level">Grades 7-10</div>
-                <div class="game-description">
-                    Conduct interactive physics experiments and learn about gravity, motion, and forces! 
-                    Perfect introduction to physics concepts through hands-on simulation.
-                </div>
-                <div class="features">
-                    <span class="feature-tag">🔬 Physics Experiments</span>
-                    <span class="feature-tag">⚖️ Gravity & Motion</span>
-                    <span class="feature-tag">🧪 Interactive Lab</span>
-                    <span class="feature-tag">📊 Scientific Method</span>
-                </div>
-                <a href="games/physics_lab.html" class="play-button">🧪 Enter Lab!</a>
-            </div>
+        // Event listeners
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
 
-            <!-- Animal Defense -->
-            <div class="game-card">
-                <span class="game-icon">🐺🛡️</span>
-                <div class="game-title">Animal Defense</div>
-                <div class="grade-level">Grades 6-10</div>
-                <div class="game-description">
-                    Strategic survival game with progressive difficulty. Use mouse movement and keyboard shooting 
-                    to defend against waves of animals while collecting power-ups.
-                </div>
-                <div class="features">
-                    <span class="feature-tag">🎯 Strategic Gameplay</span>
-                    <span class="feature-tag">🔫 Multiple Weapons</span>
-                    <span class="feature-tag">💊 Power-ups</span>
-                    <span class="feature-tag">🌟 Progressive Difficulty</span>
-                </div>
-                <a href="games/animal_defense.html" class="play-button">🚀 Start Defense!</a>
-            </div>
-        </div>
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'Escape':
+                    if (sideMenu.classList.contains('open')) {
+                        closeMenu();
+                        e.preventDefault();
+                    }
+                    break;
+                    
+                case ' ':
+                case 'Enter':
+                    const focused = document.activeElement;
+                    
+                    // Handle menu toggle
+                    if (focused === menuToggle) {
+                        toggleMenu();
+                        e.preventDefault();
+                        return;
+                    }
+                    
+                    // Handle game cards
+                    if (focused.classList.contains('game-card')) {
+                        const url = focused.getAttribute('data-url');
+                        if (url) {
+                            window.location.href = url;
+                            e.preventDefault();
+                        }
+                        return;
+                    }
+                    
+                    // Handle menu items and buttons
+                    if (focused.classList.contains('menu-game-item') || 
+                        focused.classList.contains('play-button') ||
+                        focused.classList.contains('back-link')) {
+                        focused.click();
+                        e.preventDefault();
+                        return;
+                    }
+                    break;
+            }
+        });
 
-        <div style="text-align: center; margin-top: 4rem; color: rgba(255,255,255,0.8);">
-            <p style="font-size: 1.2rem; margin-bottom: 1rem;">🎮 Made with ❤️ for Young Learners</p>
-            <p>All games feature progressive difficulty • Safe for kids • Educational content</p>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">Games designed for grades 1-10 with age-appropriate content and mechanics</p>
-        </div>
-    </div>
+        // Game card keyboard navigation
+        const gameCards = document.querySelectorAll('.game-card');
+        gameCards.forEach(card => {
+            card.addEventListener('keydown', function(e) {
+                if (e.key === ' ' || e.key === 'Enter') {
+                    const url = this.getAttribute('data-url');
+                    if (url) {
+                        window.location.href = url;
+                        e.preventDefault();
+                    }
+                }
+            });
+
+            // Add visual focus indicator
+            card.addEventListener('focus', function() {
+                this.classList.add('focused');
+            });
+
+            card.addEventListener('blur', function() {
+                this.classList.remove('focused');
+            });
+        });
+
+        // Handle menu item activation
+        const menuItems = document.querySelectorAll('.menu-game-item');
+        menuItems.forEach(item => {
+            item.addEventListener('keydown', function(e) {
+                if (e.key === ' ' || e.key === 'Enter') {
+                    this.click();
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Close menu on mobile when clicking a menu item
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && sideMenu.classList.contains('open')) {
+                overlay.classList.remove('active');
+            } else if (window.innerWidth <= 768 && sideMenu.classList.contains('open')) {
+                overlay.classList.add('active');
+            }
+        });
+
+        // Improve focus management
+        document.addEventListener('focusin', function(e) {
+            const focused = e.target;
+            
+            // Ensure focused elements are visible
+            if (focused.classList.contains('focusable')) {
+                focused.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest',
+                    inline: 'nearest'
+                });
+            }
+        });
+    </script>
 </body>
 </html>
