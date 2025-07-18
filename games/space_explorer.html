@@ -507,15 +507,16 @@
                 game.score += 100 * levelMultiplier;
                 game.facts++;
                 showPopup('🌟 Correct!', 'Great job, space explorer!', [], 2000);
+                
+                // Only advance to next question on correct answer
+                game.currentQuestion++;
+                game.level = Math.floor(game.currentQuestion / game.questionsPerLevel) + 1;
+                updateDisplay();
+                setTimeout(loadQuestion, 1000);
             } else {
                 showPopup('🚀 Try Again!', 'Not quite right, but keep exploring!', [], 2000);
+                // Don't advance question - stay on same question for retry
             }
-            
-            game.currentQuestion++;
-            game.level = Math.floor(game.currentQuestion / game.questionsPerLevel) + 1;
-            
-            updateDisplay();
-            setTimeout(loadQuestion, 1000);
         }
         
         function updateDisplay() {

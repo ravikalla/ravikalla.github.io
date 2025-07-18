@@ -409,14 +409,16 @@
                 game.score += 100 + game.streak * 10;
                 game.streak++;
                 showPopup('🎉 Correct!', 'Great pattern recognition!', [], 2000);
+                
+                // Only advance to next pattern on correct answer
+                game.level++;
+                updateDisplay();
+                setTimeout(generatePattern, 1000);
             } else {
                 game.streak = 0;
                 showPopup('🤔 Try Again!', 'Look at the pattern more carefully.', [], 2000);
+                // Don't advance level - stay on same pattern for retry
             }
-            
-            game.level++;
-            updateDisplay();
-            setTimeout(generatePattern, 1000);
         }
         
         function updateDisplay() {
