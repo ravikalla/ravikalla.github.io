@@ -93,7 +93,17 @@ class PuzzleLoader {
 
     // Load questions progressively
     async loadQuestionsForLevel(level) {
-        const setNumber = Math.ceil(level / 10); // Each set covers 10 levels
+        // For 10-level games, use different sets for different level ranges
+        let setNumber;
+        if (level <= 3) {
+            setNumber = 1;
+        } else if (level <= 7) {
+            setNumber = 2;
+        } else {
+            setNumber = 3;
+        }
+        
+        console.log(`Loading puzzle set ${setNumber} for level ${level}`);
         const questions = await this.loadPuzzleSet(setNumber);
         
         // Shuffle questions for variety
@@ -102,9 +112,25 @@ class PuzzleLoader {
 
     // Get next question
     async getNextQuestion(level) {
-        if (this.loadedQuestions.length === 0 || this.currentQuestionIndex >= this.loadedQuestions.length) {
+        // Determine which set we should be using for this level
+        let expectedSet;
+        if (level <= 3) {
+            expectedSet = 1;
+        } else if (level <= 7) {
+            expectedSet = 2;
+        } else {
+            expectedSet = 3;
+        }
+        
+        // If we don't have questions loaded or we need a different set, load new questions
+        if (this.loadedQuestions.length === 0 || 
+            this.currentQuestionIndex >= this.loadedQuestions.length ||
+            this.currentPuzzleSet !== expectedSet) {
+            
+            this.currentPuzzleSet = expectedSet;
             this.loadedQuestions = await this.loadQuestionsForLevel(level);
             this.currentQuestionIndex = 0;
+            console.log(`Switched to puzzle set ${expectedSet}, loaded ${this.loadedQuestions.length} questions`);
         }
         
         const question = this.loadedQuestions[this.currentQuestionIndex];

@@ -1,0 +1,69 @@
+Q: How many planets are in our solar system?
+A: 7
+B: 8
+C: 9
+D: 10
+CORRECT: 1
+
+Q: Which planet has the most moons?
+A: Earth
+B: Mars
+C: Jupiter
+D: Saturn
+CORRECT: 2
+
+Q: What is a light year?
+A: 365 days
+B: A measure of distance
+C: A type of star
+D: A space mission
+CORRECT: 1
+
+Q: What is the universe?
+A: Our solar system
+B: Everything that exists
+C: Just our galaxy
+D: Planet Earth
+CORRECT: 1
+
+Q: How fast does light travel?
+A: Very fast
+B: 300,000 km/second
+C: 100 km/hour
+D: As fast as sound
+CORRECT: 1
+
+Q: What is a comet made of?
+A: Ice and dust
+B: Pure rock
+C: Metal
+D: Gas only
+CORRECT: 0
+
+Q: What is the asteroid belt?
+A: Rocky objects between Mars and Jupiter
+B: A ring around Saturn
+C: Moons of Earth
+D: Comets near the Sun
+CORRECT: 0
+
+Q: What force keeps planets in orbit?
+A: Magnetism
+B: Gravity
+C: Wind
+D: Electricity
+CORRECT: 1
+
+Q: What is the ISS?
+A: International Space Station
+B: Inter Stellar Ship
+C: Incredible Space Sight
+D: Important Space Study
+CORRECT: 0
+
+Q: Who was the first person on the Moon?
+A: Buzz Aldrin
+B: Neil Armstrong
+C: John Glenn
+D: Yuri Gagarin
+CORRECT: 1
