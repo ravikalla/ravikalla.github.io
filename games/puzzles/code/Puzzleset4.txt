@@ -1,0 +1,69 @@
+Q: Fix the event listener: button.___('click', handleClick);
+A: addEventListener
+B: addEvent
+C: onClick
+D: listen
+CORRECT: 0
+
+Q: Complete the closure: function outer() { let x = 10; ___ inner() { return x; } return inner; }
+A: function
+B: const
+C: let
+D: var
+CORRECT: 0
+
+Q: Fix the DOM selection: let element = document.___('myId');
+A: getElementById
+B: getElement
+C: findById
+D: selectId
+CORRECT: 0
+
+Q: Complete the callback: function getData(___) { setTimeout(() => callback('data'), 1000); }
+A: callback
+B: cb
+C: fn
+D: func
+CORRECT: 0
+
+Q: Fix the CSS selector: let elements = document.___('.myClass');
+A: querySelectorAll
+B: getElementsByClass
+C: selectAll
+D: findElements
+CORRECT: 0
+
+Q: Complete the prototype: Array.prototype.___ = function() { return this.length === 0; };
+A: isEmpty
+B: empty
+C: isNull
+D: hasLength
+CORRECT: 0
+
+Q: Fix the constructor: function Person(name) { ___.name = name; }
+A: this
+B: self
+C: me
+D: that
+CORRECT: 0
+
+Q: Complete the inheritance: class Dog ___ Animal { constructor(name) { super(name); } }
+A: extends
+B: inherits
+C: implements
+D: derives
+CORRECT: 0
+
+Q: Fix the module pattern: let module = (function() { let private = 'secret'; ___ { getPrivate: () => private }; })();
+A: return
+B: export
+C: module
+D: send
+CORRECT: 0
+
+Q: Complete the IIFE: (function() { console.log('Hello'); })___;
+A: ()
+B: []
+C: {}
+D: <>
+CORRECT: 0

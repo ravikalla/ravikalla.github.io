@@ -1,0 +1,69 @@
+Q: What is the name of the first human in space?
+A: Neil Armstrong
+B: Buzz Aldrin
+C: Yuri Gagarin
+D: John Glenn
+CORRECT: 2
+
+Q: What is the escape velocity from Earth?
+A: 11.2 km/s
+B: 7.9 km/s
+C: 25 km/s
+D: 5 km/s
+CORRECT: 0
+
+Q: What is the name of Jupiter's Great Red Spot?
+A: A mountain
+B: A storm
+C: A moon
+D: A ring
+CORRECT: 1
+
+Q: How many moons does Jupiter have?
+A: 16
+B: 53
+C: 79
+D: 95
+CORRECT: 2
+
+Q: What is the name of the closest star system to our solar system?
+A: Alpha Centauri
+B: Proxima Centauri
+C: Barnard's Star
+D: Wolf 359
+CORRECT: 0
+
+Q: What is the name of the spacecraft that first landed on Mars?
+A: Viking 1
+B: Mariner 4
+C: Pathfinder
+D: Spirit
+CORRECT: 0
+
+Q: What is the name of the belt of radiation around Earth?
+A: Ozone layer
+B: Van Allen belts
+C: Magnetosphere
+D: Thermosphere
+CORRECT: 1
+
+Q: What is the name of the largest moon in our solar system?
+A: Titan
+B: Ganymede
+C: Callisto
+D: Europa
+CORRECT: 1
+
+Q: What is the name of the first space station?
+A: Mir
+B: Salyut 1
+C: Skylab
+D: ISS
+CORRECT: 1
+
+Q: What is the name of the spacecraft that first flew by Pluto?
+A: Voyager 1
+B: New Horizons
+C: Cassini
+D: Pioneer 10
+CORRECT: 1

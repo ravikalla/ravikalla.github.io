@@ -1,0 +1,69 @@
+Q: Fix the promise chain: fetch('/api').then(response => response.json()).___((data) => console.log(data));
+A: then
+B: catch
+C: finally
+D: await
+CORRECT: 0
+
+Q: Complete the async function: ___ function fetchData() { const response = await fetch('/api'); return response.json(); }
+A: async
+B: await
+C: promise
+D: function
+CORRECT: 0
+
+Q: Fix the destructuring assignment: const {name, age, ...___} = person;
+A: rest
+B: other
+C: remaining
+D: more
+CORRECT: 0
+
+Q: Complete the generator function: function* counter() { let i = 0; while (true) { ___ i++; } }
+A: yield
+B: return
+C: await
+D: next
+CORRECT: 0
+
+Q: Fix the Set operation: let uniqueNumbers = new Set([1, 2, 2, 3]); uniqueNumbers.___4);
+A: add(
+B: push(
+C: insert(
+D: append(
+CORRECT: 0
+
+Q: Complete the Map method: let map = new Map(); map.___('key', 'value');
+A: set
+B: add
+C: put
+D: insert
+CORRECT: 0
+
+Q: Fix the WeakMap usage: let wm = new WeakMap(); wm.set(___, 'value');
+A: {}
+B: 'key'
+C: 123
+D: null
+CORRECT: 0
+
+Q: Complete the Symbol: let sym = Symbol.___('mySymbol');
+A: for
+B: create
+C: new
+D: make
+CORRECT: 0
+
+Q: Fix the Proxy trap: let proxy = new Proxy(target, { ___: function(target, prop) { return target[prop]; } });
+A: get
+B: set
+C: has
+D: apply
+CORRECT: 0
+
+Q: Complete the Reflect method: let hasProperty = Reflect.___(obj, 'property');
+A: has
+B: get
+C: set
+D: owns
+CORRECT: 0

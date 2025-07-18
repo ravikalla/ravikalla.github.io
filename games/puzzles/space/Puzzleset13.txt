@@ -1,0 +1,69 @@
+Q: What is the name of the dwarf planet closest to the Sun?
+A: Pluto
+B: Ceres
+C: Eris
+D: Makemake
+CORRECT: 1
+
+Q: What is the name of the spacecraft that first photographed the far side of the Moon?
+A: Luna 2
+B: Luna 3
+C: Apollo 8
+D: Surveyor 1
+CORRECT: 1
+
+Q: What is the name of the effect that causes the red shift of distant galaxies?
+A: Doppler effect
+B: Hubble effect
+C: Expansion of universe
+D: Gravitational red shift
+CORRECT: 0
+
+Q: What is the name of the spacecraft that first soft-landed on Mars?
+A: Viking 1
+B: Mars Pathfinder
+C: Viking 2
+D: Mars 3
+CORRECT: 3
+
+Q: What is the name of the largest moon of Saturn?
+A: Enceladus
+B: Titan
+C: Mimas
+D: Iapetus
+CORRECT: 1
+
+Q: What is the name of the phenomenon when a planet passes in front of its star?
+A: Eclipse
+B: Transit
+C: Occultation
+D: Conjunction
+CORRECT: 1
+
+Q: What is the name of the first space probe to leave the solar system?
+A: Voyager 1
+B: Pioneer 10
+C: Voyager 2
+D: Pioneer 11
+CORRECT: 1
+
+Q: What is the name of the region of space where most comets originate?
+A: Kuiper Belt
+B: Oort Cloud
+C: Asteroid Belt
+D: Scattered Disk
+CORRECT: 1
+
+Q: What is the name of the spacecraft that first orbited Mercury?
+A: Mariner 10
+B: MESSENGER
+C: BepiColombo
+D: Helios
+CORRECT: 1
+
+Q: What is the name of the galaxy that will collide with the Milky Way?
+A: Triangulum
+B: Andromeda
+C: Large Magellanic Cloud
+D: Whirlpool
+CORRECT: 1

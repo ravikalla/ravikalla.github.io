@@ -1,0 +1,69 @@
+Q: Which country has this flag? 🇮🇳
+A: Pakistan
+B: India
+C: Bangladesh
+D: Sri Lanka
+CORRECT: 1
+
+Q: What is the capital of Austria?
+A: Vienna
+B: Salzburg
+C: Innsbruck
+D: Graz
+CORRECT: 0
+
+Q: Which country has this flag? 🇿🇦
+A: Nigeria
+B: South Africa
+C: Kenya
+D: Ghana
+CORRECT: 1
+
+Q: What is the capital of Chile?
+A: Valparaíso
+B: Santiago
+C: Concepción
+D: Antofagasta
+CORRECT: 1
+
+Q: Which country has this flag? 🇪🇸
+A: Portugal
+B: Spain
+C: Italy
+D: France
+CORRECT: 1
+
+Q: What is the capital of Finland?
+A: Helsinki
+B: Tampere
+C: Turku
+D: Oulu
+CORRECT: 0
+
+Q: Which country has this flag? 🇧🇪
+A: Netherlands
+B: Belgium
+C: Luxembourg
+D: Germany
+CORRECT: 1
+
+Q: What is the capital of Ireland?
+A: Cork
+B: Dublin
+C: Galway
+D: Limerick
+CORRECT: 1
+
+Q: Which ocean is the smallest?
+A: Arctic Ocean
+B: Indian Ocean
+C: Atlantic Ocean
+D: Pacific Ocean
+CORRECT: 0
+
+Q: What is the deepest point in the ocean?
+A: Puerto Rico Trench
+B: Java Trench
+C: Mariana Trench
+D: Peru-Chile Trench
+CORRECT: 2

@@ -1,0 +1,69 @@
+Q: What is the name of the mission that first landed on Venus?
+A: Venera 7
+B: Venera 9
+C: Mariner 2
+D: Pioneer Venus
+CORRECT: 0
+
+Q: What is the name of the spacecraft that first flew by Pluto?
+A: New Horizons
+B: Voyager 1
+C: Voyager 2
+D: Pioneer 10
+CORRECT: 0
+
+Q: What is the name of the largest volcano on Venus?
+A: Maat Mons
+B: Olympus Mons
+C: Sapas Mons
+D: Sif Mons
+CORRECT: 0
+
+Q: What is the name of the spacecraft that first detected water on Mars?
+A: Viking 1
+B: Mars Odyssey
+C: Mars Express
+D: Mars Reconnaissance Orbiter
+CORRECT: 1
+
+Q: What is the name of the phenomenon when the Sun's magnetic field reverses?
+A: Solar maximum
+B: Solar minimum
+C: Solar cycle
+D: Solar flip
+CORRECT: 2
+
+Q: What is the name of the spacecraft that first orbited Venus?
+A: Venera 9
+B: Magellan
+C: Pioneer Venus Orbiter
+D: Venus Express
+CORRECT: 2
+
+Q: What is the name of the largest moon of Jupiter?
+A: Europa
+B: Ganymede
+C: Io
+D: Callisto
+CORRECT: 1
+
+Q: What is the name of the spacecraft that first studied the asteroid belt?
+A: Pioneer 10
+B: Pioneer 11
+C: Galileo
+D: NEAR Shoemaker
+CORRECT: 0
+
+Q: What is the name of the phenomenon when a star's brightness varies?
+A: Variable star
+B: Pulsar
+C: Supernova
+D: Nova
+CORRECT: 0
+
+Q: What is the name of the spacecraft that first landed on an asteroid?
+A: NEAR Shoemaker
+B: Hayabusa
+C: Rosetta
+D: Dawn
+CORRECT: 0

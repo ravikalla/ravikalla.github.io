@@ -1,0 +1,69 @@
+Q: Which country has this flag? 🇹🇷
+A: Greece
+B: Turkey
+C: Cyprus
+D: Albania
+CORRECT: 1
+
+Q: What is the capital of Bulgaria?
+A: Sofia
+B: Plovdiv
+C: Varna
+D: Burgas
+CORRECT: 0
+
+Q: Which country has this flag? 🇰🇿
+A: Uzbekistan
+B: Kazakhstan
+C: Kyrgyzstan
+D: Tajikistan
+CORRECT: 1
+
+Q: What is the capital of Malaysia?
+A: Kuala Lumpur
+B: Penang
+C: Johor Bahru
+D: Ipoh
+CORRECT: 0
+
+Q: Which country has this flag? 🇪🇬
+A: Sudan
+B: Egypt
+C: Libya
+D: Tunisia
+CORRECT: 1
+
+Q: What is the capital of Colombia?
+A: Bogotá
+B: Medellín
+C: Cali
+D: Cartagena
+CORRECT: 0
+
+Q: Which country has this flag? 🇮🇸
+A: Norway
+B: Iceland
+C: Denmark
+D: Faroe Islands
+CORRECT: 1
+
+Q: What is the capital of Morocco?
+A: Casablanca
+B: Rabat
+C: Marrakech
+D: Fez
+CORRECT: 1
+
+Q: Which is the highest waterfall in the world?
+A: Niagara Falls
+B: Angel Falls
+C: Victoria Falls
+D: Iguazu Falls
+CORRECT: 1
+
+Q: What is the most spoken language in the world?
+A: English
+B: Spanish
+C: Mandarin Chinese
+D: Hindi
+CORRECT: 2

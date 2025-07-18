@@ -1,0 +1,69 @@
+Q: Which country has this flag? 🇳🇴
+A: Sweden
+B: Norway
+C: Denmark
+D: Iceland
+CORRECT: 1
+
+Q: What is the capital of Czech Republic?
+A: Prague
+B: Brno
+C: Ostrava
+D: Plzen
+CORRECT: 0
+
+Q: Which country has this flag? 🇵🇱
+A: Poland
+B: Monaco
+C: Indonesia
+D: Belarus
+CORRECT: 0
+
+Q: What is the capital of Hungary?
+A: Budapest
+B: Debrecen
+C: Szeged
+D: Pécs
+CORRECT: 0
+
+Q: Which country has this flag? 🇵🇭
+A: Thailand
+B: Philippines
+C: Malaysia
+D: Indonesia
+CORRECT: 1
+
+Q: What is the capital of Vietnam?
+A: Ho Chi Minh City
+B: Hanoi
+C: Da Nang
+D: Hue
+CORRECT: 1
+
+Q: Which country has this flag? 🇺🇦
+A: Russia
+B: Ukraine
+C: Belarus
+D: Kazakhstan
+CORRECT: 1
+
+Q: What is the capital of Romania?
+A: Bucharest
+B: Cluj-Napoca
+C: Timișoara
+D: Iași
+CORRECT: 0
+
+Q: Which is the largest lake in the world?
+A: Lake Superior
+B: Caspian Sea
+C: Lake Victoria
+D: Lake Baikal
+CORRECT: 1
+
+Q: What is the driest desert in the world?
+A: Sahara Desert
+B: Atacama Desert
+C: Gobi Desert
+D: Arabian Desert
+CORRECT: 1

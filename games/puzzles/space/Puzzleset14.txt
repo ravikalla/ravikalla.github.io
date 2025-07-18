@@ -1,0 +1,69 @@
+Q: What is the name of the first Mars rover?
+A: Sojourner
+B: Spirit
+C: Opportunity
+D: Curiosity
+CORRECT: 0
+
+Q: What is the name of the spacecraft that first flew by Neptune?
+A: Voyager 1
+B: Voyager 2
+C: Pioneer 10
+D: Pioneer 11
+CORRECT: 1
+
+Q: What is the name of the largest crater on the Moon?
+A: Tycho
+B: Copernicus
+C: South Pole-Aitken Basin
+D: Mare Imbrium
+CORRECT: 2
+
+Q: What is the name of the spacecraft that first reached Jupiter?
+A: Pioneer 10
+B: Pioneer 11
+C: Voyager 1
+D: Galileo
+CORRECT: 0
+
+Q: What is the name of the process that creates heavier elements in stars?
+A: Nuclear fusion
+B: Stellar nucleosynthesis
+C: Supernova nucleosynthesis
+D: Big Bang nucleosynthesis
+CORRECT: 1
+
+Q: What is the name of the first woman to walk in space?
+A: Sally Ride
+B: Valentina Tereshkova
+C: Svetlana Savitskaya
+D: Kathryn Sullivan
+CORRECT: 2
+
+Q: What is the name of the spacecraft that first flew by Uranus?
+A: Voyager 1
+B: Voyager 2
+C: Pioneer 10
+D: Pioneer 11
+CORRECT: 1
+
+Q: What is the name of the belt of objects beyond Neptune?
+A: Asteroid Belt
+B: Kuiper Belt
+C: Oort Cloud
+D: Scattered Disk
+CORRECT: 1
+
+Q: What is the name of the spacecraft that first orbited Saturn?
+A: Cassini
+B: Voyager 1
+C: Voyager 2
+D: Pioneer 11
+CORRECT: 0
+
+Q: What is the name of the effect that causes time to slow down near massive objects?
+A: Time dilation
+B: Gravitational time dilation
+C: Relativistic effect
+D: Redshift
+CORRECT: 1

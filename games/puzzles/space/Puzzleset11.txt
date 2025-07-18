@@ -1,0 +1,69 @@
+Q: What is the name of the region where the solar wind meets interstellar space?
+A: Heliosphere
+B: Heliopause
+C: Magnetosphere
+D: Chromosphere
+CORRECT: 1
+
+Q: What is the name of the first woman in space?
+A: Sally Ride
+B: Valentina Tereshkova
+C: Mae Jemison
+D: Eileen Collins
+CORRECT: 1
+
+Q: What is the name of the spacecraft that first orbited Jupiter?
+A: Voyager 1
+B: Galileo
+C: Juno
+D: Pioneer 10
+CORRECT: 1
+
+Q: What is the name of the largest volcano in the solar system?
+A: Mount Vesuvius
+B: Olympus Mons
+C: Mauna Kea
+D: Mount Fuji
+CORRECT: 1
+
+Q: What is the name of the spacecraft that first flew by Venus?
+A: Mariner 2
+B: Venera 1
+C: Pioneer Venus
+D: Magellan
+CORRECT: 0
+
+Q: What is the name of the first rover to land on Mars?
+A: Sojourner
+B: Spirit
+C: Opportunity
+D: Curiosity
+CORRECT: 0
+
+Q: What is the name of the largest canyon in the solar system?
+A: Grand Canyon
+B: Valles Marineris
+C: Mariner Valley
+D: Olympus Canyon
+CORRECT: 1
+
+Q: What is the name of the spacecraft that first landed on a comet?
+A: Rosetta
+B: Philae
+C: Deep Impact
+D: Stardust
+CORRECT: 1
+
+Q: What is the name of the first privately funded spacecraft to reach orbit?
+A: SpaceShipOne
+B: Falcon 1
+C: Dragon
+D: New Shepard
+CORRECT: 1
+
+Q: What is the name of the phenomenon when planets align?
+A: Conjunction
+B: Opposition
+C: Syzygy
+D: Eclipse
+CORRECT: 2

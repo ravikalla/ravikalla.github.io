@@ -1,0 +1,69 @@
+Q: Fix the conditional operator: let result = age >= 18 ___ 'adult' : 'minor';
+A: ?
+B: :
+C: =>
+D: =
+CORRECT: 0
+
+Q: Complete the for loop: for (let i = 0; i < array.length; i___) { }
+A: ++
+B: +1
+C: +=1
+D: =+1
+CORRECT: 0
+
+Q: Fix the object method: let obj = { getName___ function() { return this.name; } };
+A: :
+B: =
+C: =>
+D: ->
+CORRECT: 0
+
+Q: Complete the error handling: try { code(); } catch(___ { console.log('Error'); }
+A: (e)
+B: [e]
+C: {e}
+D: e
+CORRECT: 0
+
+Q: Fix the array method: let doubled = numbers.___((x) => x * 2);
+A: map
+B: forEach
+C: filter
+D: reduce
+CORRECT: 0
+
+Q: Complete the import statement: ___ { useState } from 'react';
+A: import
+B: require
+C: include
+D: load
+CORRECT: 0
+
+Q: Fix the promise: fetch('/api').___((response) => response.json());
+A: then
+B: catch
+C: finally
+D: await
+CORRECT: 0
+
+Q: Complete the export: ___ default MyComponent;
+A: export
+B: module
+C: return
+D: send
+CORRECT: 0
+
+Q: Fix the regex: let pattern = ___hello___g;
+A: /
+B: '
+C: "
+D: |
+CORRECT: 0
+
+Q: Complete the setTimeout: setTimeout(() => { console.log('Hello'); }, ___);
+A: 1000
+B: '1000'
+C: 1s
+D: 1sec
+CORRECT: 0

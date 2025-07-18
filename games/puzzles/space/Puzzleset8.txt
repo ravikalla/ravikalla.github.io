@@ -1,0 +1,69 @@
+Q: What is the name of the first artificial satellite?
+A: Sputnik 1
+B: Explorer 1
+C: Vanguard 1
+D: Luna 1
+CORRECT: 0
+
+Q: Which planet has the most extreme weather?
+A: Earth
+B: Jupiter
+C: Venus
+D: Mars
+CORRECT: 2
+
+Q: What is the Kuiper Belt?
+A: A region of asteroids
+B: A region of comets and ice
+C: A ring around Saturn
+D: A type of star
+CORRECT: 1
+
+Q: How many Earths could fit inside the Sun?
+A: 100
+B: 1000
+C: 1 million
+D: 100 million
+CORRECT: 2
+
+Q: What is the name of the galaxy closest to the Milky Way?
+A: Andromeda
+B: Triangulum
+C: Large Magellanic Cloud
+D: Whirlpool
+CORRECT: 0
+
+Q: What is a white dwarf?
+A: A young star
+B: A dying star
+C: A planet
+D: A moon
+CORRECT: 1
+
+Q: What is the temperature of the Sun's core?
+A: 6,000°C
+B: 15 million°C
+C: 1 million°C
+D: 100,000°C
+CORRECT: 1
+
+Q: What is the name of Mars' largest volcano?
+A: Olympus Mons
+B: Valles Marineris
+C: Mount Everest
+D: Mauna Kea
+CORRECT: 0
+
+Q: How long does it take for light to travel from the Sun to Earth?
+A: 8 minutes
+B: 1 hour
+C: 1 day
+D: 1 second
+CORRECT: 0
+
+Q: What is the name of the space telescope that replaced Hubble?
+A: Spitzer
+B: Kepler
+C: James Webb
+D: Chandra
+CORRECT: 2

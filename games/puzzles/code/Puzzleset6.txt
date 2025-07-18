@@ -1,0 +1,69 @@
+Q: Fix the REST API call: fetch('/api/users').then(response => response.___());
+A: json
+B: text
+C: data
+D: parse
+CORRECT: 0
+
+Q: Complete the React hook: const [count, setCount] = React.___();
+A: useState
+B: useEffect
+C: useContext
+D: useReducer
+CORRECT: 0
+
+Q: Fix the CSS-in-JS: const styles = { color: 'blue', fontSize: '16___' };
+A: px
+B: pt
+C: em
+D: rem
+CORRECT: 0
+
+Q: Complete the MongoDB query: db.users.___({ age: { $gte: 18 } });
+A: find
+B: select
+C: get
+D: query
+CORRECT: 0
+
+Q: Fix the Node.js require: const express = ___('express');
+A: require
+B: import
+C: include
+D: load
+CORRECT: 0
+
+Q: Complete the SQL query: SELECT * FROM users ___ age > 18;
+A: WHERE
+B: HAVING
+C: IF
+D: WHEN
+CORRECT: 0
+
+Q: Fix the GraphQL query: query { users { id name ___ } }
+A: email
+B: 'email'
+C: ${email}
+D: email()
+CORRECT: 0
+
+Q: Complete the Docker command: docker ___ -d -p 3000:3000 myapp
+A: run
+B: start
+C: exec
+D: launch
+CORRECT: 0
+
+Q: Fix the package.json script: "start": "node ___"
+A: server.js
+B: index.js
+C: app.js
+D: main.js
+CORRECT: 1
+
+Q: Complete the Git command: git ___ origin main
+A: push
+B: pull
+C: merge
+D: commit
+CORRECT: 0

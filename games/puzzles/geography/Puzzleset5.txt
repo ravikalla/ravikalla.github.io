@@ -1,0 +1,69 @@
+Q: Which country has this flag? 🇯🇵
+A: China
+B: Japan
+C: South Korea
+D: North Korea
+CORRECT: 1
+
+Q: What is the capital of Switzerland?
+A: Zurich
+B: Geneva
+C: Bern
+D: Basel
+CORRECT: 2
+
+Q: Which country has this flag? 🇷🇺
+A: Russia
+B: Czech Republic
+C: Slovakia
+D: Slovenia
+CORRECT: 0
+
+Q: What is the capital of New Zealand?
+A: Auckland
+B: Wellington
+C: Christchurch
+D: Hamilton
+CORRECT: 1
+
+Q: Which country has this flag? 🇦🇷
+A: Chile
+B: Argentina
+C: Uruguay
+D: Paraguay
+CORRECT: 1
+
+Q: What is the capital of South Korea?
+A: Busan
+B: Seoul
+C: Incheon
+D: Daegu
+CORRECT: 1
+
+Q: Which country has this flag? 🇸🇦
+A: Saudi Arabia
+B: UAE
+C: Qatar
+D: Kuwait
+CORRECT: 0
+
+Q: What is the capital of Portugal?
+A: Porto
+B: Lisbon
+C: Braga
+D: Coimbra
+CORRECT: 1
+
+Q: Which continent has the most countries?
+A: Asia
+B: Africa
+C: Europe
+D: South America
+CORRECT: 1
+
+Q: What is the longest mountain range in the world?
+A: Himalayas
+B: Rocky Mountains
+C: Andes
+D: Alps
+CORRECT: 2
