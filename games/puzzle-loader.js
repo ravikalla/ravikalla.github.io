@@ -93,11 +93,11 @@ class PuzzleLoader {
 
     // Load questions progressively
     async loadQuestionsForLevel(level) {
-        // For 10-level games, use different sets for different level ranges
+        // For Space Explorer (levels 1-10) and Geography Quest style games
         let setNumber;
         if (level <= 3) {
             setNumber = 1;
-        } else if (level <= 7) {
+        } else if (level <= 6) {
             setNumber = 2;
         } else {
             setNumber = 3;
@@ -116,7 +116,7 @@ class PuzzleLoader {
         let expectedSet;
         if (level <= 3) {
             expectedSet = 1;
-        } else if (level <= 7) {
+        } else if (level <= 6) {
             expectedSet = 2;
         } else {
             expectedSet = 3;

@@ -299,7 +299,7 @@
 
                 <div class="help-section">
                     <h3>🌌 Game Features</h3>
-                    <p>• 500+ space-related questions across 5 topics</p>
+                    <p>• Multiple question sets with progressive difficulty</p>
                     <p>• 10 progressive levels with increasing difficulty</p>
                     <p>• Topics: Planets, Moons, Stars, Space Exploration, General Astronomy</p>
                     <p>• Level-based scoring with bonus multipliers</p>
@@ -309,7 +309,7 @@
                     <h3>⭐ Scoring</h3>
                     <p>• Correct answers earn points</p>
                     <p>• Higher levels give more points per question</p>
-                    <p>• 50 questions per level = 500+ total questions</p>
+                    <p>• 5 questions per level for quick progression testing</p>
                     <p>• Progressive topic difficulty as you advance</p>
                 </div>
 
@@ -326,7 +326,7 @@
     <script src="game-menu.js"></script>
     <script src="puzzle-loader.js"></script>
     <script>
-        const game = { score: 0, level: 1, facts: 0, currentQuestion: 0, questionsPerLevel: 50 };
+        const game = { score: 0, level: 1, facts: 0, currentQuestion: 0, questionsPerLevel: 5 }; // Reduced for testing
         let puzzleLoader;
         
         // Initialize puzzle loader
@@ -487,6 +487,9 @@
             
             const q = await generateQuestion();
             document.getElementById('questionText').textContent = q.q;
+            
+            // Debug logging
+            console.log(`Current question: ${game.currentQuestion}, Level: ${game.level}, Questions per level: ${game.questionsPerLevel}`);
             
             const answersDiv = document.getElementById('answers');
             answersDiv.innerHTML = '';
