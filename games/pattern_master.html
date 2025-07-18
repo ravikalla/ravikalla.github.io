@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧩 Pattern Master 🔍</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh; overflow: hidden;
+        }
+        .game-container { position: relative; width: 100vw; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .header { position: absolute; top: 20px; display: flex; gap: 20px; }
+        .stat-box { background: rgba(255,255,255,0.9); color: #333; padding: 15px 25px; border-radius: 25px; font-weight: bold; }
+        .pattern-container { background: rgba(255,255,255,0.95); padding: 40px; border-radius: 25px; text-align: center; max-width: 600px; }
+        .pattern-title { font-size: 28px; color: #333; margin-bottom: 30px; }
+        .pattern-grid { display: grid; grid-template-columns: repeat(5, 60px); gap: 10px; justify-content: center; margin: 30px 0; }
+        .pattern-item { width: 60px; height: 60px; border: 3px solid #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; transition: all 0.3s; }
+        .pattern-item:hover { transform: scale(1.1); }
+        .missing { background: #f0f0f0; border-style: dashed; }
+        .choices { display: flex; gap: 15px; justify-content: center; margin-top: 30px; }
+        .choice-btn { width: 80px; height: 80px; border: 3px solid #333; border-radius: 15px; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: all 0.3s; }
+        .choice-btn:hover { transform: scale(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .start-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 200; color: white; }
+        .title { font-size: 48px; margin-bottom: 30px; text-shadow: 0 0 20px #667eea; }
+        .game-button { background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; padding: 20px 40px; font-size: 24px; border-radius: 30px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <div class="stat-box">🏆 Score: <span id="score">0</span></div>
+            <div class="stat-box">🧩 Level: <span id="level">1</span></div>
+            <div class="stat-box">🔥 Streak: <span id="streak">0</span></div>
+        </div>
+        <div class="pattern-container" id="gameArea" style="display: none;">
+            <div class="pattern-title">Complete the pattern!</div>
+            <div class="pattern-grid" id="patternGrid"></div>
+            <div class="choices" id="choices"></div>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h1 class="title">🧩 Pattern Master 🔍</h1>
+            <p style="font-size: 20px; margin: 20px; text-align: center;">Find the missing piece in the pattern!</p>
+            <button class="game-button" onclick="startGame()">🚀 Start Solving!</button>
+        </div>
+    </div>
+    <script>
+        const game = { score: 0, level: 1, streak: 0, currentPattern: [] };
+        const shapes = ['🔴', '🟡', '🟢', '🔵', '🟣', '🟤', '⚫', '⚪', '🔺', '🔷', '🔶', '⭐'];
+        
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+            generatePattern();
+        }
+        
+        function generatePattern() {
+            const grid = document.getElementById('patternGrid');
+            grid.innerHTML = '';
+            game.currentPattern = [];
+            
+            let pattern, missing;
+            
+            if (game.level <= 3) {
+                // Simple alternating pattern
+                const shape1 = shapes[Math.floor(Math.random() * 4)];
+                const shape2 = shapes[Math.floor(Math.random() * 4)];
+                pattern = [shape1, shape2, shape1, shape2, shape1];
+                missing = 2; // Middle position
+                game.currentPattern = pattern;
+            } else if (game.level <= 6) {
+                // Sequence pattern
+                const shape1 = shapes[Math.floor(Math.random() * 6)];
+                const shape2 = shapes[Math.floor(Math.random() * 6)];
+                const shape3 = shapes[Math.floor(Math.random() * 6)];
+                pattern = [shape1, shape2, shape3, shape1, shape2];
+                missing = 4;
+                game.currentPattern = pattern;
+            } else {
+                // Complex pattern
+                pattern = [];
+                for (let i = 0; i < 5; i++) {
+                    pattern.push(shapes[i % 4]);
+                }
+                missing = Math.floor(Math.random() * 5);
+                game.currentPattern = pattern;
+            }
+            
+            // Create grid
+            pattern.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'pattern-item';
+                if (index === missing) {
+                    div.className += ' missing';
+                    div.textContent = '?';
+                } else {
+                    div.textContent = item;
+                }
+                grid.appendChild(div);
+            });
+            
+            // Create choices
+            createChoices(pattern[missing]);
+        }
+        
+        function createChoices(correct) {
+            const choicesDiv = document.getElementById('choices');
+            choicesDiv.innerHTML = '';
+            
+            const choices = [correct];
+            while (choices.length < 4) {
+                const random = shapes[Math.floor(Math.random() * shapes.length)];
+                if (!choices.includes(random)) choices.push(random);
+            }
+            
+            choices.sort(() => Math.random() - 0.5);
+            
+            choices.forEach(choice => {
+                const btn = document.createElement('div');
+                btn.className = 'choice-btn';
+                btn.textContent = choice;
+                btn.onclick = () => checkAnswer(choice, correct);
+                choicesDiv.appendChild(btn);
+            });
+        }
+        
+        function checkAnswer(selected, correct) {
+            if (selected === correct) {
+                game.score += 100 + game.streak * 10;
+                game.streak++;
+                alert('🎉 Correct! Great pattern recognition!');
+            } else {
+                game.streak = 0;
+                alert('🤔 Not quite! Look at the pattern more carefully.');
+            }
+            
+            game.level++;
+            updateDisplay();
+            setTimeout(generatePattern, 1000);
+        }
+        
+        function updateDisplay() {
+            document.getElementById('score').textContent = game.score;
+            document.getElementById('level').textContent = game.level;
+            document.getElementById('streak').textContent = game.streak;
+        }
+    </script>
+</body>
+</html>

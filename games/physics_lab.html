@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚗️ Physics Lab Simulator 🔬</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh; overflow: hidden;
+        }
+        .game-container { position: relative; width: 100vw; height: 100vh; }
+        .lab-interface { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); padding: 40px; border-radius: 25px; max-width: 700px; }
+        .header { display: flex; justify-content: space-between; margin-bottom: 30px; }
+        .stat { background: #667eea; color: white; padding: 10px 20px; border-radius: 15px; font-weight: bold; }
+        .experiment-area { text-align: center; }
+        .experiment-title { font-size: 28px; color: #333; margin-bottom: 20px; }
+        .physics-demo { background: #f0f8ff; border: 3px solid #667eea; border-radius: 15px; padding: 30px; margin: 20px 0; min-height: 200px; position: relative; overflow: hidden; }
+        .ball { width: 30px; height: 30px; background: #ff6b6b; border-radius: 50%; position: absolute; transition: all 2s ease-in-out; }
+        .controls { display: flex; gap: 15px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+        .control-btn { background: #667eea; color: white; border: none; padding: 15px 25px; border-radius: 10px; cursor: pointer; font-size: 16px; }
+        .control-btn:hover { background: #5a6fd8; }
+        .question-area { background: #ffe6e6; padding: 20px; border-radius: 15px; margin: 20px 0; }
+        .quiz-answers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .answer-btn { background: white; border: 2px solid #667eea; padding: 10px; border-radius: 8px; cursor: pointer; }
+        .answer-btn:hover { background: #667eea; color: white; }
+        .start-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 200; color: white; }
+        .title { font-size: 48px; margin-bottom: 30px; text-shadow: 0 0 20px #667eea; }
+        .game-button { background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; padding: 20px 40px; font-size: 24px; border-radius: 30px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="lab-interface" id="gameArea" style="display: none;">
+            <div class="header">
+                <div class="stat">🏆 Score: <span id="score">0</span></div>
+                <div class="stat">🔬 Experiments: <span id="experiments">1</span></div>
+                <div class="stat">⚡ Level: <span id="level">1</span></div>
+            </div>
+            <div class="experiment-area">
+                <div class="experiment-title" id="expTitle">Gravity Experiment</div>
+                <div class="physics-demo" id="demoArea">
+                    <div class="ball" id="ball" style="top: 20px; left: 50%;"></div>
+                    <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 20px;">🌍 Ground</div>
+                </div>
+                <div class="controls">
+                    <button class="control-btn" onclick="dropBall()">Drop Ball</button>
+                    <button class="control-btn" onclick="resetExp()">Reset</button>
+                    <button class="control-btn" onclick="changeMass()">Change Mass</button>
+                </div>
+                <div class="question-area" id="questionArea">
+                    <div style="font-weight: bold; margin-bottom: 10px;">What happens when we drop the ball?</div>
+                    <div class="quiz-answers">
+                        <button class="answer-btn" onclick="checkAnswer(0)">It falls slowly</button>
+                        <button class="answer-btn" onclick="checkAnswer(1)">It falls quickly</button>
+                        <button class="answer-btn" onclick="checkAnswer(2)">It floats up</button>
+                        <button class="answer-btn" onclick="checkAnswer(3)">It stays still</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h1 class="title">⚗️ Physics Lab 🔬</h1>
+            <p style="font-size: 20px; margin: 20px; text-align: center;">Discover the laws of physics through fun experiments!</p>
+            <button class="game-button" onclick="startGame()">🧪 Enter Lab!</button>
+        </div>
+    </div>
+    <script>
+        const game = { score: 0, experiments: 1, level: 1, currentExp: 0 };
+        
+        const experiments = [
+            {
+                title: "Gravity Experiment",
+                question: "What happens when we drop the ball?",
+                answers: ["It falls slowly", "It falls quickly", "It floats up", "It stays still"],
+                correct: 1
+            },
+            {
+                title: "Motion Study",
+                question: "What makes the ball move faster?",
+                answers: ["More height", "Less weight", "More air", "Less gravity"],
+                correct: 0
+            },
+            {
+                title: "Force Analysis", 
+                question: "What force pulls the ball down?",
+                answers: ["Magnetism", "Gravity", "Wind", "Friction"],
+                correct: 1
+            }
+        ];
+        
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+            loadExperiment();
+        }
+        
+        function loadExperiment() {
+            const exp = experiments[game.currentExp % experiments.length];
+            document.getElementById('expTitle').textContent = exp.title;
+            
+            const questionArea = document.getElementById('questionArea');
+            questionArea.innerHTML = `
+                <div style="font-weight: bold; margin-bottom: 10px;">${exp.question}</div>
+                <div class="quiz-answers">
+                    ${exp.answers.map((answer, index) => 
+                        `<button class="answer-btn" onclick="checkAnswer(${index})">${answer}</button>`
+                    ).join('')}
+                </div>
+            `;
+            
+            resetExp();
+        }
+        
+        function dropBall() {
+            const ball = document.getElementById('ball');
+            ball.style.top = '150px';
+        }
+        
+        function resetExp() {
+            const ball = document.getElementById('ball');
+            ball.style.top = '20px';
+            ball.style.left = '50%';
+        }
+        
+        function changeMass() {
+            const ball = document.getElementById('ball');
+            const currentSize = ball.style.width || '30px';
+            const newSize = currentSize === '30px' ? '50px' : '30px';
+            ball.style.width = ball.style.height = newSize;
+        }
+        
+        function checkAnswer(selected) {
+            const exp = experiments[game.currentExp % experiments.length];
+            if (selected === exp.correct) {
+                game.score += 200;
+                alert('🔬 Excellent! You understand physics!');
+                
+                game.currentExp++;
+                game.experiments++;
+                game.level = Math.floor(game.experiments / 2) + 1;
+                
+                updateDisplay();
+                
+                if (game.currentExp < experiments.length) {
+                    setTimeout(loadExperiment, 1000);
+                } else {
+                    alert('🎉 Lab Complete! You mastered basic physics!');
+                }
+            } else {
+                alert('🤔 Try the experiment again and observe carefully!');
+            }
+        }
+        
+        function updateDisplay() {
+            document.getElementById('score').textContent = game.score;
+            document.getElementById('experiments').textContent = game.experiments;
+            document.getElementById('level').textContent = game.level;
+        }
+    </script>
+</body>
+</html>

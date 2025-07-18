@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Space Explorer Quiz 🌟</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white; height: 100vh; overflow: hidden;
+        }
+        .game-container { position: relative; width: 100vw; height: 100vh; }
+        .stars { position: absolute; width: 100%; height: 100%; }
+        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 2s infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .header { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 100; }
+        .stat-box { background: rgba(255,255,255,0.9); color: #333; padding: 15px 25px; border-radius: 25px; font-weight: bold; font-size: 18px; }
+        .question-panel { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); padding: 40px; border-radius: 25px; max-width: 600px; text-align: center; color: #333; }
+        .question-text { font-size: 24px; margin-bottom: 30px; font-weight: bold; }
+        .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .answer-btn { background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; padding: 15px; border-radius: 15px; font-size: 18px; cursor: pointer; transition: all 0.3s; }
+        .answer-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .start-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 200; }
+        .title { font-size: 48px; margin-bottom: 30px; text-shadow: 0 0 20px #667eea; }
+        .game-button { background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; padding: 20px 40px; font-size: 24px; border-radius: 30px; cursor: pointer; margin: 10px; }
+        .planet { position: absolute; border-radius: 50%; animation: planetFloat 6s ease-in-out infinite; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="stars" id="stars"></div>
+        <div class="header">
+            <div class="stat-box">🏆 Score: <span id="score">0</span></div>
+            <div class="stat-box">🚀 Level: <span id="level">1</span></div>
+            <div class="stat-box">🌟 Facts: <span id="facts">0</span></div>
+        </div>
+        <div class="question-panel" id="questionPanel" style="display: none;">
+            <div class="question-text" id="questionText"></div>
+            <div class="answers" id="answers"></div>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h1 class="title">🚀 Space Explorer 🌟</h1>
+            <p style="font-size: 20px; margin: 20px; text-align: center;">Explore the universe and learn amazing space facts!</p>
+            <button class="game-button" onclick="startGame()">🌌 Launch Mission!</button>
+        </div>
+    </div>
+    <script>
+        const game = { score: 0, level: 1, facts: 0, currentQuestion: 0 };
+        const questions = [
+            { q: "What is the closest planet to the Sun?", a: ["Mercury", "Venus", "Earth", "Mars"], correct: 0 },
+            { q: "How many moons does Earth have?", a: ["0", "1", "2", "3"], correct: 1 },
+            { q: "Which planet is known as the Red Planet?", a: ["Venus", "Mars", "Jupiter", "Saturn"], correct: 1 },
+            { q: "What is the largest planet in our solar system?", a: ["Saturn", "Neptune", "Jupiter", "Uranus"], correct: 2 },
+            { q: "Which planet has beautiful rings?", a: ["Jupiter", "Saturn", "Uranus", "Neptune"], correct: 1 },
+            { q: "What do we call a group of stars that form a picture?", a: ["Galaxy", "Constellation", "Nebula", "Comet"], correct: 1 },
+            { q: "What is the name of our galaxy?", a: ["Andromeda", "Milky Way", "Whirlpool", "Spiral"], correct: 1 },
+            { q: "What do astronauts wear in space?", a: ["Regular clothes", "Swimsuit", "Space suit", "Pajamas"], correct: 2 }
+        ];
+        
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('questionPanel').style.display = 'block';
+            loadQuestion();
+        }
+        
+        function loadQuestion() {
+            if (game.currentQuestion >= questions.length) {
+                alert('🎉 Mission Complete! You learned ' + game.facts + ' space facts!');
+                return;
+            }
+            
+            const q = questions[game.currentQuestion];
+            document.getElementById('questionText').textContent = q.q;
+            
+            const answersDiv = document.getElementById('answers');
+            answersDiv.innerHTML = '';
+            
+            q.a.forEach((answer, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'answer-btn';
+                btn.textContent = answer;
+                btn.onclick = () => checkAnswer(index);
+                answersDiv.appendChild(btn);
+            });
+        }
+        
+        function checkAnswer(selected) {
+            const correct = questions[game.currentQuestion].correct;
+            if (selected === correct) {
+                game.score += 100;
+                game.facts++;
+                alert('🌟 Correct! Great job, space explorer!');
+            } else {
+                alert('🚀 Not quite right, but keep exploring!');
+            }
+            
+            game.currentQuestion++;
+            if (game.currentQuestion % 3 === 0) game.level++;
+            
+            updateDisplay();
+            setTimeout(loadQuestion, 1000);
+        }
+        
+        function updateDisplay() {
+            document.getElementById('score').textContent = game.score;
+            document.getElementById('level').textContent = game.level;
+            document.getElementById('facts').textContent = game.facts;
+        }
+        
+        createStars();
+    </script>
+</body>
+</html>

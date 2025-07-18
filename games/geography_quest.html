@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Geography Quest 🗺️</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(180deg, #87CEEB 0%, #32CD32 40%, #8B4513 100%);
+            height: 100vh; overflow: hidden;
+        }
+        .game-container { position: relative; width: 100vw; height: 100vh; }
+        .header { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 100; }
+        .stat-box { background: rgba(255,255,255,0.9); color: #333; padding: 15px 25px; border-radius: 25px; font-weight: bold; }
+        .quiz-panel { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); padding: 40px; border-radius: 25px; text-align: center; max-width: 600px; }
+        .question-text { font-size: 24px; color: #333; margin-bottom: 30px; }
+        .flag-display { font-size: 120px; margin: 20px 0; }
+        .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .answer-btn { background: linear-gradient(45deg, #FF6B35, #F7931E); color: white; border: none; padding: 15px; border-radius: 15px; font-size: 18px; cursor: pointer; transition: all 0.3s; }
+        .answer-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .start-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 200; color: white; }
+        .title { font-size: 48px; margin-bottom: 30px; text-shadow: 0 0 20px #FF6B35; }
+        .game-button { background: linear-gradient(45deg, #FF6B35, #F7931E); color: white; border: none; padding: 20px 40px; font-size: 24px; border-radius: 30px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <div class="stat-box">🏆 Score: <span id="score">0</span></div>
+            <div class="stat-box">🌍 Level: <span id="level">1</span></div>
+            <div class="stat-box">🗺️ Countries: <span id="countries">0</span></div>
+        </div>
+        <div class="quiz-panel" id="gameArea" style="display: none;">
+            <div class="question-text" id="questionText"></div>
+            <div class="flag-display" id="flagDisplay"></div>
+            <div class="answers" id="answers"></div>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h1 class="title">🌍 Geography Quest 🗺️</h1>
+            <p style="font-size: 20px; margin: 20px; text-align: center;">Explore the world and learn about countries!</p>
+            <button class="game-button" onclick="startGame()">🌟 Start Journey!</button>
+        </div>
+    </div>
+    <script>
+        const game = { score: 0, level: 1, countries: 0, currentQuestion: 0 };
+        
+        const questions = [
+            { q: "Which country has this flag?", flag: "🇺🇸", answers: ["United States", "Canada", "Mexico", "Brazil"], correct: 0 },
+            { q: "What is the capital of France?", flag: "🇫🇷", answers: ["London", "Berlin", "Paris", "Rome"], correct: 2 },
+            { q: "Which country has this flag?", flag: "🇯🇵", answers: ["China", "Japan", "Korea", "Thailand"], correct: 1 },
+            { q: "What is the capital of Italy?", flag: "🇮🇹", answers: ["Milan", "Naples", "Venice", "Rome"], correct: 3 },
+            { q: "Which country has this flag?", flag: "🇬🇧", answers: ["Ireland", "United Kingdom", "Scotland", "Wales"], correct: 1 },
+            { q: "What is the capital of Germany?", flag: "🇩🇪", answers: ["Munich", "Hamburg", "Berlin", "Frankfurt"], correct: 2 },
+            { q: "Which country has this flag?", flag: "🇨🇦", answers: ["United States", "Canada", "Australia", "New Zealand"], correct: 1 },
+            { q: "What is the capital of Australia?", flag: "🇦🇺", answers: ["Sydney", "Melbourne", "Canberra", "Perth"], correct: 2 }
+        ];
+        
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+            loadQuestion();
+        }
+        
+        function loadQuestion() {
+            if (game.currentQuestion >= questions.length) {
+                alert('🎉 Amazing! You explored ' + game.countries + ' countries!');
+                return;
+            }
+            
+            const q = questions[game.currentQuestion];
+            document.getElementById('questionText').textContent = q.q;
+            document.getElementById('flagDisplay').textContent = q.flag;
+            
+            const answersDiv = document.getElementById('answers');
+            answersDiv.innerHTML = '';
+            
+            q.answers.forEach((answer, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'answer-btn';
+                btn.textContent = answer;
+                btn.onclick = () => checkAnswer(index);
+                answersDiv.appendChild(btn);
+            });
+        }
+        
+        function checkAnswer(selected) {
+            const correct = questions[game.currentQuestion].correct;
+            if (selected === correct) {
+                game.score += 100;
+                game.countries++;
+                alert('🌟 Correct! Great geography knowledge!');
+            } else {
+                alert('🗺️ Not quite! Keep exploring to learn more!');
+            }
+            
+            game.currentQuestion++;
+            if (game.currentQuestion % 2 === 0) game.level++;
+            
+            updateDisplay();
+            setTimeout(loadQuestion, 1000);
+        }
+        
+        function updateDisplay() {
+            document.getElementById('score').textContent = game.score;
+            document.getElementById('level').textContent = game.level;
+            document.getElementById('countries').textContent = game.countries;
+        }
+    </script>
+</body>
+</html>

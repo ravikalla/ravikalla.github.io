@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Word Hunter Forest 🌲</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(180deg, #87CEEB 0%, #98FB98 50%, #228B22 100%);
+            height: 100vh; overflow: hidden;
+        }
+        .game-container { position: relative; width: 100vw; height: 100vh; }
+        .header { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 100; }
+        .stat-box { background: rgba(255,255,255,0.9); color: #333; padding: 15px 25px; border-radius: 25px; font-weight: bold; border: 3px solid #4CAF50; }
+        .word-panel { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); padding: 40px; border-radius: 25px; text-align: center; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .word-display { font-size: 48px; color: #333; margin: 30px 0; letter-spacing: 8px; font-family: monospace; }
+        .letter-input { display: flex; gap: 10px; justify-content: center; margin: 30px 0; flex-wrap: wrap; }
+        .letter-btn { width: 50px; height: 50px; border: 3px solid #4CAF50; background: white; border-radius: 10px; font-size: 24px; cursor: pointer; transition: all 0.3s; }
+        .letter-btn:hover { background: #4CAF50; color: white; transform: scale(1.1); }
+        .letter-btn:disabled { background: #ccc; border-color: #ccc; cursor: not-allowed; }
+        .hint-area { background: #E8F5E8; padding: 20px; border-radius: 15px; margin: 20px 0; border: 2px solid #4CAF50; }
+        .start-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 200; color: white; }
+        .title { font-size: 48px; margin-bottom: 30px; text-shadow: 0 0 20px #4CAF50; }
+        .game-button { background: #4CAF50; color: white; border: none; padding: 20px 40px; font-size: 24px; border-radius: 30px; cursor: pointer; }
+        .forest-bg { position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><polygon fill="%23228B22" points="0,20 20,0 40,20 60,0 80,20 100,0 100,20"/></svg>') repeat-x; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="forest-bg"></div>
+        <div class="header">
+            <div class="stat-box">🏆 Score: <span id="score">0</span></div>
+            <div class="stat-box">📖 Level: <span id="level">1</span></div>
+            <div class="stat-box">🔤 Words: <span id="words">0</span></div>
+        </div>
+        <div class="word-panel" id="gameArea" style="display: none;">
+            <div style="font-size: 24px; color: #4CAF50; margin-bottom: 20px;">Spell the word!</div>
+            <div class="hint-area" id="hintArea"></div>
+            <div class="word-display" id="wordDisplay"></div>
+            <div class="letter-input" id="letterButtons"></div>
+            <button class="game-button" onclick="nextWord()" id="nextBtn" style="display: none;">Next Word 🌟</button>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h1 class="title">📚 Word Hunter 🌲</h1>
+            <p style="font-size: 20px; margin: 20px; text-align: center;">Hunt for letters to spell amazing words!</p>
+            <button class="game-button" onclick="startGame()">🌟 Start Hunting!</button>
+        </div>
+    </div>
+    <script>
+        const game = { score: 0, level: 1, words: 0, currentWord: '', currentHint: '', guessedLetters: [], correctGuesses: 0 };
+        
+        const wordList = [
+            { word: 'CAT', hint: '🐱 A furry pet that says meow' },
+            { word: 'DOG', hint: '🐕 A loyal pet that barks' },
+            { word: 'SUN', hint: '☀️ Bright star in the sky' },
+            { word: 'TREE', hint: '🌳 Tall plant in the forest' },
+            { word: 'BIRD', hint: '🐦 Flying animal with wings' },
+            { word: 'FISH', hint: '🐟 Animal that swims in water' },
+            { word: 'FLOWER', hint: '🌸 Beautiful plant that blooms' },
+            { word: 'RAINBOW', hint: '🌈 Colorful arc in the sky' },
+            { word: 'BUTTERFLY', hint: '🦋 Beautiful flying insect' },
+            { word: 'ELEPHANT', hint: '🐘 Large animal with a trunk' }
+        ];
+        
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+            nextWord();
+        }
+        
+        function nextWord() {
+            if (game.words >= wordList.length) {
+                alert('🎉 Congratulations! You found all the words in the forest!');
+                return;
+            }
+            
+            const wordData = wordList[game.words];
+            game.currentWord = wordData.word;
+            game.currentHint = wordData.hint;
+            game.guessedLetters = [];
+            game.correctGuesses = 0;
+            
+            document.getElementById('hintArea').innerHTML = game.currentHint;
+            document.getElementById('nextBtn').style.display = 'none';
+            
+            displayWord();
+            createLetterButtons();
+        }
+        
+        function displayWord() {
+            let display = '';
+            for (let letter of game.currentWord) {
+                if (game.guessedLetters.includes(letter)) {
+                    display += letter + ' ';
+                } else {
+                    display += '_ ';
+                }
+            }
+            document.getElementById('wordDisplay').textContent = display.trim();
+        }
+        
+        function createLetterButtons() {
+            const container = document.getElementById('letterButtons');
+            container.innerHTML = '';
+            
+            // Create buttons for unique letters in the word plus some extras
+            const letters = [...new Set(game.currentWord.split(''))];
+            const extraLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+                .filter(l => !letters.includes(l))
+                .slice(0, Math.min(6, 26 - letters.length));
+            
+            const allLetters = [...letters, ...extraLetters].sort();
+            
+            allLetters.forEach(letter => {
+                const btn = document.createElement('button');
+                btn.className = 'letter-btn';
+                btn.textContent = letter;
+                btn.onclick = () => guessLetter(letter, btn);
+                container.appendChild(btn);
+            });
+        }
+        
+        function guessLetter(letter, button) {
+            button.disabled = true;
+            game.guessedLetters.push(letter);
+            
+            if (game.currentWord.includes(letter)) {
+                button.style.background = '#4CAF50';
+                button.style.color = 'white';
+                game.score += 10;
+                
+                // Count correct letters
+                for (let l of game.currentWord) {
+                    if (l === letter) game.correctGuesses++;
+                }
+                
+                displayWord();
+                
+                if (game.correctGuesses === game.currentWord.length) {
+                    game.score += 50;
+                    game.words++;
+                    game.level = Math.floor(game.words / 2) + 1;
+                    updateDisplay();
+                    
+                    setTimeout(() => {
+                        alert('🌟 Perfect! You spelled ' + game.currentWord + '!');
+                        document.getElementById('nextBtn').style.display = 'block';
+                    }, 500);
+                }
+            } else {
+                button.style.background = '#ff6b6b';
+                button.style.color = 'white';
+            }
+            
+            updateDisplay();
+        }
+        
+        function updateDisplay() {
+            document.getElementById('score').textContent = game.score;
+            document.getElementById('level').textContent = game.level;
+            document.getElementById('words').textContent = game.words;
+        }
+    </script>
+</body>
+</html>

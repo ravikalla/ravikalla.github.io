@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💻 Code Breaker Academy 🔓</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f3460 100%);
+            color: #00ff00; height: 100vh; overflow: hidden;
+        }
+        .game-container { position: relative; width: 100vw; height: 100vh; padding: 20px; }
+        .terminal { background: rgba(0,0,0,0.8); border: 2px solid #00ff00; border-radius: 10px; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; margin-bottom: 30px; }
+        .stat { background: rgba(0,255,0,0.1); padding: 10px 20px; border-radius: 10px; border: 1px solid #00ff00; }
+        .challenge-area { margin: 30px 0; }
+        .challenge-title { font-size: 24px; color: #ffff00; margin-bottom: 20px; }
+        .code-block { background: rgba(0,0,0,0.5); border: 1px solid #333; padding: 20px; border-radius: 8px; margin: 15px 0; font-family: 'Courier New', monospace; }
+        .code-line { margin: 5px 0; }
+        .missing-code { background: #333; color: #888; border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+        .code-choices { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+        .choice-btn { background: #333; color: #00ff00; border: 1px solid #00ff00; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: all 0.3s; }
+        .choice-btn:hover { background: #00ff00; color: #000; }
+        .start-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 200; }
+        .title { font-size: 48px; color: #00ff00; margin-bottom: 30px; text-shadow: 0 0 20px #00ff00; }
+        .game-button { background: #00ff00; color: #000; border: none; padding: 20px 40px; font-size: 24px; border-radius: 10px; cursor: pointer; font-family: 'Courier New', monospace; }
+        .output { background: rgba(0,50,0,0.3); border-left: 3px solid #00ff00; padding: 15px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="terminal" id="terminal" style="display: none;">
+            <div class="header">
+                <div class="stat">SCORE: <span id="score">0</span></div>
+                <div class="stat">LEVEL: <span id="level">1</span></div>
+                <div class="stat">HACKS: <span id="hacks">0</span></div>
+            </div>
+            <div class="challenge-area">
+                <div class="challenge-title" id="challengeTitle">Fix the code to make it work!</div>
+                <div class="code-block" id="codeBlock"></div>
+                <div class="code-choices" id="choices"></div>
+                <div class="output" id="output"></div>
+            </div>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h1 class="title">💻 CODE BREAKER 🔓</h1>
+            <p style="font-size: 20px; margin: 20px; text-align: center; color: #00ff00;">Learn programming by fixing broken code!</p>
+            <button class="game-button" onclick="startGame()">INITIALIZE SYSTEM</button>
+        </div>
+    </div>
+    <script>
+        const game = { score: 0, level: 1, hacks: 0, currentChallenge: 0 };
+        
+        const challenges = [
+            {
+                title: "Fix the missing semicolon",
+                code: ["console.log('Hello World')___"],
+                missing: 0,
+                choices: [";", ":", ",", "."],
+                correct: 0,
+                output: "Hello World"
+            },
+            {
+                title: "Complete the if statement",
+                code: ["___ (x > 5) {", "  console.log('Big number');", "}"],
+                missing: 0,
+                choices: ["if", "while", "for", "when"],
+                correct: 0,
+                output: "Checks if x is greater than 5"
+            },
+            {
+                title: "Fix the loop",
+                code: ["for (let i = 0; i < 10; i___) {", "  console.log(i);", "}"],
+                missing: 0,
+                choices: ["++", "--", "+=", "=+"],
+                correct: 0,
+                output: "Prints numbers 0 to 9"
+            },
+            {
+                title: "Complete the function",
+                code: ["___ addNumbers(a, b) {", "  return a + b;", "}"],
+                missing: 0,
+                choices: ["function", "var", "let", "const"],
+                correct: 0,
+                output: "Function that adds two numbers"
+            },
+            {
+                title: "Fix the array access",
+                code: ["let fruits = ['apple', 'banana'];", "console.log(fruits___0___);"],
+                missing: 0,
+                choices: ["[", "(", "{", "<"],
+                correct: 0,
+                output: "apple"
+            }
+        ];
+        
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('terminal').style.display = 'block';
+            loadChallenge();
+        }
+        
+        function loadChallenge() {
+            if (game.currentChallenge >= challenges.length) {
+                document.getElementById('output').innerHTML = '<div style="color: #ffff00;">🎉 SYSTEM FULLY HACKED! You completed all challenges!</div>';
+                return;
+            }
+            
+            const challenge = challenges[game.currentChallenge];
+            document.getElementById('challengeTitle').textContent = challenge.title;
+            
+            // Display code with missing part
+            const codeBlock = document.getElementById('codeBlock');
+            codeBlock.innerHTML = '';
+            
+            challenge.code.forEach(line => {
+                const div = document.createElement('div');
+                div.className = 'code-line';
+                if (line.includes('___')) {
+                    div.innerHTML = line.replace('___', '<span class="missing-code">???</span>');
+                } else {
+                    div.textContent = line;
+                }
+                codeBlock.appendChild(div);
+            });
+            
+            // Display choices
+            const choicesDiv = document.getElementById('choices');
+            choicesDiv.innerHTML = '';
+            
+            challenge.choices.forEach((choice, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = choice;
+                btn.onclick = () => checkAnswer(index, challenge);
+                choicesDiv.appendChild(btn);
+            });
+            
+            document.getElementById('output').innerHTML = '<div style="color: #888;">Select the correct code to fix the bug...</div>';
+        }
+        
+        function checkAnswer(selected, challenge) {
+            const outputDiv = document.getElementById('output');
+            
+            if (selected === challenge.correct) {
+                game.score += 200;
+                game.hacks++;
+                outputDiv.innerHTML = `<div style="color: #00ff00;">✓ FIXED! Output: ${challenge.output}</div>`;
+                
+                setTimeout(() => {
+                    game.currentChallenge++;
+                    game.level++;
+                    updateDisplay();
+                    loadChallenge();
+                }, 2000);
+            } else {
+                outputDiv.innerHTML = '<div style="color: #ff0000;">✗ SYNTAX ERROR! Try again.</div>';
+            }
+            
+            updateDisplay();
+        }
+        
+        function updateDisplay() {
+            document.getElementById('score').textContent = game.score;
+            document.getElementById('level').textContent = game.level;
+            document.getElementById('hacks').textContent = game.hacks;
+        }
+        
+        // Add typing effect
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+    </script>
+</body>
+</html>

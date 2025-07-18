@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔢 Math Adventure 🐻</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #74b9ff, #0dff72, #74b9ff);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .game-header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            border: 4px solid #ff6b9d;
+            animation: statBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes statBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .problem-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 5px solid #4ecdc4;
+            min-width: 400px;
+        }
+
+        .problem-text {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .visual-aid {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .visual-item {
+            font-size: 40px;
+            animation: itemFloat 2s ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes itemFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .answer-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .answer-btn {
+            background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+            border: none;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .answer-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .answer-btn.correct {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            animation: correctPulse 0.6s ease;
+        }
+
+        .answer-btn.wrong {
+            background: linear-gradient(45d, #e17055, #d63031);
+            animation: wrongShake 0.6s ease;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes wrongShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .feedback {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 200;
+        }
+
+        .feedback.show {
+            animation: feedbackShow 2s ease forwards;
+        }
+
+        @keyframes feedbackShow {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .character {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            font-size: 120px;
+            animation: characterBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes characterBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .start-screen, .level-complete {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 300;
+        }
+
+        .game-title {
+            font-size: 56px;
+            color: #fff;
+            text-shadow: 0 0 30px #ff6b9d;
+            margin-bottom: 30px;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 30px #ff6b9d; }
+            to { text-shadow: 0 0 50px #4ecdc4; }
+        }
+
+        .game-button {
+            background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+            border: none;
+            padding: 20px 50px;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            border-radius: 35px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            margin: 15px;
+        }
+
+        .game-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .instructions {
+            color: #fff;
+            font-size: 22px;
+            text-align: center;
+            margin: 30px;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 24px;
+            animation: particleFloat 3s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <!-- Floating particles -->
+        <div id="particlesContainer"></div>
+        
+        <!-- Game header -->
+        <div class="game-header">
+            <div class="stat-box">
+                🏆 Score: <span id="score">0</span>
+            </div>
+            <div class="stat-box">
+                📊 Level: <span id="level">1</span>
+            </div>
+            <div class="stat-box">
+                ⭐ Streak: <span id="streak">0</span>
+            </div>
+        </div>
+        
+        <!-- Problem container -->
+        <div class="problem-container" id="problemContainer" style="display: none;">
+            <div class="problem-text" id="problemText">2 + 3 = ?</div>
+            <div class="visual-aid" id="visualAid"></div>
+            <div class="answer-buttons" id="answerButtons"></div>
+        </div>
+        
+        <!-- Feedback -->
+        <div class="feedback" id="feedback"></div>
+        
+        <!-- Character -->
+        <div class="character" id="character">🐻</div>
+        
+        <!-- Start screen -->
+        <div class="start-screen" id="startScreen">
+            <h1 class="game-title">🔢 Math Adventure 🐻</h1>
+            <div class="instructions">
+                <p>🎯 Help our friendly animals solve math problems!</p>
+                <p>🔢 Start with simple addition and work your way up</p>
+                <p>🌟 Get streaks for bonus points</p>
+                <p>📈 Each level gets a little bit harder</p>
+                <p>💡 Use the visual aids to help you count!</p>
+            </div>
+            <button class="game-button" id="startButton">🚀 Start Adventure!</button>
+        </div>
+        
+        <!-- Level complete screen -->
+        <div class="level-complete" id="levelComplete" style="display: none;">
+            <h1 class="game-title">🎉 Level Complete! 🎉</h1>
+            <div class="stat-box" style="margin: 20px; font-size: 28px;">
+                Great job! Ready for the next challenge?
+            </div>
+            <button class="game-button" id="nextLevelButton">➡️ Next Level!</button>
+        </div>
+    </div>
+
+    <script src="math_adventure.js"></script>
+</body>
+</html>
