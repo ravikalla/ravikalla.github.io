@@ -1,0 +1,69 @@
+Q: What is the capital of Ecuador?
+A: Quito
+B: Guayaquil
+C: Cuenca
+D: Ambato
+CORRECT: 0
+
+Q: Which country has this flag? 🇲🇦
+A: Mali
+B: Morocco
+C: Madagascar
+D: Mauritania
+CORRECT: 1
+
+Q: What is the largest island in the world?
+A: Madagascar
+B: Greenland
+C: New Guinea
+D: Borneo
+CORRECT: 1
+
+Q: Which river flows through London?
+A: Thames
+B: Severn
+C: Mersey
+D: Trent
+CORRECT: 0
+
+Q: What is the capital of Ghana?
+A: Accra
+B: Kumasi
+C: Tamale
+D: Sekondi
+CORRECT: 0
+
+Q: Which country has this flag? 🇳🇵
+A: Netherlands
+B: Nepal
+C: Norway
+D: Nicaragua
+CORRECT: 1
+
+Q: What is the hottest continent?
+A: Africa
+B: Australia
+C: Asia
+D: South America
+CORRECT: 0
+
+Q: Which canal connects Atlantic and Pacific?
+A: Suez Canal
+B: Panama Canal
+C: Kiel Canal
+D: Corinth Canal
+CORRECT: 1
+
+Q: What is the capital of Paraguay?
+A: Asuncion
+B: Ciudad del Este
+C: San Lorenzo
+D: Luque
+CORRECT: 0
+
+Q: Which volcano destroyed Pompeii?
+A: Etna
+B: Vesuvius
+C: Stromboli
+D: Vulcano
+CORRECT: 1

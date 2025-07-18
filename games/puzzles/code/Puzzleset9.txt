@@ -1,0 +1,69 @@
+Q: What is machine learning?
+A: AI subset
+B: Programming language
+C: Database system
+D: Network protocol
+CORRECT: 0
+
+Q: Which is not a sorting algorithm?
+A: Bubble sort
+B: Quick sort
+C: Hash sort
+D: Merge sort
+CORRECT: 2
+
+Q: What does URL stand for?
+A: Universal Resource Locator
+B: Uniform Resource Locator
+C: Unique Resource Locator
+D: United Resource Locator
+CORRECT: 1
+
+Q: Which is a functional programming language?
+A: Java
+B: C++
+C: Haskell
+D: PHP
+CORRECT: 2
+
+Q: What is Big O notation?
+A: Algorithm complexity
+B: Data structure
+C: Programming pattern
+D: Code optimization
+CORRECT: 0
+
+Q: Which is not a web browser?
+A: Chrome
+B: Firefox
+C: Safari
+D: Apache
+CORRECT: 3
+
+Q: What is encapsulation in OOP?
+A: Data hiding
+B: Code reuse
+C: Multiple inheritance
+D: Method overriding
+CORRECT: 0
+
+Q: Which protocol is secure?
+A: HTTP
+B: FTP
+C: HTTPS
+D: Telnet
+CORRECT: 2
+
+Q: What is a binary tree?
+A: Data structure
+B: Algorithm
+C: Programming language
+D: Database type
+CORRECT: 0
+
+Q: Which is a containerization tool?
+A: Git
+B: Docker
+C: NPM
+D: Webpack
+CORRECT: 1

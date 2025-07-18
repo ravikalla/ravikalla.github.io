@@ -1,0 +1,69 @@
+Q: What is the capital of Costa Rica?
+A: San Jose
+B: Cartago
+C: Alajuela
+D: Puntarenas
+CORRECT: 0
+
+Q: Which country has this flag? 🇨🇷
+A: Croatia
+B: Costa Rica
+C: Cuba
+D: Cyprus
+CORRECT: 1
+
+Q: What is the largest coral reef?
+A: Great Barrier Reef
+B: Belize Barrier Reef
+C: Red Sea Coral Reef
+D: Caribbean Coral Reef
+CORRECT: 0
+
+Q: Which strait separates Africa and Europe?
+A: Bering Strait
+B: Gibraltar Strait
+C: Bosphorus Strait
+D: Hormuz Strait
+CORRECT: 1
+
+Q: What is the capital of Laos?
+A: Vientiane
+B: Luang Prabang
+C: Pakse
+D: Savannakhet
+CORRECT: 0
+
+Q: Which country has this flag? 🇦🇫
+A: Algeria
+B: Afghanistan
+C: Albania
+D: Argentina
+CORRECT: 1
+
+Q: What is the coldest continent?
+A: Antarctica
+B: Arctic
+C: Siberia
+D: Greenland
+CORRECT: 0
+
+Q: Which river forms the border between USA and Mexico?
+A: Colorado River
+B: Rio Grande
+C: Mississippi River
+D: Missouri River
+CORRECT: 1
+
+Q: What is the capital of Panama?
+A: Panama City
+B: Colon
+C: David
+D: Santiago
+CORRECT: 0
+
+Q: Which lake is the deepest?
+A: Lake Superior
+B: Lake Baikal
+C: Lake Tanganyika
+D: Caspian Sea
+CORRECT: 1

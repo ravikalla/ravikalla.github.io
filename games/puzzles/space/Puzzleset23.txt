@@ -1,0 +1,69 @@
+Q: What is the Local Group?
+A: Star cluster
+B: Galaxy cluster
+C: Nebula
+D: Constellation
+CORRECT: 1
+
+Q: How long is a year on Venus?
+A: 225 Earth days
+B: 243 Earth days
+C: 365 Earth days
+D: 687 Earth days
+CORRECT: 0
+
+Q: What is a neutron star made of?
+A: Neutrons
+B: Protons
+C: Electrons
+D: Photons
+CORRECT: 0
+
+Q: Which spacecraft first landed on Mars?
+A: Viking 1
+B: Mars Pathfinder
+C: Spirit
+D: Opportunity
+CORRECT: 0
+
+Q: What is the Solar Constant?
+A: Sun's mass
+B: Solar energy per area
+C: Sun's temperature
+D: Solar wind speed
+CORRECT: 1
+
+Q: How many Earth-sized planets are in our solar system?
+A: 1
+B: 2
+C: 3
+D: 4
+CORRECT: 3
+
+Q: What causes tidal forces?
+A: Solar wind
+B: Gravitational gradient
+C: Magnetic field
+D: Rotation
+CORRECT: 1
+
+Q: Which planet has the most water?
+A: Earth
+B: Mars
+C: Jupiter
+D: Uranus
+CORRECT: 2
+
+Q: What is a Type II supernova?
+A: White dwarf explosion
+B: Massive star collapse
+C: Binary merger
+D: Neutron collision
+CORRECT: 1
+
+Q: How fast does light travel in space?
+A: 186,000 miles/sec
+B: 300,000 km/sec
+C: Both A and B
+D: Neither A nor B
+CORRECT: 2

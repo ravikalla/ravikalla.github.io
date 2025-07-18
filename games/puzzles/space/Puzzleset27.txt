@@ -1,0 +1,69 @@
+Q: What is the Penrose Process?
+A: Black hole energy extraction
+B: Time travel method
+C: Wormhole creation
+D: Dimension folding
+CORRECT: 0
+
+Q: How many space walks have been performed?
+A: 100-200
+B: 200-300
+C: 300-400
+D: 400-500
+CORRECT: 3
+
+Q: What is the Holographic Principle?
+A: 3D information on 2D surface
+B: Light projection
+C: Reality simulation
+D: Dimensional theory
+CORRECT: 0
+
+Q: Which moon has the most craters?
+A: Moon
+B: Callisto
+C: Mimas
+D: Rhea
+CORRECT: 1
+
+Q: What is the Zero Point Energy?
+A: Absolute zero
+B: Vacuum energy
+C: Minimal motion
+D: Energy conservation
+CORRECT: 1
+
+Q: How many space debris objects exist?
+A: 10,000
+B: 100,000
+C: 1 million
+D: 10 million
+CORRECT: 2
+
+Q: What is the Alcubierre metric?
+A: Distance measurement
+B: Spacetime geometry
+C: Speed calculation
+D: Energy formula
+CORRECT: 1
+
+Q: Which planet has the fastest winds?
+A: Jupiter
+B: Saturn
+C: Neptune
+D: Uranus
+CORRECT: 2
+
+Q: What is the Bekenstein Bound?
+A: Information limit
+B: Energy limit
+C: Speed limit
+D: Time limit
+CORRECT: 0
+
+Q: How many space agencies exist worldwide?
+A: 20
+B: 40
+C: 70
+D: 100
+CORRECT: 2

@@ -1,0 +1,69 @@
+Q: What is the Cosmic Horizon?
+A: Edge of universe
+B: Observable limit
+C: Light boundary
+D: Time limit
+CORRECT: 1
+
+Q: How many confirmed black holes exist?
+A: Hundreds
+B: Thousands
+C: Millions
+D: Billions
+CORRECT: 2
+
+Q: What is vacuum decay?
+A: Empty space collapse
+B: Theoretical event
+C: Particle creation
+D: Energy loss
+CORRECT: 1
+
+Q: Which star is closest to Earth?
+A: Alpha Centauri
+B: Proxima Centauri
+C: Barnard's Star
+D: Wolf 359
+CORRECT: 1
+
+Q: What is the Multiverse theory?
+A: Multiple galaxies
+B: Parallel universes
+C: Time travel
+D: Dimension theory
+CORRECT: 1
+
+Q: How hot is the Sun's core?
+A: 15 million K
+B: 20 million K
+C: 25 million K
+D: 30 million K
+CORRECT: 0
+
+Q: What is quantum entanglement?
+A: Particle connection
+B: Energy binding
+C: Force interaction
+D: Space warping
+CORRECT: 0
+
+Q: Which spacecraft has traveled farthest?
+A: Voyager 1
+B: Voyager 2
+C: Pioneer 10
+D: New Horizons
+CORRECT: 0
+
+Q: What is the Anthropic Principle?
+A: Human evolution
+B: Universe fine-tuning
+C: Life probability
+D: Intelligence emergence
+CORRECT: 1
+
+Q: How many atoms are in the observable universe?
+A: 10^80
+B: 10^82
+C: 10^84
+D: 10^86
+CORRECT: 1

@@ -1,0 +1,69 @@
+Q: What is the speed of gravity?
+A: Half light speed
+B: Light speed
+C: Twice light speed
+D: Infinite
+CORRECT: 1
+
+Q: Which moon has geysers?
+A: Europa
+B: Enceladus
+C: Titan
+D: Io
+CORRECT: 1
+
+Q: What is a quasar?
+A: Dead star
+B: Active galaxy nucleus
+C: Neutron star
+D: Binary system
+CORRECT: 1
+
+Q: How many planets have ring systems?
+A: 2
+B: 4
+C: 6
+D: 8
+CORRECT: 1
+
+Q: What is the Kuiper Belt?
+A: Asteroid region
+B: Icy bodies beyond Neptune
+C: Comet cloud
+D: Debris field
+CORRECT: 1
+
+Q: Which spacecraft reached interstellar space first?
+A: Pioneer 10
+B: Voyager 1
+C: Voyager 2
+D: New Horizons
+CORRECT: 1
+
+Q: What causes auroras?
+A: Solar wind
+B: Cosmic rays
+C: Moon gravity
+D: Earth rotation
+CORRECT: 0
+
+Q: How old is the Moon?
+A: 3.5 billion years
+B: 4.5 billion years
+C: 5.5 billion years
+D: 6.5 billion years
+CORRECT: 1
+
+Q: What is a pulsar?
+A: Variable star
+B: Rotating neutron star
+C: Binary system
+D: Black hole
+CORRECT: 1
+
+Q: Which planet rotates backwards?
+A: Mercury
+B: Venus
+C: Uranus
+D: Neptune
+CORRECT: 1

@@ -1,0 +1,69 @@
+Q: What is the Chandrasekhar Limit?
+A: Speed of light limit
+B: Maximum white dwarf mass
+C: Black hole size
+D: Star temperature
+CORRECT: 1
+
+Q: Which spacecraft uses ion propulsion?
+A: Voyager 1
+B: New Horizons
+C: Dawn
+D: Cassini
+CORRECT: 2
+
+Q: What is the Carrington Event?
+A: Asteroid impact
+B: Solar storm
+C: Supernova
+D: Comet discovery
+CORRECT: 1
+
+Q: How many galaxies are in the observable universe?
+A: 100 billion
+B: 200 billion
+C: 2 trillion
+D: 10 trillion
+CORRECT: 2
+
+Q: What is the Roche Limit?
+A: Tidal disruption distance
+B: Speed limit
+C: Temperature limit
+D: Pressure limit
+CORRECT: 0
+
+Q: Which mission first detected methane on Mars?
+A: Viking
+B: Pathfinder
+C: Mars Express
+D: Curiosity
+CORRECT: 2
+
+Q: What percentage of the universe is dark energy?
+A: 27%
+B: 68%
+C: 85%
+D: 95%
+CORRECT: 1
+
+Q: What is a Wolf-Rayet star?
+A: Dead star
+B: Massive hot star
+C: Neutron star
+D: Binary star
+CORRECT: 1
+
+Q: How fast does the ISS travel?
+A: 17,500 mph
+B: 25,000 mph
+C: 35,000 mph
+D: 45,000 mph
+CORRECT: 0
+
+Q: What is the Oort Cloud made of?
+A: Asteroids
+B: Icy bodies
+C: Dark matter
+D: Gas
+CORRECT: 1

@@ -1,0 +1,69 @@
+Q: What is DevOps?
+A: Development Operations
+B: Device Operations
+C: Data Operations
+D: Design Operations
+CORRECT: 0
+
+Q: Which is not a database type?
+A: Relational
+B: NoSQL
+C: Graph
+D: Compiler
+CORRECT: 3
+
+Q: What does JSON stand for?
+A: JavaScript Object Notation
+B: Java Standard Object Notation
+C: Just Simple Object Notation
+D: Joint System Object Notation
+CORRECT: 0
+
+Q: Which is an interpreted language?
+A: C
+B: C++
+C: Python
+D: Rust
+CORRECT: 2
+
+Q: What is a hash table?
+A: Data structure
+B: Algorithm
+C: Programming pattern
+D: Memory type
+CORRECT: 0
+
+Q: Which is not a mobile OS?
+A: iOS
+B: Android
+C: Windows Mobile
+D: Ubuntu
+CORRECT: 3
+
+Q: What is inheritance in OOP?
+A: Code reuse
+B: Data hiding
+C: Method overloading
+D: Exception handling
+CORRECT: 0
+
+Q: Which port is used for FTP?
+A: 21
+B: 22
+C: 23
+D: 25
+CORRECT: 0
+
+Q: What is a linked list?
+A: Data structure
+B: Algorithm
+C: Programming language
+D: Database query
+CORRECT: 0
+
+Q: Which is a build tool?
+A: Git
+B: Maven
+C: Docker
+D: Kubernetes
+CORRECT: 1

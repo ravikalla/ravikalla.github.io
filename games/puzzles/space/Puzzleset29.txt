@@ -1,0 +1,69 @@
+Q: What is the Schwarzschild Radius?
+A: Event horizon size
+B: Planet radius
+C: Star radius
+D: Galaxy radius
+CORRECT: 0
+
+Q: How many space missions have failed?
+A: 10-20%
+B: 30-40%
+C: 50-60%
+D: 70-80%
+CORRECT: 1
+
+Q: What is the Cosmic Inflation?
+A: Universe expansion
+B: Rapid early expansion
+C: Galaxy formation
+D: Star birth
+CORRECT: 1
+
+Q: Which planet has the most eccentric orbit?
+A: Mercury
+B: Mars
+C: Pluto
+D: Eris
+CORRECT: 2
+
+Q: What is the Vacuum Catastrophe?
+A: Theoretical problem
+B: Space collapse
+C: Energy crisis
+D: Particle annihilation
+CORRECT: 0
+
+Q: How many space telescopes have been launched?
+A: 50-100
+B: 100-200
+C: 200-400
+D: 400-800
+CORRECT: 2
+
+Q: What is the Unruh Effect?
+A: Acceleration creates heat
+B: Gravity bends light
+C: Time dilation
+D: Length contraction
+CORRECT: 0
+
+Q: Which asteroid is largest?
+A: Ceres
+B: Vesta
+C: Pallas
+D: Hygiea
+CORRECT: 0
+
+Q: What is the Boltzmann Brain?
+A: Thought experiment
+B: AI system
+C: Neural network
+D: Quantum computer
+CORRECT: 0
+
+Q: How many rocket launches occur yearly?
+A: 50-100
+B: 100-200
+C: 200-400
+D: 400-800
+CORRECT: 1

@@ -1,0 +1,69 @@
+Q: What is the Van Allen Belt?
+A: Asteroid belt
+B: Radiation belt
+C: Comet belt
+D: Debris belt
+CORRECT: 1
+
+Q: How many confirmed exoplanets exist?
+A: 1,000
+B: 5,000
+C: 50,000
+D: 100,000
+CORRECT: 1
+
+Q: What is dark matter?
+A: Black holes
+B: Unknown matter
+C: Dead stars
+D: Empty space
+CORRECT: 1
+
+Q: Which mission studied Saturn's rings?
+A: Voyager
+B: Cassini
+C: Galileo
+D: Juno
+CORRECT: 1
+
+Q: What is a solar prominence?
+A: Sunspot
+B: Plasma loop
+C: Solar flare
+D: Coronal hole
+CORRECT: 1
+
+Q: How many moons does Mars have?
+A: 0
+B: 1
+C: 2
+D: 3
+CORRECT: 2
+
+Q: What is the heliosphere?
+A: Sun's surface
+B: Solar wind boundary
+C: Solar corona
+D: Sunspot region
+CORRECT: 1
+
+Q: Which star will explode as supernova?
+A: Sirius
+B: Betelgeuse
+C: Vega
+D: Canopus
+CORRECT: 1
+
+Q: What is redshift?
+A: Color change
+B: Doppler effect
+C: Light bending
+D: Temperature drop
+CORRECT: 1
+
+Q: How many astronauts have walked on Moon?
+A: 6
+B: 12
+C: 18
+D: 24
+CORRECT: 1

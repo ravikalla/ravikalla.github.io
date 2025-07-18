@@ -1,0 +1,69 @@
+Q: What is artificial intelligence?
+A: Machine intelligence
+B: Human intelligence
+C: Natural intelligence
+D: Emotional intelligence
+CORRECT: 0
+
+Q: Which is not a design pattern?
+A: Singleton
+B: Factory
+C: Observer
+D: Compiler
+CORRECT: 3
+
+Q: What does XML stand for?
+A: eXtensible Markup Language
+B: eXternal Markup Language
+C: eXtra Markup Language
+D: eXecutable Markup Language
+CORRECT: 0
+
+Q: Which is a markup language?
+A: Java
+B: Python
+C: HTML
+D: C++
+CORRECT: 2
+
+Q: What is a graph in data structures?
+A: Visual chart
+B: Node connections
+C: Mathematical function
+D: Program flow
+CORRECT: 1
+
+Q: Which is not a testing type?
+A: Unit testing
+B: Integration testing
+C: System testing
+D: Compilation testing
+CORRECT: 3
+
+Q: What is abstraction in OOP?
+A: Hiding complexity
+B: Code duplication
+C: Variable declaration
+D: Method calling
+CORRECT: 0
+
+Q: Which port is used for SSH?
+A: 21
+B: 22
+C: 23
+D: 25
+CORRECT: 1
+
+Q: What is a queue?
+A: Data structure
+B: Algorithm
+C: Programming language
+D: Database type
+CORRECT: 0
+
+Q: Which is a monitoring tool?
+A: Git
+B: Docker
+C: Prometheus
+D: Webpack
+CORRECT: 2

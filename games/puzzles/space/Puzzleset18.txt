@@ -1,0 +1,69 @@
+Q: What is the Drake Equation used for?
+A: Calculating star distances
+B: Estimating alien civilizations
+C: Measuring black holes
+D: Predicting supernovas
+CORRECT: 1
+
+Q: What is Lagrange Point?
+A: Gravitational balance point
+B: Star formation region
+C: Black hole center
+D: Comet origin
+CORRECT: 0
+
+Q: Which space agency launched Chandrayaan missions?
+A: NASA
+B: ESA
+C: ISRO
+D: JAXA
+CORRECT: 2
+
+Q: What is the Wow! Signal?
+A: Pulsar signal
+B: Potential alien signal
+C: Supernova detection
+D: Radio interference
+CORRECT: 1
+
+Q: How many space stations have humans built?
+A: 5
+B: 8
+C: 11
+D: 14
+CORRECT: 2
+
+Q: What is tidal locking?
+A: Ocean movements
+B: Same face always showing
+C: Gravitational waves
+D: Moon phases
+CORRECT: 1
+
+Q: Which planet has the shortest day?
+A: Mercury
+B: Venus
+C: Jupiter
+D: Saturn
+CORRECT: 2
+
+Q: What is the Cosmic Microwave Background?
+A: Star radiation
+B: Big Bang remnant
+C: Galaxy noise
+D: Solar wind
+CORRECT: 1
+
+Q: How many meteorites hit Earth daily?
+A: 10-50
+B: 100-300
+C: 500-1000
+D: 5000-10000
+CORRECT: 3
+
+Q: What is a rogue planet?
+A: Planet without a star
+B: Destroyed planet
+C: Gas giant
+D: Dwarf planet
+CORRECT: 0

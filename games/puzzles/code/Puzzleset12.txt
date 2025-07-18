@@ -1,0 +1,69 @@
+Q: What is blockchain?
+A: Distributed ledger
+B: Programming language
+C: Database system
+D: Network protocol
+CORRECT: 0
+
+Q: Which is not a web framework?
+A: Django
+B: Flask
+C: Express
+D: MySQL
+CORRECT: 3
+
+Q: What does REST stand for?
+A: Representational State Transfer
+B: Remote State Transfer
+C: Reliable State Transfer
+D: Rapid State Transfer
+CORRECT: 0
+
+Q: Which is a dynamic language?
+A: C
+B: Java
+C: JavaScript
+D: Go
+CORRECT: 2
+
+Q: What is a stack?
+A: Data structure
+B: Algorithm
+C: Programming pattern
+D: Memory type
+CORRECT: 0
+
+Q: Which is not an operating system?
+A: Windows
+B: Linux
+C: macOS
+D: Chrome
+CORRECT: 3
+
+Q: What is method overriding?
+A: Redefining method
+B: Creating method
+C: Deleting method
+D: Calling method
+CORRECT: 0
+
+Q: Which port is used for SMTP?
+A: 21
+B: 22
+C: 23
+D: 25
+CORRECT: 3
+
+Q: What is a tree in data structures?
+A: Hierarchical structure
+B: Linear structure
+C: Circular structure
+D: Random structure
+CORRECT: 0
+
+Q: Which is a package manager?
+A: Git
+B: NPM
+C: Docker
+D: Jenkins
+CORRECT: 1

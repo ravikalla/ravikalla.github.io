@@ -1,0 +1,69 @@
+Q: What is the capital of Chile?
+A: Santiago
+B: Valparaiso
+C: Concepcion
+D: Antofagasta
+CORRECT: 0
+
+Q: Which country has this flag? 🇵🇭
+A: Indonesia
+B: Malaysia
+C: Philippines
+D: Vietnam
+CORRECT: 2
+
+Q: What is the longest mountain range?
+A: Himalayas
+B: Rockies
+C: Andes
+D: Alps
+CORRECT: 2
+
+Q: Which river flows through Paris?
+A: Loire
+B: Seine
+C: Rhone
+D: Garonne
+CORRECT: 1
+
+Q: What is the capital of Morocco?
+A: Rabat
+B: Casablanca
+C: Marrakech
+D: Fez
+CORRECT: 0
+
+Q: Which country has this flag? 🇻🇳
+A: Thailand
+B: Vietnam
+C: Cambodia
+D: Laos
+CORRECT: 1
+
+Q: What is the deepest ocean trench?
+A: Puerto Rico Trench
+B: Mariana Trench
+C: Java Trench
+D: Peru-Chile Trench
+CORRECT: 1
+
+Q: Which desert is the largest?
+A: Sahara
+B: Gobi
+C: Kalahari
+D: Arabian
+CORRECT: 0
+
+Q: What is the capital of Colombia?
+A: Bogota
+B: Medellin
+C: Cali
+D: Cartagena
+CORRECT: 0
+
+Q: Which strait separates Europe and Asia?
+A: Bering Strait
+B: Gibraltar Strait
+C: Bosphorus Strait
+D: Strait of Malacca
+CORRECT: 2
