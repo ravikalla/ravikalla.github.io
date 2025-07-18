@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌈 Rainbow Bubble Quest 🌈</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #a8edea);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .game-header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            border: 3px solid #ff6b9d;
+            animation: statGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes statGlow {
+            from { box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3); }
+            to { box-shadow: 0 4px 25px rgba(255, 107, 157, 0.6); }
+        }
+
+        .hearts {
+            display: flex;
+            gap: 5px;
+        }
+
+        .heart {
+            font-size: 24px;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        canvas {
+            display: block;
+            cursor: none;
+        }
+
+        .start-screen, .game-over-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+        }
+
+        .game-title {
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 0 0 20px #ff6b9d;
+            margin-bottom: 30px;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .game-button {
+            background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+            border: none;
+            padding: 15px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+        }
+
+        .game-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .instructions {
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        .floating-sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: floatSparkle 4s linear infinite;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        @keyframes floatSparkle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <!-- Floating sparkles background -->
+        <div id="sparklesContainer"></div>
+        
+        <!-- Game header -->
+        <div class="game-header">
+            <div class="stat-box">
+                🏆 Score: <span id="score">0</span>
+            </div>
+            <div class="stat-box">
+                🎯 Level: <span id="level">1</span>
+            </div>
+            <div class="stat-box">
+                <div class="hearts" id="hearts">
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game canvas -->
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Start screen -->
+        <div class="start-screen" id="startScreen">
+            <h1 class="game-title">🌈 Rainbow Bubble Quest 🌈</h1>
+            <div class="instructions">
+                <p>🎯 Move your mouse to control the cute fox!</p>
+                <p>🫧 Collect colorful bubbles to score points</p>
+                <p>⚡ Get power-ups for special abilities</p>
+                <p>⚠️ Avoid the spiky obstacles!</p>
+                <p>💖 You have 3 lives - have fun!</p>
+            </div>
+            <button class="game-button" id="startButton">🚀 Start Adventure!</button>
+        </div>
+        
+        <!-- Game over screen -->
+        <div class="game-over-screen" id="gameOverScreen" style="display: none;">
+            <h1 class="game-title">🎉 Great Job! 🎉</h1>
+            <div class="stat-box" style="margin: 20px; font-size: 24px;">
+                Final Score: <span id="finalScore">0</span>
+            </div>
+            <div class="stat-box" style="margin: 20px; font-size: 24px;">
+                Level Reached: <span id="finalLevel">0</span>
+            </div>
+            <button class="game-button" id="restartButton">🔄 Play Again!</button>
+        </div>
+    </div>
+
+    <script src="rainbow_bubble_quest.js"></script>
+</body>
+</html>
