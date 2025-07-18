@@ -198,8 +198,9 @@ function checkAnswer(selectedAnswer, button) {
         game.score += (10 + game.streak * 2);
         game.streak++;
         game.problemsSolved++;
-        showFeedback('🎉 Correct! Great job!', '#00b894');
         changeCharacter(true);
+        
+        showPopup('🎉 Correct!', 'Great job! Keep it up!', [], 2000);
         
         setTimeout(() => {
             if (game.problemsSolved >= 5) {
@@ -211,7 +212,6 @@ function checkAnswer(selectedAnswer, button) {
     } else {
         button.classList.add('wrong');
         game.streak = 0;
-        showFeedback('🤔 Try again! You can do it!', '#d63031');
         changeCharacter(false);
         
         // Show correct answer
@@ -221,6 +221,8 @@ function checkAnswer(selectedAnswer, button) {
             }
         });
         
+        showPopup('🤔 Try Again!', `The correct answer was ${game.correctAnswer}. You can do it!`, [], 2000);
+        
         setTimeout(() => {
             generateProblem();
         }, 3000);
@@ -229,17 +231,6 @@ function checkAnswer(selectedAnswer, button) {
     updateDisplay();
 }
 
-// Show feedback
-function showFeedback(message, color) {
-    const feedback = document.getElementById('feedback');
-    feedback.textContent = message;
-    feedback.style.color = color;
-    feedback.classList.add('show');
-    
-    setTimeout(() => {
-        feedback.classList.remove('show');
-    }, 2000);
-}
 
 // Change character expression
 function changeCharacter(isCorrect) {
@@ -312,6 +303,158 @@ function updateDisplay() {
     document.getElementById('score').textContent = game.score;
     document.getElementById('level').textContent = game.level;
     document.getElementById('streak').textContent = game.streak;
+}
+
+// Custom Popup System
+let popupTimeout = null;
+
+function showPopup(title, message, buttons = [], autoClose = 2000) {
+    const popup = document.getElementById('gamePopup');
+    const popupTitle = document.getElementById('popupTitle');
+    const popupMessage = document.getElementById('popupMessage');
+    const popupButtons = document.getElementById('popupButtons');
+    
+    popupTitle.textContent = title;
+    popupMessage.textContent = message;
+    popupButtons.innerHTML = '';
+    
+    // Add buttons if provided
+    buttons.forEach((button, index) => {
+        const btn = document.createElement('button');
+        btn.className = `popup-button ${button.type || ''}`;
+        btn.textContent = button.text;
+        btn.onclick = button.action;
+        btn.tabIndex = 0;
+        
+        // Add keyboard support
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                button.action();
+            }
+        });
+        
+        popupButtons.appendChild(btn);
+        
+        // Focus first button
+        if (index === 0) {
+            setTimeout(() => btn.focus(), 100);
+        }
+    });
+    
+    // Show popup
+    popup.classList.add('show');
+    
+    // Handle clicks outside popup to close (if no buttons)
+    if (buttons.length === 0) {
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                hidePopup();
+            }
+        });
+    }
+    
+    // Auto close if specified
+    if (autoClose && buttons.length === 0) {
+        popupTimeout = setTimeout(() => {
+            hidePopup();
+        }, autoClose);
+    }
+    
+    // Add keyboard support for popup
+    document.addEventListener('keydown', handlePopupKeyboard);
+}
+
+function hidePopup() {
+    const popup = document.getElementById('gamePopup');
+    popup.classList.remove('show');
+    
+    if (popupTimeout) {
+        clearTimeout(popupTimeout);
+        popupTimeout = null;
+    }
+    
+    document.removeEventListener('keydown', handlePopupKeyboard);
+}
+
+function handlePopupKeyboard(e) {
+    if (e.key === 'Escape') {
+        e.preventDefault();
+        hidePopup();
+    } else if (e.key === 'Enter' || e.key === ' ') {
+        const popup = document.getElementById('gamePopup');
+        if (popup.classList.contains('show')) {
+            const buttons = popup.querySelectorAll('.popup-button');
+            if (buttons.length === 0) {
+                e.preventDefault();
+                hidePopup();
+            }
+        }
+    }
+}
+
+// Help System
+function showHelp() {
+    const helpModal = document.getElementById('helpModal');
+    helpModal.classList.add('show');
+    
+    // Add keyboard support
+    document.addEventListener('keydown', handleHelpKeyboard);
+    
+    // Focus close button
+    setTimeout(() => {
+        const closeBtn = helpModal.querySelector('.help-close');
+        closeBtn.focus();
+    }, 100);
+}
+
+function hideHelp() {
+    const helpModal = document.getElementById('helpModal');
+    helpModal.classList.remove('show');
+    document.removeEventListener('keydown', handleHelpKeyboard);
+}
+
+function handleHelpKeyboard(e) {
+    if (e.key === 'Escape') {
+        e.preventDefault();
+        hideHelp();
+    }
+}
+
+// Enhanced level complete with better navigation
+function levelComplete() {
+    document.getElementById('levelComplete').style.display = 'none';
+    document.getElementById('problemContainer').style.display = 'none';
+    
+    // Show celebration popup with navigation options
+    showPopup(
+        '🎉 Level Complete! 🎉',
+        `Awesome job! You completed level ${game.level}! Ready for the next challenge?`,
+        [
+            {
+                text: '➡️ Next Level',
+                action: () => {
+                    hidePopup();
+                    nextLevel();
+                }
+            },
+            {
+                text: '🏠 Back to Menu',
+                type: 'secondary',
+                action: () => {
+                    hidePopup();
+                    window.location.href = '../games.html';
+                }
+            }
+        ]
+    );
+    
+    // Celebration particles
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            createCelebrationParticle();
+        }, i * 100);
+    }
 }
 
 // Initialize when page loads

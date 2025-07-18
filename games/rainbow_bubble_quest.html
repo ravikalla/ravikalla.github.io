@@ -143,6 +143,34 @@
             z-index: 50;
         }
 
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover,
+        .back-button:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid #ff6b9d;
+        }
         @keyframes floatSparkle {
             0% {
                 transform: translateY(100vh) rotate(0deg);
@@ -159,6 +187,11 @@
 </head>
 <body>
     <div class="game-container">
+        <!-- Back button -->
+        <a href="../games.html" class="back-button" tabindex="0">
+            ← Games Menu
+        </a>
+        
         <!-- Floating sparkles background -->
         <div id="sparklesContainer"></div>
         

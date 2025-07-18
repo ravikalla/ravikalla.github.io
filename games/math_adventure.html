@@ -33,6 +33,227 @@
             overflow: hidden;
         }
 
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover,
+        .back-button:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid #4ecdc4;
+        }
+
+        .help-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .help-button:hover,
+        .help-button:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid #4ecdc4;
+        }
+
+        /* Custom Popup System */
+        .game-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .game-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            min-width: 300px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .game-popup.show .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .popup-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .popup-button {
+            background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .popup-button:hover,
+        .popup-button:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .popup-button.secondary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        /* Help Modal */
+        .help-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .help-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .help-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .help-modal.show .help-content {
+            transform: scale(1);
+        }
+
+        .help-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .help-section {
+            margin-bottom: 20px;
+        }
+
+        .help-section h3 {
+            color: #4ecdc4;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .help-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .help-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .help-close:hover,
+        .help-close:focus {
+            color: #333;
+        }
+
         .game-header {
             position: absolute;
             top: 20px;
@@ -262,6 +483,16 @@
 </head>
 <body>
     <div class="game-container">
+        <!-- Back button -->
+        <a href="../games.html" class="back-button" tabindex="0">
+            ← Games Menu
+        </a>
+
+        <!-- Help button -->
+        <button class="help-button" onclick="showHelp()" tabindex="0" aria-label="Show game instructions">
+            ?
+        </button>
+        
         <!-- Floating particles -->
         <div id="particlesContainer"></div>
         
@@ -311,6 +542,51 @@
                 Great job! Ready for the next challenge?
             </div>
             <button class="game-button" id="nextLevelButton">➡️ Next Level!</button>
+        </div>
+
+        <!-- Custom Popup System -->
+        <div class="game-popup" id="gamePopup">
+            <div class="popup-content">
+                <div class="popup-title" id="popupTitle"></div>
+                <div class="popup-message" id="popupMessage"></div>
+                <div class="popup-buttons" id="popupButtons"></div>
+            </div>
+        </div>
+
+        <!-- Help Modal -->
+        <div class="help-modal" id="helpModal">
+            <div class="help-content">
+                <button class="help-close" onclick="hideHelp()" tabindex="0" aria-label="Close help">×</button>
+                <div class="help-title">🔢 Math Adventure Help 🐻</div>
+                
+                <div class="help-section">
+                    <h3>🎯 How to Play</h3>
+                    <p>Help our friendly animals solve math problems! Choose the correct answer from the options given.</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>🔢 Game Features</h3>
+                    <p>• Start with simple addition and subtraction</p>
+                    <p>• Progress to harder math as you advance</p>
+                    <p>• Use visual counting aids to help you solve problems</p>
+                    <p>• Build streaks for bonus points</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>🌟 Scoring</h3>
+                    <p>• Correct answers give you points</p>
+                    <p>• Consecutive correct answers build your streak</p>
+                    <p>• Higher levels give more points per correct answer</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>⌨️ Controls</h3>
+                    <p>• Click on answer buttons to select</p>
+                    <p>• Use keyboard to navigate and select answers</p>
+                    <p>• Press Tab to move between buttons</p>
+                    <p>• Press Enter or Space to select</p>
+                </div>
+            </div>
         </div>
     </div>
 

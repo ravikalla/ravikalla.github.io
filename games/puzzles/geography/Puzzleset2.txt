@@ -1,0 +1,69 @@
+Q: Which country has this flag? 🇮🇳
+A: Pakistan
+B: India
+C: Bangladesh
+D: Sri Lanka
+CORRECT: 1
+
+Q: What is the capital of Spain?
+A: Barcelona
+B: Valencia
+C: Madrid
+D: Seville
+CORRECT: 2
+
+Q: Which country has this flag? 🇧🇷
+A: Argentina
+B: Brazil
+C: Chile
+D: Peru
+CORRECT: 1
+
+Q: What is the capital of Egypt?
+A: Alexandria
+B: Cairo
+C: Luxor
+D: Aswan
+CORRECT: 1
+
+Q: Which country has this flag? 🇨🇳
+A: Japan
+B: Korea
+C: China
+D: Mongolia
+CORRECT: 2
+
+Q: What is the capital of Russia?
+A: St. Petersburg
+B: Moscow
+C: Kiev
+D: Minsk
+CORRECT: 1
+
+Q: Which country has this flag? 🇲🇽
+A: Mexico
+B: Guatemala
+C: Spain
+D: Colombia
+CORRECT: 0
+
+Q: What is the capital of Argentina?
+A: São Paulo
+B: Buenos Aires
+C: Santiago
+D: Lima
+CORRECT: 1
+
+Q: Which ocean is the largest?
+A: Atlantic
+B: Pacific
+C: Indian
+D: Arctic
+CORRECT: 1
+
+Q: What is the highest mountain in the world?
+A: K2
+B: Mount Everest
+C: Kilimanjaro
+D: Denali
+CORRECT: 1

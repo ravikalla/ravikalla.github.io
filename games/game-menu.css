@@ -1,0 +1,196 @@
+/* Universal Game Menu Bar Styles */
+.game-menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+.menu-icon:hover,
+.menu-icon:focus {
+    background: rgba(0, 0, 0, 0.1);
+    outline: 2px solid #4ecdc4;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background: #333;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.menu-title {
+    flex: 1;
+    text-align: center;
+}
+
+.game-title-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.menu-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.menu-btn {
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-btn:hover,
+.menu-btn:focus {
+    background: rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    outline: 2px solid #4ecdc4;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-content {
+    padding: 10px 0;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    background: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    font-size: 14px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background: rgba(76, 205, 196, 0.1);
+    outline: none;
+}
+
+.dropdown-icon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-bar-content {
+        padding: 0 15px;
+    }
+    
+    .game-title-text {
+        font-size: 16px;
+    }
+    
+    .menu-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .dropdown-menu {
+        left: 10px;
+        right: 10px;
+        min-width: auto;
+    }
+}
+
+/* Adjust game content to account for menu bar */
+body {
+    padding-top: 60px;
+}
+
+.game-container {
+    padding-top: 0 !important;
+}
+
+/* Override back button positioning since we have menu bar now */
+.back-button {
+    display: none !important;
+}
+
+.help-button {
+    display: none !important;
+}
+
+/* Adjust any absolute positioned headers */
+.game-header {
+    top: 80px !important;
+}

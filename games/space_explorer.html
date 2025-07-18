@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🚀 Space Explorer Quiz 🌟</title>
+    <link rel="stylesheet" href="game-menu.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -25,11 +26,241 @@
         .start-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 200; }
         .title { font-size: 48px; margin-bottom: 30px; text-shadow: 0 0 20px #667eea; }
         .game-button { background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; padding: 20px 40px; font-size: 24px; border-radius: 30px; cursor: pointer; margin: 10px; }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover,
+        .back-button:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid #667eea;
+        }
+
+        .help-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .help-button:hover,
+        .help-button:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid #667eea;
+        }
+
+        /* Custom Popup System */
+        .game-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .game-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            min-width: 300px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .game-popup.show .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .popup-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .popup-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .popup-button:hover,
+        .popup-button:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .popup-button.secondary {
+            background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+        }
+
+        /* Help Modal */
+        .help-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .help-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .help-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .help-modal.show .help-content {
+            transform: scale(1);
+        }
+
+        .help-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .help-section {
+            margin-bottom: 20px;
+        }
+
+        .help-section h3 {
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .help-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .help-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .help-close:hover,
+        .help-close:focus {
+            color: #333;
+        }
         .planet { position: absolute; border-radius: 50%; animation: planetFloat 6s ease-in-out infinite; }
     </style>
 </head>
 <body>
     <div class="game-container">
+        <!-- Back button -->
+        <a href="../games.html" class="back-button" tabindex="0">
+            ← Games Menu
+        </a>
+
+        <!-- Help button -->
+        <button class="help-button" onclick="showHelp()" tabindex="0" aria-label="Show game instructions">
+            ?
+        </button>
+        
         <div class="stars" id="stars"></div>
         <div class="header">
             <div class="stat-box">🏆 Score: <span id="score">0</span></div>
@@ -45,19 +276,158 @@
             <p style="font-size: 20px; margin: 20px; text-align: center;">Explore the universe and learn amazing space facts!</p>
             <button class="game-button" onclick="startGame()">🌌 Launch Mission!</button>
         </div>
+
+        <!-- Custom Popup System -->
+        <div class="game-popup" id="gamePopup">
+            <div class="popup-content">
+                <div class="popup-title" id="popupTitle"></div>
+                <div class="popup-message" id="popupMessage"></div>
+                <div class="popup-buttons" id="popupButtons"></div>
+            </div>
+        </div>
+
+        <!-- Help Modal -->
+        <div class="help-modal" id="helpModal">
+            <div class="help-content">
+                <button class="help-close" onclick="hideHelp()" tabindex="0" aria-label="Close help">×</button>
+                <div class="help-title">🚀 Space Explorer Quiz Help 🌟</div>
+                
+                <div class="help-section">
+                    <h3>🎯 How to Play</h3>
+                    <p>Test your knowledge about space, planets, stars, and the universe! Answer questions to advance through 10 levels.</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>🌌 Game Features</h3>
+                    <p>• 500+ space-related questions across 5 topics</p>
+                    <p>• 10 progressive levels with increasing difficulty</p>
+                    <p>• Topics: Planets, Moons, Stars, Space Exploration, General Astronomy</p>
+                    <p>• Level-based scoring with bonus multipliers</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>⭐ Scoring</h3>
+                    <p>• Correct answers earn points</p>
+                    <p>• Higher levels give more points per question</p>
+                    <p>• 50 questions per level = 500+ total questions</p>
+                    <p>• Progressive topic difficulty as you advance</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>⌨️ Controls</h3>
+                    <p>• Click on answer buttons to select</p>
+                    <p>• Use Tab to navigate between buttons</p>
+                    <p>• Press Enter or Space to select answers</p>
+                    <p>• Press Escape to close this help</p>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="game-menu.js"></script>
+    <script src="puzzle-loader.js"></script>
     <script>
-        const game = { score: 0, level: 1, facts: 0, currentQuestion: 0 };
-        const questions = [
-            { q: "What is the closest planet to the Sun?", a: ["Mercury", "Venus", "Earth", "Mars"], correct: 0 },
-            { q: "How many moons does Earth have?", a: ["0", "1", "2", "3"], correct: 1 },
-            { q: "Which planet is known as the Red Planet?", a: ["Venus", "Mars", "Jupiter", "Saturn"], correct: 1 },
-            { q: "What is the largest planet in our solar system?", a: ["Saturn", "Neptune", "Jupiter", "Uranus"], correct: 2 },
-            { q: "Which planet has beautiful rings?", a: ["Jupiter", "Saturn", "Uranus", "Neptune"], correct: 1 },
-            { q: "What do we call a group of stars that form a picture?", a: ["Galaxy", "Constellation", "Nebula", "Comet"], correct: 1 },
-            { q: "What is the name of our galaxy?", a: ["Andromeda", "Milky Way", "Whirlpool", "Spiral"], correct: 1 },
-            { q: "What do astronauts wear in space?", a: ["Regular clothes", "Swimsuit", "Space suit", "Pajamas"], correct: 2 }
-        ];
+        const game = { score: 0, level: 1, facts: 0, currentQuestion: 0, questionsPerLevel: 50 };
+        let puzzleLoader;
+        
+        // Initialize puzzle loader
+        document.addEventListener('DOMContentLoaded', () => {
+            puzzleLoader = new PuzzleLoader('space');
+        });
+        
+        // Fallback question database for when puzzle files aren't available
+        const questionTopics = {
+            planets: [
+                { q: "What is the closest planet to the Sun?", a: ["Mercury", "Venus", "Earth", "Mars"], correct: 0 },
+                { q: "Which planet is known as the Red Planet?", a: ["Venus", "Mars", "Jupiter", "Saturn"], correct: 1 },
+                { q: "What is the largest planet in our solar system?", a: ["Saturn", "Neptune", "Jupiter", "Uranus"], correct: 2 },
+                { q: "Which planet has beautiful rings?", a: ["Jupiter", "Saturn", "Uranus", "Neptune"], correct: 1 },
+                { q: "Which planet is hottest in our solar system?", a: ["Mercury", "Venus", "Mars", "Earth"], correct: 1 },
+                { q: "How long does it take Earth to orbit the Sun?", a: ["365 days", "300 days", "400 days", "500 days"], correct: 0 },
+                { q: "Which planet is known as Earth's twin?", a: ["Mars", "Venus", "Mercury", "Jupiter"], correct: 1 },
+                { q: "What is the smallest planet?", a: ["Mercury", "Mars", "Venus", "Pluto"], correct: 0 },
+                { q: "Which planet has the most moons?", a: ["Earth", "Mars", "Jupiter", "Saturn"], correct: 2 },
+                { q: "How many planets are in our solar system?", a: ["7", "8", "9", "10"], correct: 1 }
+            ],
+            moons: [
+                { q: "How many moons does Earth have?", a: ["0", "1", "2", "3"], correct: 1 },
+                { q: "What is Earth's moon called?", a: ["Luna", "The Moon", "Both answers", "Satellite"], correct: 2 },
+                { q: "How long does it take the Moon to orbit Earth?", a: ["28 days", "30 days", "365 days", "7 days"], correct: 0 },
+                { q: "What causes moon phases?", a: ["Earth's shadow", "Moon's rotation", "Sun's position", "Cloud cover"], correct: 2 },
+                { q: "Which planet has the largest moon?", a: ["Earth", "Jupiter", "Saturn", "Mars"], correct: 1 },
+                { q: "What is Jupiter's largest moon called?", a: ["Europa", "Ganymede", "Io", "Callisto"], correct: 1 },
+                { q: "How many moons does Mars have?", a: ["0", "1", "2", "3"], correct: 2 },
+                { q: "What are Mars' moons called?", a: ["Phobos & Deimos", "Titan & Europa", "Luna & Sol", "Alpha & Beta"], correct: 0 },
+                { q: "Which moon might have an ocean?", a: ["Our Moon", "Europa", "Phobos", "Deimos"], correct: 1 },
+                { q: "What color does our Moon appear?", a: ["White", "Yellow", "Gray", "All of these"], correct: 3 }
+            ],
+            stars: [
+                { q: "What do we call a group of stars that form a picture?", a: ["Galaxy", "Constellation", "Nebula", "Comet"], correct: 1 },
+                { q: "What is our closest star?", a: ["Polaris", "Alpha Centauri", "The Sun", "Sirius"], correct: 2 },
+                { q: "What color are the hottest stars?", a: ["Red", "Yellow", "Blue", "White"], correct: 2 },
+                { q: "What happens when a massive star dies?", a: ["It disappears", "It becomes a black hole", "It gets bigger", "It turns cold"], correct: 1 },
+                { q: "How many stars are in our galaxy?", a: ["Millions", "Billions", "Thousands", "Hundreds"], correct: 1 },
+                { q: "What is a shooting star?", a: ["A falling star", "A meteor", "A comet", "A planet"], correct: 1 },
+                { q: "What makes stars shine?", a: ["Electricity", "Nuclear fusion", "Fire", "Reflection"], correct: 1 },
+                { q: "Which star helps us find north?", a: ["The Sun", "Polaris", "Sirius", "Betelgeuse"], correct: 1 },
+                { q: "What is the name of our galaxy?", a: ["Andromeda", "Milky Way", "Whirlpool", "Spiral"], correct: 1 },
+                { q: "How long does light from the Sun take to reach Earth?", a: ["8 minutes", "1 hour", "1 day", "Instantly"], correct: 0 }
+            ],
+            space: [
+                { q: "What do astronauts wear in space?", a: ["Regular clothes", "Swimsuit", "Space suit", "Pajamas"], correct: 2 },
+                { q: "What is the name of NASA's moon program?", a: ["Apollo", "Mercury", "Gemini", "Shuttle"], correct: 0 },
+                { q: "Who was the first person on the Moon?", a: ["Buzz Aldrin", "Neil Armstrong", "John Glenn", "Yuri Gagarin"], correct: 1 },
+                { q: "What is the ISS?", a: ["International Space Station", "Inter Stellar Ship", "Incredible Space Sight", "Important Space Study"], correct: 0 },
+                { q: "What force keeps planets in orbit?", a: ["Magnetism", "Gravity", "Wind", "Electricity"], correct: 1 },
+                { q: "What is a galaxy?", a: ["A planet", "A star", "A group of stars", "A moon"], correct: 2 },
+                { q: "What is the asteroid belt?", a: ["Rocky objects between Mars and Jupiter", "A ring around Saturn", "Moons of Earth", "Comets near the Sun"], correct: 0 },
+                { q: "What is a comet made of?", a: ["Ice and dust", "Pure rock", "Metal", "Gas only"], correct: 0 },
+                { q: "How fast does light travel?", a: ["Very fast", "300,000 km/second", "100 km/hour", "As fast as sound"], correct: 1 },
+                { q: "What is a light year?", a: ["365 days", "A measure of distance", "A type of star", "A space mission"], correct: 1 }
+            ],
+            general: [
+                { q: "What is the universe?", a: ["Our solar system", "Everything that exists", "Just our galaxy", "Planet Earth"], correct: 1 },
+                { q: "What telescope helped us see deep space?", a: ["Hubble", "Galileo", "Newton", "Kepler"], correct: 0 },
+                { q: "What is zero gravity?", a: ["No weight feeling", "Very heavy", "Normal weight", "Super strength"], correct: 0 },
+                { q: "How do rockets work in space?", a: ["By pushing against air", "By action and reaction", "By magnetism", "By gravity"], correct: 1 },
+                { q: "What is a nebula?", a: ["A planet", "A cloud of gas and dust", "A type of star", "A galaxy"], correct: 1 },
+                { q: "What causes day and night?", a: ["Moon's orbit", "Earth's rotation", "Sun's movement", "Cloud cover"], correct: 1 },
+                { q: "What causes seasons on Earth?", a: ["Distance from Sun", "Earth's tilt", "Moon phases", "Solar flares"], correct: 1 },
+                { q: "What is a solar eclipse?", a: ["Moon blocks the Sun", "Earth blocks the Sun", "Sun disappears", "Clouds cover Sun"], correct: 0 },
+                { q: "What is a lunar eclipse?", a: ["Moon disappears", "Earth's shadow on Moon", "Sun blocks Moon", "Moon turns red"], correct: 1 },
+                { q: "How old is the universe?", a: ["1000 years", "1 million years", "About 14 billion years", "Infinite"], correct: 2 }
+            ]
+        };
+        
+        async function generateQuestion() {
+            // Try to get question from puzzle loader first
+            if (puzzleLoader) {
+                try {
+                    const question = await puzzleLoader.getNextQuestion(game.level);
+                    if (question) {
+                        return question;
+                    }
+                } catch (error) {
+                    console.log('Using fallback questions:', error);
+                }
+            }
+            
+            // Fallback to local questions
+            const topics = Object.keys(questionTopics);
+            const levelDifficulty = Math.floor((game.currentQuestion / game.questionsPerLevel) + 1);
+            
+            // Select topic based on level progression
+            let selectedTopic;
+            if (levelDifficulty <= 2) {
+                selectedTopic = topics[Math.floor(Math.random() * 2)]; // planets, moons
+            } else if (levelDifficulty <= 5) {
+                selectedTopic = topics[Math.floor(Math.random() * 4)]; // planets, moons, stars, space
+            } else {
+                selectedTopic = topics[Math.floor(Math.random() * topics.length)]; // all topics
+            }
+            
+            const topicQuestions = questionTopics[selectedTopic];
+            return topicQuestions[Math.floor(Math.random() * topicQuestions.length)];
+        }
         
         function createStars() {
             const starsContainer = document.getElementById('stars');
@@ -78,13 +448,44 @@
             loadQuestion();
         }
         
-        function loadQuestion() {
-            if (game.currentQuestion >= questions.length) {
-                alert('🎉 Mission Complete! You learned ' + game.facts + ' space facts!');
+        async function loadQuestion() {
+            const currentLevel = Math.floor(game.currentQuestion / game.questionsPerLevel) + 1;
+            
+            if (currentLevel > 10) {
+                showPopup(
+                    '🎉 INCREDIBLE! Mission Complete! 🎉',
+                    'You completed all 10 levels and answered 500+ questions! You are a true Space Explorer Master!',
+                    [
+                        {
+                            text: '🔄 Play Again',
+                            action: () => {
+                                hidePopup();
+                                game.currentQuestion = 0;
+                                game.level = 1;
+                                game.score = 0;
+                                game.facts = 0;
+                                updateDisplay();
+                                loadQuestion();
+                            }
+                        },
+                        {
+                            text: '🏠 Back to Menu',
+                            type: 'secondary',
+                            action: () => {
+                                hidePopup();
+                                window.location.href = '../games.html';
+                            }
+                        }
+                    ]
+                );
                 return;
             }
             
-            const q = questions[game.currentQuestion];
+            if (game.currentQuestion % game.questionsPerLevel === 0 && game.currentQuestion > 0) {
+                showPopup('🌟 Level Complete!', `Level ${currentLevel} Complete! Get ready for harder questions!`, [], 2000);
+            }
+            
+            const q = await generateQuestion();
             document.getElementById('questionText').textContent = q.q;
             
             const answersDiv = document.getElementById('answers');
@@ -94,23 +495,24 @@
                 const btn = document.createElement('button');
                 btn.className = 'answer-btn';
                 btn.textContent = answer;
-                btn.onclick = () => checkAnswer(index);
+                btn.onclick = () => checkAnswer(index, q);
                 answersDiv.appendChild(btn);
             });
         }
         
-        function checkAnswer(selected) {
-            const correct = questions[game.currentQuestion].correct;
+        function checkAnswer(selected, question) {
+            const correct = question.correct;
             if (selected === correct) {
-                game.score += 100;
+                const levelMultiplier = Math.floor(game.currentQuestion / game.questionsPerLevel) + 1;
+                game.score += 100 * levelMultiplier;
                 game.facts++;
-                alert('🌟 Correct! Great job, space explorer!');
+                showPopup('🌟 Correct!', 'Great job, space explorer!', [], 2000);
             } else {
-                alert('🚀 Not quite right, but keep exploring!');
+                showPopup('🚀 Try Again!', 'Not quite right, but keep exploring!', [], 2000);
             }
             
             game.currentQuestion++;
-            if (game.currentQuestion % 3 === 0) game.level++;
+            game.level = Math.floor(game.currentQuestion / game.questionsPerLevel) + 1;
             
             updateDisplay();
             setTimeout(loadQuestion, 1000);
@@ -120,6 +522,133 @@
             document.getElementById('score').textContent = game.score;
             document.getElementById('level').textContent = game.level;
             document.getElementById('facts').textContent = game.facts;
+        }
+        
+        // Custom Popup System
+        let popupTimeout = null;
+
+        function showPopup(title, message, buttons = [], autoClose = 2000) {
+            const popup = document.getElementById('gamePopup');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupMessage = document.getElementById('popupMessage');
+            const popupButtons = document.getElementById('popupButtons');
+            
+            popupTitle.textContent = title;
+            popupMessage.textContent = message;
+            popupButtons.innerHTML = '';
+            
+            // Add buttons if provided
+            buttons.forEach((button, index) => {
+                const btn = document.createElement('button');
+                btn.className = `popup-button ${button.type || ''}`;
+                btn.textContent = button.text;
+                btn.onclick = button.action;
+                btn.tabIndex = 0;
+                
+                // Add keyboard support
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        button.action();
+                    }
+                });
+                
+                popupButtons.appendChild(btn);
+                
+                // Focus first button
+                if (index === 0) {
+                    setTimeout(() => btn.focus(), 100);
+                }
+            });
+            
+            // Show popup
+            popup.classList.add('show');
+            
+            // Handle clicks outside popup to close (if no buttons)
+            if (buttons.length === 0) {
+                popup.addEventListener('click', (e) => {
+                    if (e.target === popup) {
+                        hidePopup();
+                    }
+                });
+            }
+            
+            // Auto close if specified
+            if (autoClose && buttons.length === 0) {
+                popupTimeout = setTimeout(() => {
+                    hidePopup();
+                }, autoClose);
+            }
+            
+            // Add keyboard support for popup
+            document.addEventListener('keydown', handlePopupKeyboard);
+        }
+
+        function hidePopup() {
+            const popup = document.getElementById('gamePopup');
+            popup.classList.remove('show');
+            
+            if (popupTimeout) {
+                clearTimeout(popupTimeout);
+                popupTimeout = null;
+            }
+            
+            document.removeEventListener('keydown', handlePopupKeyboard);
+        }
+
+        function handlePopupKeyboard(e) {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                hidePopup();
+            } else if (e.key === 'Enter' || e.key === ' ') {
+                const popup = document.getElementById('gamePopup');
+                if (popup.classList.contains('show')) {
+                    const buttons = popup.querySelectorAll('.popup-button');
+                    if (buttons.length === 0) {
+                        e.preventDefault();
+                        hidePopup();
+                    }
+                }
+            }
+        }
+
+        // Game menu integration
+        window.gameRestart = function() {
+            game.currentQuestion = 0;
+            game.level = 1;
+            game.score = 0;
+            game.facts = 0;
+            updateDisplay();
+            document.getElementById('startScreen').style.display = 'flex';
+            document.getElementById('questionPanel').style.display = 'none';
+        };
+
+        // Help System
+        function showHelp() {
+            const helpModal = document.getElementById('helpModal');
+            helpModal.classList.add('show');
+            
+            // Add keyboard support
+            document.addEventListener('keydown', handleHelpKeyboard);
+            
+            // Focus close button
+            setTimeout(() => {
+                const closeBtn = helpModal.querySelector('.help-close');
+                closeBtn.focus();
+            }, 100);
+        }
+
+        function hideHelp() {
+            const helpModal = document.getElementById('helpModal');
+            helpModal.classList.remove('show');
+            document.removeEventListener('keydown', handleHelpKeyboard);
+        }
+
+        function handleHelpKeyboard(e) {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                hideHelp();
+            }
         }
         
         createStars();

@@ -1,0 +1,69 @@
+Q: Which planet is hottest in our solar system?
+A: Mercury
+B: Venus
+C: Mars
+D: Earth
+CORRECT: 1
+
+Q: How long does it take Earth to orbit the Sun?
+A: 365 days
+B: 300 days
+C: 400 days
+D: 500 days
+CORRECT: 0
+
+Q: Which planet is known as Earth's twin?
+A: Mars
+B: Venus
+C: Mercury
+D: Jupiter
+CORRECT: 1
+
+Q: What is the smallest planet?
+A: Mercury
+B: Mars
+C: Venus
+D: Pluto
+CORRECT: 0
+
+Q: How long does light from the Sun take to reach Earth?
+A: 8 minutes
+B: 1 hour
+C: 1 day
+D: Instantly
+CORRECT: 0
+
+Q: What is a shooting star?
+A: A falling star
+B: A meteor
+C: A comet
+D: A planet
+CORRECT: 1
+
+Q: What makes stars shine?
+A: Electricity
+B: Nuclear fusion
+C: Fire
+D: Reflection
+CORRECT: 1
+
+Q: Which star helps us find north?
+A: The Sun
+B: Polaris
+C: Sirius
+D: Betelgeuse
+CORRECT: 1
+
+Q: What color are the hottest stars?
+A: Red
+B: Yellow
+C: Blue
+D: White
+CORRECT: 2
+
+Q: What is Jupiter's largest moon called?
+A: Europa
+B: Ganymede
+C: Io
+D: Callisto
+CORRECT: 1

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌍 Geography Quest 🗺️</title>
+    <link rel="stylesheet" href="game-menu.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -22,11 +23,239 @@
         .answer-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
         .start-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 200; color: white; }
         .title { font-size: 48px; margin-bottom: 30px; text-shadow: 0 0 20px #FF6B35; }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover,
+        .back-button:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid #FF6B35;
+        }
+
+        .help-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .help-button:hover,
+        .help-button:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid #FF6B35;
+        }
+
+        .game-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .game-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            min-width: 300px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .game-popup.show .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .popup-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .popup-button {
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .popup-button:hover,
+        .popup-button:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .popup-button.secondary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .help-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .help-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .help-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .help-modal.show .help-content {
+            transform: scale(1);
+        }
+
+        .help-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .help-section {
+            margin-bottom: 20px;
+        }
+
+        .help-section h3 {
+            color: #FF6B35;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .help-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .help-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .help-close:hover,
+        .help-close:focus {
+            color: #333;
+        }
         .game-button { background: linear-gradient(45deg, #FF6B35, #F7931E); color: white; border: none; padding: 20px 40px; font-size: 24px; border-radius: 30px; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="game-container">
+        <!-- Back button -->
+        <a href="../games.html" class="back-button" tabindex="0">
+            ← Games Menu
+        </a>
+
+        <!-- Help button -->
+        <button class="help-button" onclick="showHelp()" tabindex="0" aria-label="Show game instructions">
+            ?
+        </button>
+        
         <div class="header">
             <div class="stat-box">🏆 Score: <span id="score">0</span></div>
             <div class="stat-box">🌍 Level: <span id="level">1</span></div>
@@ -42,10 +271,64 @@
             <p style="font-size: 20px; margin: 20px; text-align: center;">Explore the world and learn about countries!</p>
             <button class="game-button" onclick="startGame()">🌟 Start Journey!</button>
         </div>
+
+        <!-- Custom Popup System -->
+        <div class="game-popup" id="gamePopup">
+            <div class="popup-content">
+                <div class="popup-title" id="popupTitle"></div>
+                <div class="popup-message" id="popupMessage"></div>
+                <div class="popup-buttons" id="popupButtons"></div>
+            </div>
+        </div>
+
+        <!-- Help Modal -->
+        <div class="help-modal" id="helpModal">
+            <div class="help-content">
+                <button class="help-close" onclick="hideHelp()" tabindex="0" aria-label="Close help">×</button>
+                <div class="help-title">🌍 Geography Quest Help 🗺️</div>
+                
+                <div class="help-section">
+                    <h3>🎯 How to Play</h3>
+                    <p>Test your knowledge of world geography! Learn about countries, capitals, and flags from around the globe.</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>🗺️ Game Features</h3>
+                    <p>• Country and capital identification</p>
+                    <p>• Flag recognition challenges</p>
+                    <p>• Progressive difficulty levels</p>
+                    <p>• Cultural facts and geography trivia</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>🏆 Scoring</h3>
+                    <p>• Correct answers earn points</p>
+                    <p>• Build your country knowledge</p>
+                    <p>• Learn about world cultures and geography</p>
+                </div>
+
+                <div class="help-section">
+                    <h3>⌨️ Controls</h3>
+                    <p>• Click on answer buttons to select</p>
+                    <p>• Use Tab to navigate between options</p>
+                    <p>• Press Enter or Space to confirm answers</p>
+                    <p>• Press Escape to close this help</p>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="game-menu.js"></script>
+    <script src="puzzle-loader.js"></script>
     <script>
         const game = { score: 0, level: 1, countries: 0, currentQuestion: 0 };
+        let puzzleLoader;
         
+        // Initialize puzzle loader
+        document.addEventListener('DOMContentLoaded', () => {
+            puzzleLoader = new PuzzleLoader('geography');
+        });
+        
+        // Fallback questions when puzzle files aren't available
         const questions = [
             { q: "Which country has this flag?", flag: "🇺🇸", answers: ["United States", "Canada", "Mexico", "Brazil"], correct: 0 },
             { q: "What is the capital of France?", flag: "🇫🇷", answers: ["London", "Berlin", "Paris", "Rome"], correct: 2 },
@@ -63,9 +346,69 @@
             loadQuestion();
         }
         
-        function loadQuestion() {
+        async function loadQuestion() {
+            // Try to get question from puzzle loader first
+            let currentQuestions = questions;
+            if (puzzleLoader) {
+                try {
+                    const question = await puzzleLoader.getNextQuestion(game.level);
+                    if (question) {
+                        // Convert puzzle loader format to geography quest format
+                        const geoQuestion = {
+                            q: question.q,
+                            flag: question.q.includes('flag') ? '🌍' : '',
+                            answers: question.a,
+                            correct: question.correct
+                        };
+                        
+                        document.getElementById('questionText').textContent = geoQuestion.q;
+                        document.getElementById('flagDisplay').textContent = geoQuestion.flag;
+                        
+                        const answersDiv = document.getElementById('answers');
+                        answersDiv.innerHTML = '';
+                        
+                        geoQuestion.answers.forEach((answer, index) => {
+                            const btn = document.createElement('button');
+                            btn.className = 'answer-btn';
+                            btn.textContent = answer;
+                            btn.onclick = () => checkAnswer(index, geoQuestion.correct);
+                            answersDiv.appendChild(btn);
+                        });
+                        return;
+                    }
+                } catch (error) {
+                    console.log('Using fallback questions:', error);
+                }
+            }
+            
+            // Fallback to local questions
             if (game.currentQuestion >= questions.length) {
-                alert('🎉 Amazing! You explored ' + game.countries + ' countries!');
+                showPopup(
+                    '🎉 Amazing Explorer! 🎉',
+                    `You explored ${game.countries} countries! Great geography knowledge!`,
+                    [
+                        {
+                            text: '🔄 Play Again',
+                            action: () => {
+                                hidePopup();
+                                game.currentQuestion = 0;
+                                game.score = 0;
+                                game.countries = 0;
+                                game.level = 1;
+                                updateDisplay();
+                                loadQuestion();
+                            }
+                        },
+                        {
+                            text: '🏠 Back to Menu',
+                            type: 'secondary',
+                            action: () => {
+                                hidePopup();
+                                window.location.href = '../games.html';
+                            }
+                        }
+                    ]
+                );
                 return;
             }
             
@@ -85,14 +428,14 @@
             });
         }
         
-        function checkAnswer(selected) {
-            const correct = questions[game.currentQuestion].correct;
+        function checkAnswer(selected, expectedCorrect = null) {
+            const correct = expectedCorrect !== null ? expectedCorrect : questions[game.currentQuestion].correct;
             if (selected === correct) {
                 game.score += 100;
                 game.countries++;
-                alert('🌟 Correct! Great geography knowledge!');
+                showPopup('🌟 Correct!', 'Great geography knowledge!', [], 2000);
             } else {
-                alert('🗺️ Not quite! Keep exploring to learn more!');
+                showPopup('🗺️ Try Again!', 'Not quite! Keep exploring to learn more!', [], 2000);
             }
             
             game.currentQuestion++;
@@ -106,6 +449,124 @@
             document.getElementById('score').textContent = game.score;
             document.getElementById('level').textContent = game.level;
             document.getElementById('countries').textContent = game.countries;
+        }
+
+        // Custom Popup System
+        let popupTimeout = null;
+
+        function showPopup(title, message, buttons = [], autoClose = 2000) {
+            const popup = document.getElementById('gamePopup');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupMessage = document.getElementById('popupMessage');
+            const popupButtons = document.getElementById('popupButtons');
+            
+            popupTitle.textContent = title;
+            popupMessage.textContent = message;
+            popupButtons.innerHTML = '';
+            
+            buttons.forEach((button, index) => {
+                const btn = document.createElement('button');
+                btn.className = `popup-button ${button.type || ''}`;
+                btn.textContent = button.text;
+                btn.onclick = button.action;
+                btn.tabIndex = 0;
+                
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        button.action();
+                    }
+                });
+                
+                popupButtons.appendChild(btn);
+                
+                if (index === 0) {
+                    setTimeout(() => btn.focus(), 100);
+                }
+            });
+            
+            popup.classList.add('show');
+            
+            if (buttons.length === 0) {
+                popup.addEventListener('click', (e) => {
+                    if (e.target === popup) {
+                        hidePopup();
+                    }
+                });
+            }
+            
+            if (autoClose && buttons.length === 0) {
+                popupTimeout = setTimeout(() => {
+                    hidePopup();
+                }, autoClose);
+            }
+            
+            document.addEventListener('keydown', handlePopupKeyboard);
+        }
+
+        function hidePopup() {
+            const popup = document.getElementById('gamePopup');
+            popup.classList.remove('show');
+            
+            if (popupTimeout) {
+                clearTimeout(popupTimeout);
+                popupTimeout = null;
+            }
+            
+            document.removeEventListener('keydown', handlePopupKeyboard);
+        }
+
+        function handlePopupKeyboard(e) {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                hidePopup();
+            } else if (e.key === 'Enter' || e.key === ' ') {
+                const popup = document.getElementById('gamePopup');
+                if (popup.classList.contains('show')) {
+                    const buttons = popup.querySelectorAll('.popup-button');
+                    if (buttons.length === 0) {
+                        e.preventDefault();
+                        hidePopup();
+                    }
+                }
+            }
+        }
+
+        // Game menu integration
+        window.gameRestart = function() {
+            game.currentQuestion = 0;
+            game.score = 0;
+            game.countries = 0;
+            game.level = 1;
+            updateDisplay();
+            document.getElementById('startScreen').style.display = 'flex';
+            document.getElementById('gameArea').style.display = 'none';
+        };
+
+        // Help System
+        function showHelp() {
+            const helpModal = document.getElementById('helpModal');
+            helpModal.classList.add('show');
+            
+            document.addEventListener('keydown', handleHelpKeyboard);
+            
+            setTimeout(() => {
+                const closeBtn = helpModal.querySelector('.help-close');
+                closeBtn.focus();
+            }, 100);
+        }
+
+        function hideHelp() {
+            const helpModal = document.getElementById('helpModal');
+            helpModal.classList.remove('show');
+            document.removeEventListener('keydown', handleHelpKeyboard);
+        }
+
+        function handleHelpKeyboard(e) {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                hideHelp();
+            }
         }
     </script>
 </body>

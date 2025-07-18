@@ -1,0 +1,69 @@
+Q: What is the closest planet to the Sun?
+A: Mercury
+B: Venus
+C: Earth
+D: Mars
+CORRECT: 0
+
+Q: Which planet is known as the Red Planet?
+A: Venus
+B: Mars
+C: Jupiter
+D: Saturn
+CORRECT: 1
+
+Q: What is the largest planet in our solar system?
+A: Saturn
+B: Neptune
+C: Jupiter
+D: Uranus
+CORRECT: 2
+
+Q: Which planet has beautiful rings?
+A: Jupiter
+B: Saturn
+C: Uranus
+D: Neptune
+CORRECT: 1
+
+Q: How many moons does Earth have?
+A: 0
+B: 1
+C: 2
+D: 3
+CORRECT: 1
+
+Q: What is our closest star?
+A: Polaris
+B: Alpha Centauri
+C: The Sun
+D: Sirius
+CORRECT: 2
+
+Q: What causes day and night?
+A: Moon's orbit
+B: Earth's rotation
+C: Sun's movement
+D: Cloud cover
+CORRECT: 1
+
+Q: What do we call a group of stars that form a picture?
+A: Galaxy
+B: Constellation
+C: Nebula
+D: Comet
+CORRECT: 1
+
+Q: What is the name of our galaxy?
+A: Andromeda
+B: Milky Way
+C: Whirlpool
+D: Spiral
+CORRECT: 1
+
+Q: What do astronauts wear in space?
+A: Regular clothes
+B: Swimsuit
+C: Space suit
+D: Pajamas
+CORRECT: 2
