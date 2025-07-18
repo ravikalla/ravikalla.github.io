@@ -1,0 +1,69 @@
+Q: What is the Geodesic Effect?
+A: Spacetime curvature
+B: Time dilation
+C: Length contraction
+D: Mass increase
+CORRECT: 0
+
+Q: How many spacecraft are in interstellar space?
+A: 1
+B: 2
+C: 3
+D: 4
+CORRECT: 1
+
+Q: What is the Inflation Field?
+A: Quantum field
+B: Gravitational field
+C: Electromagnetic field
+D: Higgs field
+CORRECT: 0
+
+Q: Which moon has the thickest atmosphere?
+A: Europa
+B: Titan
+C: Ganymede
+D: Callisto
+CORRECT: 1
+
+Q: What is the Cosmic Coincidence?
+A: Dark energy dominance
+B: Fine structure constant
+C: Planck constant
+D: Speed of light
+CORRECT: 0
+
+Q: How many space elevators have been built?
+A: 0
+B: 1
+C: 2
+D: 3
+CORRECT: 0
+
+Q: What is the Vacuum Polarization?
+A: Quantum effect
+B: Electromagnetic effect
+C: Gravitational effect
+D: Nuclear effect
+CORRECT: 0
+
+Q: Which planet has the longest year?
+A: Jupiter
+B: Saturn
+C: Uranus
+D: Neptune
+CORRECT: 3
+
+Q: What is the Cosmic Rays origin?
+A: Sun
+B: Supernovae
+C: Black holes
+D: All above
+CORRECT: 3
+
+Q: How many space missions have failed at launch?
+A: 50-100
+B: 100-200
+C: 200-400
+D: 400-800
+CORRECT: 2

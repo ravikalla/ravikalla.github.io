@@ -1,0 +1,69 @@
+Q: What is the Copenhagen Interpretation?
+A: Quantum mechanics
+B: Wave function collapse
+C: Measurement theory
+D: All above
+CORRECT: 3
+
+Q: How many moons does Neptune have?
+A: 8
+B: 14
+C: 27
+D: 82
+CORRECT: 1
+
+Q: What is the Quantum Decoherence?
+A: Wave function collapse
+B: Environmental interaction
+C: Coherence loss
+D: All above
+CORRECT: 3
+
+Q: Which star type is most common?
+A: Red giants
+B: White dwarfs
+C: Red dwarfs
+D: Sun-like stars
+CORRECT: 2
+
+Q: What is the Bell's Theorem?
+A: Quantum entanglement
+B: Local realism
+C: Hidden variables
+D: All above
+CORRECT: 3
+
+Q: How many solar masses is typical neutron star?
+A: 0.5
+B: 1.4
+C: 2.8
+D: 5.6
+CORRECT: 1
+
+Q: What is the Quantum Field Theory?
+A: Particle physics
+B: Field quantization
+C: Virtual particles
+D: All above
+CORRECT: 3
+
+Q: Which planet has the coldest atmosphere?
+A: Neptune
+B: Uranus
+C: Pluto
+D: Triton
+CORRECT: 1
+
+Q: What is the Standard Model?
+A: Particle physics
+B: Fundamental forces
+C: Elementary particles
+D: All above
+CORRECT: 3
+
+Q: How many Earth-like planets are in our galaxy?
+A: Millions
+B: Billions
+C: Trillions
+D: Unknown
+CORRECT: 1

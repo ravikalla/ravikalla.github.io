@@ -93,57 +93,104 @@ class PuzzleLoader {
         return fallbacks[this.gameType] || fallbacks['space'];
     }
 
-    // Load questions progressively
+    // Load questions progressively based on level
     async loadQuestionsForLevel(level) {
-        // For Space Explorer (levels 1-10) and Geography Quest style games
-        let setNumber;
-        if (level <= 3) {
-            setNumber = 1;
-        } else if (level <= 6) {
-            setNumber = 2;
-        } else {
-            setNumber = 3;
+        // Determine which sets to load based on level
+        const setsToLoad = this.getSetsForLevel(level);
+        let allQuestions = [];
+        
+        for (const setNumber of setsToLoad) {
+            try {
+                const questions = await this.loadPuzzleSet(setNumber);
+                if (questions && questions.length > 0) {
+                    // Add set number and question index for tracking
+                    questions.forEach((q, index) => {
+                        q._setNumber = setNumber;
+                        q._questionIndex = index;
+                    });
+                    allQuestions.push(...questions);
+                }
+            } catch (error) {
+                console.log(`Could not load set ${setNumber}, skipping...`);
+            }
         }
         
-        console.log(`Loading puzzle set ${setNumber} for level ${level}`);
-        const questions = await this.loadPuzzleSet(setNumber);
+        console.log(`Loading ${setsToLoad.length} puzzle sets for level ${level}: ${allQuestions.length} questions`);
         
         // Shuffle questions for variety
-        return this.shuffleArray([...questions]);
+        return this.shuffleArray([...allQuestions]);
+    }
+    
+    // Get appropriate sets for level
+    getSetsForLevel(level) {
+        if (level <= 3) {
+            return [1, 2, 3]; // Easier questions
+        } else if (level <= 6) {
+            return [4, 5, 6, 7, 8]; // Medium questions
+        } else {
+            return [9, 10, 11, 12, 13, 14, 15]; // Harder questions
+        }
+    }
+    
+    // Load additional questions when current level runs out
+    async loadAdditionalQuestions(level) {
+        // Try to load more sets based on progress
+        const additionalSets = this.getAdditionalSetsForLevel(level);
+        
+        for (const setNumber of additionalSets) {
+            try {
+                await this.loadPuzzleSet(setNumber);
+                console.log(`Loaded additional set ${setNumber}`);
+            } catch (error) {
+                console.log(`Could not load additional set ${setNumber}`);
+            }
+        }
+    }
+    
+    // Get additional sets to try loading
+    getAdditionalSetsForLevel(level) {
+        if (level <= 3) {
+            return [4, 5]; // Try slightly harder sets
+        } else if (level <= 6) {
+            return [9, 10, 11]; // Try harder sets
+        } else {
+            return [16, 17, 18, 19, 20]; // Try even harder sets
+        }
     }
 
     // Get next question (ensuring no repeats of answered questions)
     async getNextQuestion(level) {
-        // Load all available questions if we haven't already
-        if (this.availableQuestions.length === 0) {
-            await this.loadAllAvailableQuestions();
-        }
+        // Load questions for current level on demand
+        const levelQuestions = await this.loadQuestionsForLevel(level);
         
         // Filter out already answered questions
-        const unansweredQuestions = this.availableQuestions.filter(q => 
+        const unansweredQuestions = levelQuestions.filter(q => 
             !this.answeredQuestions.has(this.getQuestionId(q))
         );
         
         if (unansweredQuestions.length === 0) {
-            console.log('All questions have been answered! Congratulations!');
-            return null; // No more questions available
+            // Try to load more questions from available sets
+            await this.loadAdditionalQuestions(level);
+            const allQuestions = await this.loadQuestionsForLevel(level);
+            const remainingQuestions = allQuestions.filter(q => 
+                !this.answeredQuestions.has(this.getQuestionId(q))
+            );
+            
+            if (remainingQuestions.length === 0) {
+                console.log('All questions for this level have been answered!');
+                return null; // No more questions available for this level
+            }
+            
+            const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
+            return remainingQuestions[randomIndex];
         }
         
-        // Select appropriate difficulty based on level
-        const levelQuestions = this.filterQuestionsByLevel(unansweredQuestions, level);
-        
-        if (levelQuestions.length === 0) {
-            // If no questions for this level, use any unanswered question
-            const randomIndex = Math.floor(Math.random() * unansweredQuestions.length);
-            return unansweredQuestions[randomIndex];
-        }
-        
-        // Return a random question from appropriate level
-        const randomIndex = Math.floor(Math.random() * levelQuestions.length);
-        return levelQuestions[randomIndex];
+        // Return a random question from available questions
+        const randomIndex = Math.floor(Math.random() * unansweredQuestions.length);
+        return unansweredQuestions[randomIndex];
     }
     
-    // Load all available questions from all puzzle sets
+    // Load available questions progressively (only load sets that exist)
     async loadAllAvailableQuestions() {
         this.availableQuestions = [];
         

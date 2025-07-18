@@ -1,0 +1,69 @@
+Q: What is quantum computing?
+A: Advanced computing
+B: Quantum mechanics
+C: Superposition
+D: All above
+CORRECT: 3
+
+Q: Which is not a data type?
+A: Integer
+B: String
+C: Boolean
+D: Loop
+CORRECT: 3
+
+Q: What does UDP stand for?
+A: User Datagram Protocol
+B: Universal Data Protocol
+C: Uniform Datagram Protocol
+D: Unique Data Protocol
+CORRECT: 0
+
+Q: Which is an object-oriented language?
+A: C
+B: Java
+C: Assembly
+D: HTML
+CORRECT: 1
+
+Q: What is encryption?
+A: Data encoding
+B: Security measure
+C: Information protection
+D: All above
+CORRECT: 3
+
+Q: Which is not a browser?
+A: Chrome
+B: Firefox
+C: Safari
+D: Photoshop
+CORRECT: 3
+
+Q: What is version control?
+A: Code management
+B: Change tracking
+C: Collaboration tool
+D: All above
+CORRECT: 3
+
+Q: Which protocol is connectionless?
+A: TCP
+B: UDP
+C: HTTP
+D: FTP
+CORRECT: 1
+
+Q: What is a variable?
+A: Storage location
+B: Data container
+C: Memory address
+D: All above
+CORRECT: 3
+
+Q: Which is a markup language?
+A: JavaScript
+B: CSS
+C: HTML
+D: Python
+CORRECT: 2

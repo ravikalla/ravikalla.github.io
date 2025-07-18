@@ -1,0 +1,69 @@
+Q: What is the Giordano Bruno Paradox?
+A: Infinite worlds
+B: Alien silence
+C: Cosmic loneliness
+D: Universe age
+CORRECT: 0
+
+Q: How many potentially habitable worlds exist?
+A: Millions
+B: Billions
+C: Trillions
+D: Quadrillions
+CORRECT: 1
+
+Q: What is the Quantum Gravity?
+A: Unified theory
+B: Spacetime quantization
+C: Gravitational quanta
+D: All above
+CORRECT: 3
+
+Q: Which galaxy will collide with Milky Way?
+A: Andromeda
+B: Triangulum
+C: Large Magellanic Cloud
+D: Centaurus A
+CORRECT: 0
+
+Q: What is the Measurement Problem?
+A: Quantum mechanics
+B: Relativity theory
+C: Cosmology
+D: Particle physics
+CORRECT: 0
+
+Q: How many space probes are active?
+A: 10-20
+B: 20-40
+C: 40-80
+D: 80-160
+CORRECT: 2
+
+Q: What is the Vacuum Metastability Event?
+A: Universe collapse
+B: False vacuum decay
+C: Quantum tunneling
+D: All above
+CORRECT: 3
+
+Q: Which planet has the most complex ring system?
+A: Jupiter
+B: Saturn
+C: Uranus
+D: Neptune
+CORRECT: 1
+
+Q: What is the Boltzmann Constant?
+A: Temperature relation
+B: Energy relation
+C: Entropy relation
+D: All above
+CORRECT: 3
+
+Q: How many astronauts have been to the Moon?
+A: 12
+B: 18
+C: 24
+D: 30
+CORRECT: 2

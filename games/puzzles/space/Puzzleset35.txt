@@ -1,0 +1,69 @@
+Q: What is the Omega Point Theory?
+A: Universe end state
+B: Consciousness evolution
+C: Cosmic intelligence
+D: All above
+CORRECT: 3
+
+Q: How many binary star systems exist?
+A: 30%
+B: 50%
+C: 70%
+D: 90%
+CORRECT: 1
+
+Q: What is the Information Paradox?
+A: Black hole puzzle
+B: Quantum mystery
+C: Relativity problem
+D: All above
+CORRECT: 3
+
+Q: Which comet has the longest tail?
+A: Halley's Comet
+B: Hale-Bopp
+C: Hyakutake
+D: ISON
+CORRECT: 1
+
+Q: What is the Weak Anthropic Principle?
+A: Universe allows observers
+B: Universe designed for life
+C: Humans are special
+D: Intelligence is inevitable
+CORRECT: 0
+
+Q: How many space debris collisions occur yearly?
+A: 1-10
+B: 10-100
+C: 100-1,000
+D: 1,000-10,000
+CORRECT: 2
+
+Q: What is the Sunyaev-Zel'dovich Effect?
+A: Cosmic microwave background
+B: Galaxy cluster effect
+C: Dark matter signature
+D: Gravitational lensing
+CORRECT: 1
+
+Q: Which planet has the strongest magnetic field?
+A: Earth
+B: Jupiter
+C: Saturn
+D: Neptune
+CORRECT: 1
+
+Q: What is the Doomsday Argument?
+A: Human extinction
+B: Universe end
+C: Population statistics
+D: Probability theory
+CORRECT: 2
+
+Q: How many space agencies have lunar missions?
+A: 3
+B: 6
+C: 9
+D: 12
+CORRECT: 1

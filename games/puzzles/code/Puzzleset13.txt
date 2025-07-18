@@ -1,0 +1,69 @@
+Q: What is cybersecurity?
+A: Computer protection
+B: Network security
+C: Data protection
+D: All above
+CORRECT: 3
+
+Q: Which is not a programming language?
+A: Python
+B: Java
+C: HTML
+D: C++
+CORRECT: 2
+
+Q: What does TCP stand for?
+A: Transmission Control Protocol
+B: Transfer Control Protocol
+C: Transport Control Protocol
+D: Terminal Control Protocol
+CORRECT: 0
+
+Q: Which is a scripting language?
+A: C
+B: Java
+C: Python
+D: Assembly
+CORRECT: 2
+
+Q: What is a firewall?
+A: Network security
+B: Hardware device
+C: Software program
+D: All above
+CORRECT: 3
+
+Q: Which is not a mobile platform?
+A: iOS
+B: Android
+C: Windows Phone
+D: Linux
+CORRECT: 3
+
+Q: What is code refactoring?
+A: Improving code structure
+B: Adding features
+C: Fixing bugs
+D: Testing code
+CORRECT: 0
+
+Q: Which port is used for HTTP?
+A: 21
+B: 80
+C: 443
+D: 22
+CORRECT: 1
+
+Q: What is an array?
+A: Data structure
+B: Algorithm
+C: Programming language
+D: Database
+CORRECT: 0
+
+Q: Which is a code editor?
+A: Visual Studio Code
+B: Sublime Text
+C: Atom
+D: All above
+CORRECT: 3

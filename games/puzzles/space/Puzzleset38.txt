@@ -1,0 +1,69 @@
+Q: What is the Thermodynamic Arrow of Time?
+A: Entropy increase
+B: Time direction
+C: Energy flow
+D: All above
+CORRECT: 3
+
+Q: How many Earth-mass planets are in Milky Way?
+A: Millions
+B: Billions
+C: Trillions
+D: Quadrillions
+CORRECT: 1
+
+Q: What is the Quantum Superposition?
+A: Multiple states
+B: Wave function
+C: Probability
+D: All above
+CORRECT: 3
+
+Q: Which spacecraft first detected organic molecules on Mars?
+A: Viking
+B: Curiosity
+C: Perseverance
+D: InSight
+CORRECT: 1
+
+Q: What is the Fine Structure Constant?
+A: Fundamental constant
+B: Electromagnetic coupling
+C: Dimensionless number
+D: All above
+CORRECT: 3
+
+Q: How many supernovae occur in Milky Way per century?
+A: 1-2
+B: 5-10
+C: 20-50
+D: 100-200
+CORRECT: 0
+
+Q: What is the Quantum Tunneling?
+A: Barrier penetration
+B: Wave property
+C: Probability effect
+D: All above
+CORRECT: 3
+
+Q: Which planet has the most extreme weather?
+A: Venus
+B: Jupiter
+C: Saturn
+D: Neptune
+CORRECT: 0
+
+Q: What is the Cosmological Redshift?
+A: Doppler effect
+B: Space expansion
+C: Light stretching
+D: All above
+CORRECT: 3
+
+Q: How many spacecraft have left solar system?
+A: 2
+B: 4
+C: 6
+D: 8
+CORRECT: 1
